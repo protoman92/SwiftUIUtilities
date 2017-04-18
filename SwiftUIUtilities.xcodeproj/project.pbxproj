@@ -9,12 +9,16 @@
 /* Begin PBXBuildFile section */
 		2C14B69943811235ABE18D65 /* Pods_SwiftUIUtilitiesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53EC4B0FC6360AAD1430C333 /* Pods_SwiftUIUtilitiesTests.framework */; };
 		9F4CBF39041AF97103234429 /* Pods_SwiftUIUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A75235F6889EF58C2B1A72B6 /* Pods_SwiftUIUtilities.framework */; };
-		D364FE0E1EA5CA5200ED702C /* UITextFieldUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D364FE0D1EA5CA5200ED702C /* UITextFieldUtil.swift */; };
-		D364FE0F1EA5CF0600ED702C /* UITextFieldUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D364FE0D1EA5CA5200ED702C /* UITextFieldUtil.swift */; };
+		D364FE0E1EA5CA5200ED702C /* UITextInputUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D364FE0D1EA5CA5200ED702C /* UITextInputUtil.swift */; };
+		D364FE0F1EA5CF0600ED702C /* UITextInputUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D364FE0D1EA5CA5200ED702C /* UITextInputUtil.swift */; };
 		D364FE101EA5CF0600ED702C /* UIScrollViewUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D387AE441EA53A43006BCF09 /* UIScrollViewUtil.swift */; };
 		D364FE111EA5CF0600ED702C /* BasePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D387AE3F1EA5346E006BCF09 /* BasePresenter.swift */; };
 		D364FE121EA5CF0600ED702C /* UIViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D387AE411EA5365D006BCF09 /* UIViewPresenter.swift */; };
 		D364FE131EA5CF0600ED702C /* UIViewUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D387AE3A1EA51DE7006BCF09 /* UIViewUtil.swift */; };
+		D364FE751EA6228200ED702C /* InputFieldType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D364FE741EA6228200ED702C /* InputFieldType.swift */; };
+		D364FE771EA622A900ED702C /* Space.swift in Sources */ = {isa = PBXBuildFile; fileRef = D364FE761EA622A900ED702C /* Space.swift */; };
+		D364FE791EA640E800ED702C /* ActionSelectorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D364FE781EA640E800ED702C /* ActionSelectorType.swift */; };
+		D364FE7B1EA6412900ED702C /* TextSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = D364FE7A1EA6412900ED702C /* TextSize.swift */; };
 		D37C3F131EA51CBF00001C24 /* SwiftUIUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D37C3F091EA51CBF00001C24 /* SwiftUIUtilities.framework */; };
 		D37C3F181EA51CBF00001C24 /* SwiftUIUtilitiesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37C3F171EA51CBF00001C24 /* SwiftUIUtilitiesTests.swift */; };
 		D37C3F1A1EA51CBF00001C24 /* SwiftUIUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = D37C3F0C1EA51CBF00001C24 /* SwiftUIUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -41,7 +45,11 @@
 		53EC4B0FC6360AAD1430C333 /* Pods_SwiftUIUtilitiesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftUIUtilitiesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F76BC6B2B138C223464B66A /* Pods-SwiftUIUtilities.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftUIUtilities.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftUIUtilities/Pods-SwiftUIUtilities.debug.xcconfig"; sourceTree = "<group>"; };
 		A75235F6889EF58C2B1A72B6 /* Pods_SwiftUIUtilities.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftUIUtilities.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D364FE0D1EA5CA5200ED702C /* UITextFieldUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UITextFieldUtil.swift; path = textField/UITextFieldUtil.swift; sourceTree = "<group>"; };
+		D364FE0D1EA5CA5200ED702C /* UITextInputUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UITextInputUtil.swift; path = inputField/UITextInputUtil.swift; sourceTree = "<group>"; };
+		D364FE741EA6228200ED702C /* InputFieldType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InputFieldType.swift; path = inputField/InputFieldType.swift; sourceTree = "<group>"; };
+		D364FE761EA622A900ED702C /* Space.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Space.swift; path = model/Space.swift; sourceTree = "<group>"; };
+		D364FE781EA640E800ED702C /* ActionSelectorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActionSelectorType.swift; path = presenter/ActionSelectorType.swift; sourceTree = "<group>"; };
+		D364FE7A1EA6412900ED702C /* TextSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextSize.swift; path = model/TextSize.swift; sourceTree = "<group>"; };
 		D37C3F091EA51CBF00001C24 /* SwiftUIUtilities.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftUIUtilities.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D37C3F0C1EA51CBF00001C24 /* SwiftUIUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftUIUtilities.h; sourceTree = "<group>"; };
 		D37C3F0D1EA51CBF00001C24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -97,18 +105,21 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		D364FE0C1EA5C9F400ED702C /* textField */ = {
+		D364FE0C1EA5C9F400ED702C /* inputField */ = {
 			isa = PBXGroup;
 			children = (
-				D364FE0D1EA5CA5200ED702C /* UITextFieldUtil.swift */,
+				D364FE741EA6228200ED702C /* InputFieldType.swift */,
+				D364FE0D1EA5CA5200ED702C /* UITextInputUtil.swift */,
 			);
-			name = textField;
+			name = inputField;
 			sourceTree = "<group>";
 		};
 		D364FE141EA5CF1E00ED702C /* model */ = {
 			isa = PBXGroup;
 			children = (
 				D387AE3C1EA52863006BCF09 /* Duration.swift */,
+				D364FE761EA622A900ED702C /* Space.swift */,
+				D364FE7A1EA6412900ED702C /* TextSize.swift */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -137,7 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				D364FE141EA5CF1E00ED702C /* model */,
-				D364FE0C1EA5C9F400ED702C /* textField */,
+				D364FE0C1EA5C9F400ED702C /* inputField */,
 				D387AE431EA53A30006BCF09 /* scrollView */,
 				D387AE3E1EA53453006BCF09 /* presenter */,
 				D387AE391EA51DD8006BCF09 /* view */,
@@ -167,6 +178,7 @@
 		D387AE3E1EA53453006BCF09 /* presenter */ = {
 			isa = PBXGroup;
 			children = (
+				D364FE781EA640E800ED702C /* ActionSelectorType.swift */,
 				D387AE3F1EA5346E006BCF09 /* BasePresenter.swift */,
 				D387AE411EA5365D006BCF09 /* UIViewPresenter.swift */,
 			);
@@ -378,11 +390,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				D387AE3B1EA51DE7006BCF09 /* UIViewUtil.swift in Sources */,
+				D364FE7B1EA6412900ED702C /* TextSize.swift in Sources */,
 				D387AE421EA5365D006BCF09 /* UIViewPresenter.swift in Sources */,
 				D387AE451EA53A43006BCF09 /* UIScrollViewUtil.swift in Sources */,
-				D364FE0E1EA5CA5200ED702C /* UITextFieldUtil.swift in Sources */,
+				D364FE0E1EA5CA5200ED702C /* UITextInputUtil.swift in Sources */,
+				D364FE751EA6228200ED702C /* InputFieldType.swift in Sources */,
 				D387AE401EA5346E006BCF09 /* BasePresenter.swift in Sources */,
 				D387AE3D1EA52863006BCF09 /* Duration.swift in Sources */,
+				D364FE791EA640E800ED702C /* ActionSelectorType.swift in Sources */,
+				D364FE771EA622A900ED702C /* Space.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,7 +406,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D364FE0F1EA5CF0600ED702C /* UITextFieldUtil.swift in Sources */,
+				D364FE0F1EA5CF0600ED702C /* UITextInputUtil.swift in Sources */,
 				D364FE101EA5CF0600ED702C /* UIScrollViewUtil.swift in Sources */,
 				D364FE111EA5CF0600ED702C /* BasePresenter.swift in Sources */,
 				D364FE121EA5CF0600ED702C /* UIViewPresenter.swift in Sources */,

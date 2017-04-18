@@ -120,6 +120,30 @@ public extension UIView {
 
 public extension UIView {
     
+    /// Initialize a UIView with a Nib file. We can either specify the file
+    /// name, or leave it as default, after which the class name will be
+    /// used to look for the file.
+    ///
+    /// - Parameter named: An optional String value.
+    func initializeWithNib(_ named: String? = nil) {
+        let cls: AnyClass = classForCoder
+        
+        guard subviews.count == 0,
+            let view = UINib(nibName: named ?? String(describing: cls),
+                             bundle: Bundle(for: cls))
+                .instantiate(withOwner: self, options: nil).first as? UIView
+        else {
+            return
+        }
+        
+        view.frame = bounds
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        addSubview(view)
+    }
+}
+
+public extension UIView {
+    
     /// Toggle visibility for the current UIView instance, by animation its
     /// alpha property to the appropriate values, and setting isHidden to
     /// true/false at the right time.
@@ -163,14 +187,13 @@ public extension UIView {
     ) -> Observable<Bool> {
         return Observable
             .create({observer in
-                self.toggle(toBeVisible: visible, withDuration: duration) {
+                self.toggleVisible(toBe: visible, withDuration: duration) {
                     observer.onNext($0)
                     observer.onCompleted()
                 }
                 
                 return Disposables.create()
             })
-            .observeOn(MainScheduler.instance)
     }
 }
 
@@ -181,8 +204,8 @@ public extension UIView {
     /// - Parameters:
     ///   - constraint: The constraint to be replaced.
     ///   - another: The constraint that will be inserted.
-    public func replace(constraint: NSLayoutConstraint,
-                        with another: NSLayoutConstraint) {
+    public func replaceConstraint(_ constraint: NSLayoutConstraint,
+                                  with another: NSLayoutConstraint) {
         removeConstraint(constraint)
         addConstraint(another)
     }
@@ -193,13 +216,13 @@ public extension UIView {
     ///   - constraint: The constraint to be replaced.
     ///   - another: The constraint that will be inserted.
     /// - Returns: An Observable instance.
-    public func rxReplace(constraint: NSLayoutConstraint,
-                          with another: NSLayoutConstraint)
+    public func rxReplaceConstraint(_ constraint: NSLayoutConstraint,
+                                    with another: NSLayoutConstraint)
         -> Observable<Bool>
     {
         return Completable
             .create(subscribe: {
-                self.replace(constraint: constraint, with: another)
+                self.replaceConstraint(constraint, with: another)
                 $0(.completed)
                 return Disposables.create()
             })

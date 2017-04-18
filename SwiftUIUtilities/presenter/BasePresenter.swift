@@ -12,7 +12,7 @@ import UIKit
 /// can be inherited from/subclassed, we have more leeway with regards to
 /// DRY.
 @objc public class BasePresenter: NSObject {
-    weak var view: PresenterDelegate?
+    fileprivate weak var view: PresenterDelegate?
     
     /// Return view instance.
     public var viewDelegate: PresenterDelegate? {
@@ -29,26 +29,12 @@ import UIKit
     }
 }
 
-public extension BasePresenter {
-    /// This method shall be the master method that receives all important 
-    /// UIView events, such as UIButton's TouchDown. We can insert 
-    /// analytics-tracking methods here to catch all user interactons.
-    ///
-    /// - Parameters:
-    ///   - sender: The object that was interacted with.
-    ///   - event: The interaction event.
-    @objc public func actionReceived(_ sender: AnyObject,
-                                     forEvent event: UIEvent) {
-        actionExecuted(sender, forEvent: event)
+extension BasePresenter: ActionSelectorType {
+    public func actionReceived(sender: AnyObject, event: UIEvent) {
+        actionExecuted(sender: sender, event: event)
     }
     
-    /// Override this method to provide specific actions to be taken.
-    ///
-    /// - Parameters:
-    ///   - sender: The object that was interacted with.
-    ///   - event: The interaction event.
-    @objc public func actionExecuted(_ sender: AnyObject,
-                                     forEvent event: UIEvent) {
+    public func actionExecuted(sender: AnyObject, event: UIEvent) {
         fatalError()
     }
 }

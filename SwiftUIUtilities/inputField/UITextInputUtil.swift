@@ -9,7 +9,15 @@
 import SwiftUtilities
 import UIKit
 
-public extension UITextField {
+/// Input fields that have an inputAccessoryView should implement this
+/// protocol to control this field's getter and setter.
+public protocol UITextInputWithAccessory: class {
+    
+    /// Set this to add accessory to input field.
+    var inputAccessoryView: UIView? { get set }
+}
+
+public extension UITextInputWithAccessory {
     
     /// Add a completion accessory to the current input field. For input
     /// fields with certain keyboard types, the soft keyboard does not have
@@ -17,17 +25,17 @@ public extension UITextField {
     /// allows users to confirm/cancel input text.
     ///
     /// - Parameter completionAccessory: A CompletionAccessory instance.
-    public func add(completionAccessory accessory: CompletionAccessory) {
-        let selector = accessory.selector
+    public func addAccessory(_ accessory: CompletionAccessory) {
         let numberToolbar = UIToolbar()
+        
         numberToolbar.barStyle = UIBarStyle.blackTranslucent
         
         /// When the user presses cancel, the text in the input field will
         /// be deleted.
         let cancel = UIBarButtonItem(title: accessory.cancelString,
                                      style: .plain,
-                                     target: target,
-                                     action: selector)
+                                     target: accessory.target,
+                                     action: accessory.selector)
         
         cancel.accessibilityIdentifier = accessory.cancelId
         cancel.tintColor = .white
@@ -36,15 +44,15 @@ public extension UITextField {
         /// called.
         let confirm = UIBarButtonItem(title: accessory.confirmString,
                                       style: .plain,
-                                      target: target,
-                                      action: selector)
+                                      target: accessory.target,
+                                      action: accessory.selector)
         
         confirm.accessibilityIdentifier = accessory.confirmId
         confirm.tintColor = .white
         
         /// Flexible space between cancel and confirm buttons.
         let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace,
-                                        target: target,
+                                        target: nil,
                                         action: nil)
         
         numberToolbar.items = [cancel, flexSpace, confirm]
@@ -53,8 +61,12 @@ public extension UITextField {
     }
 }
 
-public struct CompletionAccessory {
-    fileprivate var target: AnyObject?
+extension UITextField: UITextInputWithAccessory {}
+
+extension UITextView: UITextInputWithAccessory {}
+
+public class CompletionAccessory {
+    fileprivate weak var target: AnyObject?
     fileprivate var selector: Selector?
     fileprivate var confirmString: String
     fileprivate var cancelString: String
@@ -68,7 +80,7 @@ public struct CompletionAccessory {
         cancelId = ""
     }
     
-    public struct Builder {
+    public class Builder {
         fileprivate var accessory: CompletionAccessory
         
         fileprivate init() {
@@ -79,7 +91,7 @@ public struct CompletionAccessory {
         ///
         /// - Parameter target: A target to be used for the selector.
         /// - Returns: The current Builder instance.
-        public mutating func with(target: AnyObject?) -> Builder {
+        public func with(target: AnyObject?) -> Builder {
             accessory.target = target
             return self
         }
@@ -88,16 +100,25 @@ public struct CompletionAccessory {
         ///
         /// - Parameter selector: A Selector instance.
         /// - Returns: The current Builder instance.
-        public mutating func with(selector: Selector) -> Builder {
+        public func with(selector: Selector) -> Builder {
             accessory.selector = selector
             return self
+        }
+        
+        /// Set the accessory's selector instance using actionReceived()
+        /// from an ActionSelectorType instance.
+        ///
+        /// - Parameter type: An ActionSelectorType instance.
+        /// - Returns: The current Builder instance.
+        public func with(selectorType type: ActionSelectorType) -> Builder {
+            return with(selector: #selector(type.actionReceived(sender:event:)))
         }
         
         /// Set the accessory's confirmString value.
         ///
         /// - Parameter confirmString: A String value.
         /// - Returns: The current Builder instance.
-        public mutating func with(confirmString: String) -> Builder {
+        public func with(confirmString: String) -> Builder {
             accessory.confirmString = confirmString
             return self
         }
@@ -106,7 +127,7 @@ public struct CompletionAccessory {
         ///
         /// - Parameter cancelString: A String value.
         /// - Returns: The current Builder instance.
-        public mutating func with(cancelString: String) -> Builder {
+        public func with(cancelString: String) -> Builder {
             accessory.cancelString = cancelString
             return self
         }
@@ -115,7 +136,7 @@ public struct CompletionAccessory {
         ///
         /// - Parameter confirmId: A String value to be used in selector.
         /// - Returns: The current Builder instance.
-        public mutating func with(confirmId: String) -> Builder {
+        public func with(confirmId: String) -> Builder {
             accessory.confirmId = confirmId
             return self
         }
@@ -124,7 +145,7 @@ public struct CompletionAccessory {
         ///
         /// - Parameter cancelId: A String value to be used in selector.
         /// - Returns: The current Builder instance.
-        public mutating func with(cancelId: String) -> Builder {
+        public func with(cancelId: String) -> Builder {
             accessory.cancelId = cancelId
             return self
         }
@@ -132,5 +153,13 @@ public struct CompletionAccessory {
         public func build() -> CompletionAccessory {
             return accessory
         }
+    }
+}
+
+public extension CompletionAccessory {
+    
+    /// Return a Builder instance.
+    public static func builder() -> Builder {
+        return Builder()
     }
 }
