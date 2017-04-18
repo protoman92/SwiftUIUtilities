@@ -128,8 +128,8 @@ public extension UIView {
     ///   - visible: A Bool value.
     ///   - duration: An optional TimeInstance value.
     ///   - complete: Completion closure.
-    public func toggle(
-        toBeVisible visible: Bool,
+    public func toggleVisible(
+        toBe visible: Bool,
         withDuration duration: TimeInterval? = nil,
         then complete: AnimationComplete? = nil
     ) {
@@ -157,8 +157,8 @@ public extension UIView {
     ///   - visible: A Bool value.
     ///   - duration: An optional TimeInstance value.
     /// - Returns: An Observable instance.
-    public func rxToggle(
-        toBeVisibile visible: Bool,
+    public func rxToggleVisible(
+        toBe visible: Bool,
         withDuration duration: TimeInterval? = nil
     ) -> Observable<Bool> {
         return Observable

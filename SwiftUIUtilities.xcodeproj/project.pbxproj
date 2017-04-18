@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		2C14B69943811235ABE18D65 /* Pods_SwiftUIUtilitiesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53EC4B0FC6360AAD1430C333 /* Pods_SwiftUIUtilitiesTests.framework */; };
 		9F4CBF39041AF97103234429 /* Pods_SwiftUIUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A75235F6889EF58C2B1A72B6 /* Pods_SwiftUIUtilities.framework */; };
+		D364FE0E1EA5CA5200ED702C /* UITextFieldUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D364FE0D1EA5CA5200ED702C /* UITextFieldUtil.swift */; };
+		D364FE0F1EA5CF0600ED702C /* UITextFieldUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D364FE0D1EA5CA5200ED702C /* UITextFieldUtil.swift */; };
+		D364FE101EA5CF0600ED702C /* UIScrollViewUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D387AE441EA53A43006BCF09 /* UIScrollViewUtil.swift */; };
+		D364FE111EA5CF0600ED702C /* BasePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D387AE3F1EA5346E006BCF09 /* BasePresenter.swift */; };
+		D364FE121EA5CF0600ED702C /* UIViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D387AE411EA5365D006BCF09 /* UIViewPresenter.swift */; };
+		D364FE131EA5CF0600ED702C /* UIViewUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D387AE3A1EA51DE7006BCF09 /* UIViewUtil.swift */; };
 		D37C3F131EA51CBF00001C24 /* SwiftUIUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D37C3F091EA51CBF00001C24 /* SwiftUIUtilities.framework */; };
 		D37C3F181EA51CBF00001C24 /* SwiftUIUtilitiesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37C3F171EA51CBF00001C24 /* SwiftUIUtilitiesTests.swift */; };
 		D37C3F1A1EA51CBF00001C24 /* SwiftUIUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = D37C3F0C1EA51CBF00001C24 /* SwiftUIUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -35,6 +41,7 @@
 		53EC4B0FC6360AAD1430C333 /* Pods_SwiftUIUtilitiesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftUIUtilitiesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F76BC6B2B138C223464B66A /* Pods-SwiftUIUtilities.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftUIUtilities.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftUIUtilities/Pods-SwiftUIUtilities.debug.xcconfig"; sourceTree = "<group>"; };
 		A75235F6889EF58C2B1A72B6 /* Pods_SwiftUIUtilities.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftUIUtilities.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D364FE0D1EA5CA5200ED702C /* UITextFieldUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UITextFieldUtil.swift; path = textField/UITextFieldUtil.swift; sourceTree = "<group>"; };
 		D37C3F091EA51CBF00001C24 /* SwiftUIUtilities.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftUIUtilities.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D37C3F0C1EA51CBF00001C24 /* SwiftUIUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftUIUtilities.h; sourceTree = "<group>"; };
 		D37C3F0D1EA51CBF00001C24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -90,6 +97,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D364FE0C1EA5C9F400ED702C /* textField */ = {
+			isa = PBXGroup;
+			children = (
+				D364FE0D1EA5CA5200ED702C /* UITextFieldUtil.swift */,
+			);
+			name = textField;
+			sourceTree = "<group>";
+		};
+		D364FE141EA5CF1E00ED702C /* model */ = {
+			isa = PBXGroup;
+			children = (
+				D387AE3C1EA52863006BCF09 /* Duration.swift */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
 		D37C3EFF1EA51CBF00001C24 = {
 			isa = PBXGroup;
 			children = (
@@ -113,12 +136,13 @@
 		D37C3F0B1EA51CBF00001C24 /* SwiftUIUtilities */ = {
 			isa = PBXGroup;
 			children = (
+				D364FE141EA5CF1E00ED702C /* model */,
+				D364FE0C1EA5C9F400ED702C /* textField */,
 				D387AE431EA53A30006BCF09 /* scrollView */,
 				D387AE3E1EA53453006BCF09 /* presenter */,
 				D387AE391EA51DD8006BCF09 /* view */,
 				D37C3F0C1EA51CBF00001C24 /* SwiftUIUtilities.h */,
 				D37C3F0D1EA51CBF00001C24 /* Info.plist */,
-				D387AE3C1EA52863006BCF09 /* Duration.swift */,
 			);
 			path = SwiftUIUtilities;
 			sourceTree = "<group>";
@@ -356,6 +380,7 @@
 				D387AE3B1EA51DE7006BCF09 /* UIViewUtil.swift in Sources */,
 				D387AE421EA5365D006BCF09 /* UIViewPresenter.swift in Sources */,
 				D387AE451EA53A43006BCF09 /* UIScrollViewUtil.swift in Sources */,
+				D364FE0E1EA5CA5200ED702C /* UITextFieldUtil.swift in Sources */,
 				D387AE401EA5346E006BCF09 /* BasePresenter.swift in Sources */,
 				D387AE3D1EA52863006BCF09 /* Duration.swift in Sources */,
 			);
@@ -365,6 +390,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D364FE0F1EA5CF0600ED702C /* UITextFieldUtil.swift in Sources */,
+				D364FE101EA5CF0600ED702C /* UIScrollViewUtil.swift in Sources */,
+				D364FE111EA5CF0600ED702C /* BasePresenter.swift in Sources */,
+				D364FE121EA5CF0600ED702C /* UIViewPresenter.swift in Sources */,
+				D364FE131EA5CF0600ED702C /* UIViewUtil.swift in Sources */,
 				D37C3F181EA51CBF00001C24 /* SwiftUIUtilitiesTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -383,6 +413,7 @@
 		D37C3F1B1EA51CBF00001C24 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -436,6 +467,7 @@
 		D37C3F1C1EA51CBF00001C24 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -528,7 +560,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2C3CE3D8BBF9EFB4274DB194 /* Pods-SwiftUIUtilitiesTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				DEVELOPMENT_TEAM = S3V9CCW695;
 				INFOPLIST_FILE = SwiftUIUtilitiesTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -542,7 +574,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E2E36E6FC0ED3C7B80B9B13B /* Pods-SwiftUIUtilitiesTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				DEVELOPMENT_TEAM = S3V9CCW695;
 				INFOPLIST_FILE = SwiftUIUtilitiesTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
