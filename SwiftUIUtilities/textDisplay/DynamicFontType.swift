@@ -22,6 +22,31 @@ public protocol FontRepresentationType {
     var value: String { get }
 }
 
+public enum DefaultFontRepresentation: Int {
+    case normal = 1
+    case bold
+    case italic
+}
+
+extension DefaultFontRepresentation: FontRepresentationType {
+    public static func from(value: Int) -> FontRepresentationType? {
+        return DefaultFontRepresentation(rawValue: value)
+    }
+    
+    public var value: String {
+        switch self {
+        case .normal:
+            return "HelveticaNeue"
+            
+        case .bold:
+            return "HelveticaNeue-Bold"
+        
+        case .italic:
+            return "HelveticaNeue-Italic"
+        }
+    }
+}
+
 /// UIView subclasses that can display a text and wish to dynamically change
 /// UIFont based on InterfaceBuilder values should implement this protocol.
 public protocol DynamicFontType: class {
@@ -49,12 +74,17 @@ public extension DynamicFontType {
     /// Set font dynamically by checking fontName and fontValue for the
     /// appropriate values to initialize a new UIFont.
     public func setFontDynamically() {
+        // If a FontNameClass property is not found in Info.plist, use a
+        // default FontRepresentationType.
+        let clsName =
+            readPropertyList(key: "FontNameClass") as? String ??
+            "DefaultFontRepresentation"
+        
         guard
             let fontName = self.fontName,
             let fontSize = self.fontSize,
             let infoDictionary = Bundle.main.infoDictionary,
             let appName = infoDictionary[kCFBundleNameKey as String] as? String,
-            let clsName = readPropertyList(key: "FontNameClass") as? String,
             
             /// Create the FontRepresentationClass. We need to append the
             /// appName in front of the class name in Swift.
