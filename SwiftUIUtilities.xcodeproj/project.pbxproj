@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		2C14B69943811235ABE18D65 /* Pods_SwiftUIUtilitiesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53EC4B0FC6360AAD1430C333 /* Pods_SwiftUIUtilitiesTests.framework */; };
 		9F4CBF39041AF97103234429 /* Pods_SwiftUIUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A75235F6889EF58C2B1A72B6 /* Pods_SwiftUIUtilities.framework */; };
+		D3107EF31EA6FEF200E43FEE /* Duration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D387AE3C1EA52863006BCF09 /* Duration.swift */; };
+		D3107EF41EA6FEF200E43FEE /* Space.swift in Sources */ = {isa = PBXBuildFile; fileRef = D364FE761EA622A900ED702C /* Space.swift */; };
+		D3107EF51EA6FEF200E43FEE /* TextSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = D364FE7A1EA6412900ED702C /* TextSize.swift */; };
+		D3107EF61EA6FEF200E43FEE /* InputFieldType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D364FE741EA6228200ED702C /* InputFieldType.swift */; };
+		D3107EF71EA6FEF200E43FEE /* ActionSelectorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D364FE781EA640E800ED702C /* ActionSelectorType.swift */; };
 		D364FE0E1EA5CA5200ED702C /* UITextInputUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D364FE0D1EA5CA5200ED702C /* UITextInputUtil.swift */; };
 		D364FE0F1EA5CF0600ED702C /* UITextInputUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D364FE0D1EA5CA5200ED702C /* UITextInputUtil.swift */; };
 		D364FE101EA5CF0600ED702C /* UIScrollViewUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D387AE441EA53A43006BCF09 /* UIScrollViewUtil.swift */; };
@@ -20,7 +25,6 @@
 		D364FE791EA640E800ED702C /* ActionSelectorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D364FE781EA640E800ED702C /* ActionSelectorType.swift */; };
 		D364FE7B1EA6412900ED702C /* TextSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = D364FE7A1EA6412900ED702C /* TextSize.swift */; };
 		D37C3F131EA51CBF00001C24 /* SwiftUIUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D37C3F091EA51CBF00001C24 /* SwiftUIUtilities.framework */; };
-		D37C3F181EA51CBF00001C24 /* SwiftUIUtilitiesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37C3F171EA51CBF00001C24 /* SwiftUIUtilitiesTests.swift */; };
 		D37C3F1A1EA51CBF00001C24 /* SwiftUIUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = D37C3F0C1EA51CBF00001C24 /* SwiftUIUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D387AE3B1EA51DE7006BCF09 /* UIViewUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D387AE3A1EA51DE7006BCF09 /* UIViewUtil.swift */; };
 		D387AE3D1EA52863006BCF09 /* Duration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D387AE3C1EA52863006BCF09 /* Duration.swift */; };
@@ -54,7 +58,6 @@
 		D37C3F0C1EA51CBF00001C24 /* SwiftUIUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftUIUtilities.h; sourceTree = "<group>"; };
 		D37C3F0D1EA51CBF00001C24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D37C3F121EA51CBF00001C24 /* SwiftUIUtilitiesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftUIUtilitiesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D37C3F171EA51CBF00001C24 /* SwiftUIUtilitiesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIUtilitiesTests.swift; sourceTree = "<group>"; };
 		D37C3F191EA51CBF00001C24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D387AE3A1EA51DE7006BCF09 /* UIViewUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewUtil.swift; path = view/UIViewUtil.swift; sourceTree = "<group>"; };
 		D387AE3C1EA52863006BCF09 /* Duration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Duration.swift; path = model/Duration.swift; sourceTree = "<group>"; };
@@ -103,6 +106,13 @@
 				53EC4B0FC6360AAD1430C333 /* Pods_SwiftUIUtilitiesTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D3107EEE1EA6FE1600E43FEE /* test */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = test;
 			sourceTree = "<group>";
 		};
 		D364FE0C1EA5C9F400ED702C /* inputField */ = {
@@ -161,7 +171,7 @@
 		D37C3F161EA51CBF00001C24 /* SwiftUIUtilitiesTests */ = {
 			isa = PBXGroup;
 			children = (
-				D37C3F171EA51CBF00001C24 /* SwiftUIUtilitiesTests.swift */,
+				D3107EEE1EA6FE1600E43FEE /* test */,
 				D37C3F191EA51CBF00001C24 /* Info.plist */,
 			);
 			path = SwiftUIUtilitiesTests;
@@ -406,12 +416,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3107EF31EA6FEF200E43FEE /* Duration.swift in Sources */,
+				D3107EF41EA6FEF200E43FEE /* Space.swift in Sources */,
+				D3107EF51EA6FEF200E43FEE /* TextSize.swift in Sources */,
+				D3107EF61EA6FEF200E43FEE /* InputFieldType.swift in Sources */,
+				D3107EF71EA6FEF200E43FEE /* ActionSelectorType.swift in Sources */,
 				D364FE0F1EA5CF0600ED702C /* UITextInputUtil.swift in Sources */,
 				D364FE101EA5CF0600ED702C /* UIScrollViewUtil.swift in Sources */,
 				D364FE111EA5CF0600ED702C /* BasePresenter.swift in Sources */,
 				D364FE121EA5CF0600ED702C /* UIViewPresenter.swift in Sources */,
 				D364FE131EA5CF0600ED702C /* UIViewUtil.swift in Sources */,
-				D37C3F181EA51CBF00001C24 /* SwiftUIUtilitiesTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
