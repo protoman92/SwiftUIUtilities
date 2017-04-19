@@ -44,10 +44,13 @@ public enum TextSize: Int {
     case huge
     
     // Custom text size.
-    case custom
+    case custom = -1
 }
 
-public extension TextSize {
+extension TextSize: SizeRepresentationType {
+    public static func from(value: Int) -> SizeRepresentationType? {
+        return TextSize(rawValue: value)
+    }
     
     /// Return the associated space value in CGFloat.
     public var value: CGFloat? {

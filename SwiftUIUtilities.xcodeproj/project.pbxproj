@@ -14,6 +14,14 @@
 		D3107EF51EA6FEF200E43FEE /* TextSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = D364FE7A1EA6412900ED702C /* TextSize.swift */; };
 		D3107EF61EA6FEF200E43FEE /* InputFieldType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D364FE741EA6228200ED702C /* InputFieldType.swift */; };
 		D3107EF71EA6FEF200E43FEE /* ActionSelectorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D364FE781EA640E800ED702C /* ActionSelectorType.swift */; };
+		D3107F051EA76A6000E43FEE /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3107F041EA76A6000E43FEE /* Size.swift */; };
+		D3107F0A1EA76B8F00E43FEE /* BaseLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3107F091EA76B8F00E43FEE /* BaseLayoutConstraint.swift */; };
+		D3107F0C1EA76D5500E43FEE /* SizeRepresentationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3107F0B1EA76D5500E43FEE /* SizeRepresentationType.swift */; };
+		D3107F0D1EA76EBA00E43FEE /* BaseLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3107F091EA76B8F00E43FEE /* BaseLayoutConstraint.swift */; };
+		D3107F0E1EA76EBA00E43FEE /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3107F041EA76A6000E43FEE /* Size.swift */; };
+		D3107F0F1EA76EBA00E43FEE /* SizeRepresentationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3107F0B1EA76D5500E43FEE /* SizeRepresentationType.swift */; };
+		D3107F141EA775BD00E43FEE /* DynamicFontType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3107F131EA775BD00E43FEE /* DynamicFontType.swift */; };
+		D3107F161EA77BCD00E43FEE /* UITextDisplayUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3107F151EA77BCD00E43FEE /* UITextDisplayUtil.swift */; };
 		D364FE0E1EA5CA5200ED702C /* UITextInputUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D364FE0D1EA5CA5200ED702C /* UITextInputUtil.swift */; };
 		D364FE0F1EA5CF0600ED702C /* UITextInputUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D364FE0D1EA5CA5200ED702C /* UITextInputUtil.swift */; };
 		D364FE101EA5CF0600ED702C /* UIScrollViewUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D387AE441EA53A43006BCF09 /* UIScrollViewUtil.swift */; };
@@ -49,6 +57,11 @@
 		53EC4B0FC6360AAD1430C333 /* Pods_SwiftUIUtilitiesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftUIUtilitiesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F76BC6B2B138C223464B66A /* Pods-SwiftUIUtilities.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftUIUtilities.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftUIUtilities/Pods-SwiftUIUtilities.debug.xcconfig"; sourceTree = "<group>"; };
 		A75235F6889EF58C2B1A72B6 /* Pods_SwiftUIUtilities.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftUIUtilities.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3107F041EA76A6000E43FEE /* Size.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Size.swift; path = model/Size.swift; sourceTree = "<group>"; };
+		D3107F091EA76B8F00E43FEE /* BaseLayoutConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseLayoutConstraint.swift; path = constraint/BaseLayoutConstraint.swift; sourceTree = "<group>"; };
+		D3107F0B1EA76D5500E43FEE /* SizeRepresentationType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SizeRepresentationType.swift; path = model/SizeRepresentationType.swift; sourceTree = "<group>"; };
+		D3107F131EA775BD00E43FEE /* DynamicFontType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DynamicFontType.swift; path = textDisplay/DynamicFontType.swift; sourceTree = "<group>"; };
+		D3107F151EA77BCD00E43FEE /* UITextDisplayUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UITextDisplayUtil.swift; path = inputField/UITextDisplayUtil.swift; sourceTree = "<group>"; };
 		D364FE0D1EA5CA5200ED702C /* UITextInputUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UITextInputUtil.swift; path = inputField/UITextInputUtil.swift; sourceTree = "<group>"; };
 		D364FE741EA6228200ED702C /* InputFieldType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InputFieldType.swift; path = inputField/InputFieldType.swift; sourceTree = "<group>"; };
 		D364FE761EA622A900ED702C /* Space.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Space.swift; path = model/Space.swift; sourceTree = "<group>"; };
@@ -115,6 +128,23 @@
 			name = test;
 			sourceTree = "<group>";
 		};
+		D3107F081EA76B7C00E43FEE /* constraint */ = {
+			isa = PBXGroup;
+			children = (
+				D3107F091EA76B8F00E43FEE /* BaseLayoutConstraint.swift */,
+			);
+			name = constraint;
+			sourceTree = "<group>";
+		};
+		D3107F101EA771F300E43FEE /* textDisplay */ = {
+			isa = PBXGroup;
+			children = (
+				D3107F131EA775BD00E43FEE /* DynamicFontType.swift */,
+				D3107F151EA77BCD00E43FEE /* UITextDisplayUtil.swift */,
+			);
+			name = textDisplay;
+			sourceTree = "<group>";
+		};
 		D364FE0C1EA5C9F400ED702C /* inputField */ = {
 			isa = PBXGroup;
 			children = (
@@ -130,6 +160,8 @@
 				D387AE3C1EA52863006BCF09 /* Duration.swift */,
 				D364FE761EA622A900ED702C /* Space.swift */,
 				D364FE7A1EA6412900ED702C /* TextSize.swift */,
+				D3107F041EA76A6000E43FEE /* Size.swift */,
+				D3107F0B1EA76D5500E43FEE /* SizeRepresentationType.swift */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -157,6 +189,8 @@
 		D37C3F0B1EA51CBF00001C24 /* SwiftUIUtilities */ = {
 			isa = PBXGroup;
 			children = (
+				D3107F101EA771F300E43FEE /* textDisplay */,
+				D3107F081EA76B7C00E43FEE /* constraint */,
 				D364FE141EA5CF1E00ED702C /* model */,
 				D364FE0C1EA5C9F400ED702C /* inputField */,
 				D387AE431EA53A30006BCF09 /* scrollView */,
@@ -399,12 +433,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3107F051EA76A6000E43FEE /* Size.swift in Sources */,
 				D387AE3B1EA51DE7006BCF09 /* UIViewUtil.swift in Sources */,
 				D364FE7B1EA6412900ED702C /* TextSize.swift in Sources */,
+				D3107F0A1EA76B8F00E43FEE /* BaseLayoutConstraint.swift in Sources */,
 				D387AE421EA5365D006BCF09 /* UIViewPresenter.swift in Sources */,
 				D387AE451EA53A43006BCF09 /* UIScrollViewUtil.swift in Sources */,
 				D364FE0E1EA5CA5200ED702C /* UITextInputUtil.swift in Sources */,
+				D3107F161EA77BCD00E43FEE /* UITextDisplayUtil.swift in Sources */,
+				D3107F0C1EA76D5500E43FEE /* SizeRepresentationType.swift in Sources */,
 				D364FE751EA6228200ED702C /* InputFieldType.swift in Sources */,
+				D3107F141EA775BD00E43FEE /* DynamicFontType.swift in Sources */,
 				D387AE401EA5346E006BCF09 /* BasePresenter.swift in Sources */,
 				D387AE3D1EA52863006BCF09 /* Duration.swift in Sources */,
 				D364FE791EA640E800ED702C /* ActionSelectorType.swift in Sources */,
@@ -416,6 +455,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3107F0D1EA76EBA00E43FEE /* BaseLayoutConstraint.swift in Sources */,
+				D3107F0E1EA76EBA00E43FEE /* Size.swift in Sources */,
+				D3107F0F1EA76EBA00E43FEE /* SizeRepresentationType.swift in Sources */,
 				D3107EF31EA6FEF200E43FEE /* Duration.swift in Sources */,
 				D3107EF41EA6FEF200E43FEE /* Space.swift in Sources */,
 				D3107EF51EA6FEF200E43FEE /* TextSize.swift in Sources */,

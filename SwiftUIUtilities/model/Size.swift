@@ -1,89 +1,89 @@
 //
-//  Model.swift
+//  Size.swift
 //  SwiftUIUtilities
 //
-//  Created by Hai Pham on 4/18/17.
+//  Created by Hai Pham on 4/19/17.
 //  Copyright © 2017 Swiften. All rights reserved.
 //
 
 import UIKit
 
-/// Define custom space to be used with InterfaceBuilder. Use @IBInspectable
+/// Define custom size to be used with InterfaceBuilder. Use @IBInspectable
 /// to set this value, and manually parse it to get its CGFloat value.
-public enum Space: Int {
+public enum Size: Int {
     
-    // Zero space
+    // Zero size
     case none = 0
     
-    // Tiny space. Usually used for collectionView line spacing.
+    // Tiny size.
     case tiny
     
-    // Smallest space.
+    // Smallest size.
     case smallest
     
-    // Smaller space.
+    // Smaller size.
     case smaller
     
-    // Small space.
+    // Small size.
     case small
     
-    // Medium space.
+    // Medium size.
     case medium
     
-    // Large space. Usually used for spacing relative to parent UIView.
+    // Large size.
     case large
     
-    // Larger space.
+    // Larger size.
     case larger
     
-    // Largest space.
+    // Largest size.
     case largest
     
-    // Huge space.
+    // Huge size.
     case huge
     
-    // Custom space. This will not be translated to CGFloat, i.e. retain the
+    // Custom size. This will not be translated to CGFloat, i.e. retain the
     // original InterfaceBuilder value.
     case custom = -1
 }
 
-extension Space: SizeRepresentationType {
+extension Size: SizeRepresentationType {
     public static func from(value: Int) -> SizeRepresentationType? {
-        return Space(rawValue: value)
+        return Size(rawValue: value)
     }
-
-    /// Return the associated space value in CGFloat.
+    
+    /// Return the associated size value in CGFloat.
     public var value: CGFloat? {
         switch self {
         case .none:
             return 0
             
         case .tiny:
-            return 1
-            
-        case .smallest:
-            return 2
-            
-        case .smaller:
-            return 3
-            
-        case .small:
             return 5
             
-        case .medium:
+        case .smallest:
             return 10
             
-        case .large:
-            return 15
-            
-        case .larger:
+        case .smaller:
             return 20
             
+        case .small:
+            return 32
+            
+        case .medium:
+            return 44
+            
+        case .large:
+            return 60
+            
+        case .larger:
+            return 75
+            
         case .largest:
-            return 25
+            return 100
             
         case .huge:
-            return 30
+            return 130
             
         case .custom:
             return nil
