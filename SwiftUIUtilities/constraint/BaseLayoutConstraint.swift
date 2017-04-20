@@ -10,7 +10,7 @@ import SwiftUtilities
 import UIKit
 
 /// This class shall use size representation enums for common sizes/spaces.
-public final class BaseLayoutConstraint: NSLayoutConstraint {
+public class BaseLayoutConstraint: NSLayoutConstraint {
     @IBInspectable public var constantValue: Int?
     
     override open func awakeFromNib() {
@@ -107,5 +107,37 @@ public extension NSLayoutConstraint {
         
         newConstraint.identifier = identifier ?? constraint.identifier
         return newConstraint
+    }
+    
+    // Clone the current constraint and optionally set properties on the 
+    /// clone to mimic those of the original.
+    ///
+    /// - Parameters:
+    ///   - identifier: The constraint identifier.
+    ///   - firstItem: The constraint firstItem.
+    ///   - firstAttribute: The constraint firstAttribute.
+    ///   - secondItem: The constraint secondItem.
+    ///   - secondAttribute: The constraint secondAttribute.
+    ///   - relation: The constraint relation.
+    ///   - constant: The constraint constant.
+    ///   - multiplier: The constraint multiplier.
+    /// - Returns: A NSLayoutConstraint instance.
+    public func clone(identifier: String? = nil,
+                      firstItem: AnyObject? = nil,
+                      firstAttribute: NSLayoutAttribute? = nil,
+                      secondItem: AnyObject? = nil,
+                      secondAttribute: NSLayoutAttribute? = nil,
+                      relation: NSLayoutRelation? = nil,
+                      constant: CGFloat? = nil,
+                      multiplier: CGFloat? = nil) -> NSLayoutConstraint {
+        return NSLayoutConstraint.clone(from: self,
+                                        identifier: identifier,
+                                        firstItem: firstItem,
+                                        firstAttribute: firstAttribute,
+                                        secondItem: secondItem,
+                                        secondAttribute: secondAttribute,
+                                        relation: relation,
+                                        constant: constant,
+                                        multiplier: multiplier)
     }
 }

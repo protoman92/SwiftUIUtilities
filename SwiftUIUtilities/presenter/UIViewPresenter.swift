@@ -45,3 +45,5 @@ import UIKit
     /// - Parameter view: The UIView handled by the current Presenter.
     public func removeFromSuperview(_ view: UIView) {}
 }
+
+extension UIView: PresenterDelegate {}

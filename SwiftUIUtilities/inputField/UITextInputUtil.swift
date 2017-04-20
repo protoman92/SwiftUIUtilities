@@ -65,7 +65,7 @@ extension UITextField: UITextInputWithAccessory {}
 
 extension UITextView: UITextInputWithAccessory {}
 
-public class CompletionAccessory {
+public struct CompletionAccessory {
     fileprivate weak var target: AnyObject?
     fileprivate var selector: Selector?
     fileprivate var confirmString: String
@@ -80,7 +80,7 @@ public class CompletionAccessory {
         cancelId = ""
     }
     
-    public class Builder {
+    public final class Builder {
         fileprivate var accessory: CompletionAccessory
         
         fileprivate init() {

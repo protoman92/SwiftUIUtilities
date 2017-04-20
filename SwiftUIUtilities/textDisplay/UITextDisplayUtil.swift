@@ -8,7 +8,7 @@
 
 import UIKit
 
-public final class BaseLabel: UILabel {
+public class BaseLabel: UILabel {
     
     /// These value will be set via InterfaceBuilder.
     @IBInspectable public var fontName: Int?
@@ -27,7 +27,7 @@ extension BaseLabel: DynamicFontType {
     }
 }
 
-public final class BaseTextField: UITextField {
+public class BaseTextField: UITextField {
     
     /// These value will be set via InterfaceBuilder.
     @IBInspectable public var fontName: Int?
@@ -46,7 +46,26 @@ extension BaseTextField: DynamicFontType {
     }
 }
 
-public final class BaseButton: UIButton {
+public class BaseTextView: UITextView {
+    
+    /// These value will be set via InterfaceBuilder.
+    @IBInspectable public var fontName: Int?
+    @IBInspectable public var fontSize: Int?
+    
+    override public func awakeFromNib() {
+        super.awakeFromNib()
+        setFontDynamically()
+    }
+}
+
+extension BaseTextView: DynamicFontType {
+    public var activeFont: UIFont? {
+        get { return font }
+        set { font = newValue }
+    }
+}
+
+public class BaseButton: UIButton {
     
     /// These value will be set via InterfaceBuilder.
     @IBInspectable public var fontName: Int?

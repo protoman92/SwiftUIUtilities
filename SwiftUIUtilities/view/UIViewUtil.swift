@@ -12,8 +12,6 @@ import UIKit
 /// Catch-all completion closure for animations.
 public typealias AnimationComplete = (Bool) -> Void
 
-extension UIView: PresenterDelegate {}
-
 public extension UIView {
     
     /// Get all subviews for the current UIView. This method will be 
@@ -159,18 +157,13 @@ public extension UIView {
     ) {
         let duration = duration ?? Duration.short.rawValue
         
-        if visible {
-            isHidden = false
-        }
+        if visible { isHidden = false }
         
         UIView.animate(
             withDuration: duration,
             animations: {self.alpha = visible ? 1 : 0}
         ) {
-            if !visible && $0 {
-                self.isHidden = true
-            }
-            
+            if !visible && $0 { self.isHidden = true }
             complete?($0)
         }
     }
