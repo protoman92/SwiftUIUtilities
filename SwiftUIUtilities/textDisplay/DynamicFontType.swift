@@ -22,28 +22,39 @@ public protocol FontRepresentationType {
     var value: String { get }
 }
 
-public enum DefaultFontRepresentation: Int {
-    case normal = 1
-    case bold
-    case italic
+/// Default font representation. We need to use a class instead of an enum
+/// due to NSClassFromString()
+public class DefaultFont {
+    static let normal = DefaultFont(name: "HelveticaNeue")
+    static let bold = DefaultFont(name: "HelveticaNeue-Bold")
+    static let italic = DefaultFont(name: "HelveticaNeue-Italic")
+    
+    fileprivate let fontName: String
+    
+    fileprivate init(name: String) {
+        fontName = name
+    }
 }
 
-extension DefaultFontRepresentation: FontRepresentationType {
+extension DefaultFont: FontRepresentationType {
     public static func from(value: Int) -> FontRepresentationType? {
-        return DefaultFontRepresentation(rawValue: value)
+        switch value {
+        case 1:
+            return normal
+            
+        case 2:
+            return bold
+            
+        case 3:
+            return italic
+            
+        default:
+            return nil
+        }
     }
     
     public var value: String {
-        switch self {
-        case .normal:
-            return "HelveticaNeue"
-            
-        case .bold:
-            return "HelveticaNeue-Bold"
-        
-        case .italic:
-            return "HelveticaNeue-Italic"
-        }
+        return fontName
     }
 }
 
@@ -55,10 +66,10 @@ public protocol DynamicFontType: class {
     var activeFont: UIFont? { get set }
     
     /// The name of the font, as represented by an Int enum.
-    var fontName: Int? { get set }
+    var fontName: String? { get set }
     
     /// The font size, as represented by an Int enum.
-    var fontSize: Int? { get set }
+    var fontSize: String? { get set }
 }
 
 public extension DynamicFontType {
@@ -67,6 +78,25 @@ public extension DynamicFontType {
     fileprivate static var sizePresentationType: SizeRepresentationType.Type? {
         return TextSize.self
     }
+    
+    /// Dynamically locale a FontRepresentationType as defined in Info.plist,
+    /// or use DefaultFont.
+    fileprivate static var fontRepresentationType: FontRepresentationType.Type? {
+        guard
+            let clsName = readPropertyList(key: "FontNameClass") as? String,
+            let infoDictionary = Bundle.main.infoDictionary,
+            let appName = infoDictionary[kCFBundleNameKey as String] as? String,
+            
+            /// Create the FontRepresentationClass. We need to append the
+            /// appName in front of the class name in Swift.
+            let fontClass = NSClassFromString("\(appName).\(clsName)")
+                as? FontRepresentationType.Type
+        else {
+            return DefaultFont.self
+        }
+        
+        return fontClass
+    }
 }
 
 public extension DynamicFontType {
@@ -74,25 +104,12 @@ public extension DynamicFontType {
     /// Set font dynamically by checking fontName and fontValue for the
     /// appropriate values to initialize a new UIFont.
     public func setFontDynamically() {
-        // If a FontNameClass property is not found in Info.plist, use a
-        // default FontRepresentationType.
-        let clsName =
-            readPropertyList(key: "FontNameClass") as? String ??
-            "DefaultFontRepresentation"
-        
         guard
-            let fontName = self.fontName,
-            let fontSize = self.fontSize,
-            let infoDictionary = Bundle.main.infoDictionary,
-            let appName = infoDictionary[kCFBundleNameKey as String] as? String,
-            
-            /// Create the FontRepresentationClass. We need to append the
-            /// appName in front of the class name in Swift.
-            let fontCls = NSClassFromString("\(appName).\(clsName)")
-                as? FontRepresentationType.Type,
-        
-            let fontInstance = fontCls.from(value: fontName),
+            let fontName = Int(self.fontName ?? ""),
+            let fontSize = Int(self.fontSize ?? ""),
+            let fontCls = Self.fontRepresentationType,
             let sizeCls = Self.sizePresentationType,
+            let fontInstance = fontCls.from(value: fontName),
             let sizeInstance = sizeCls.from(value: fontSize),
             let size = sizeInstance.value ?? activeFont?.pointSize,
             let newFont = UIFont(name: fontInstance.value, size: size)

@@ -163,7 +163,7 @@ public extension UIView {
             withDuration: duration,
             animations: {self.alpha = visible ? 1 : 0}
         ) {
-            if !visible && $0 { self.isHidden = true }
+            if !visible { self.isHidden = true }
             complete?($0)
         }
     }

@@ -11,7 +11,7 @@ import UIKit
 
 /// This class shall use size representation enums for common sizes/spaces.
 open class BaseLayoutConstraint: NSLayoutConstraint {
-    @IBInspectable public var constantValue: Int?
+    @IBInspectable public var constantValue: String?
     
     override open func awakeFromNib() {
         super.awakeFromNib()
@@ -22,10 +22,9 @@ open class BaseLayoutConstraint: NSLayoutConstraint {
     /// as set in InterfaceBuilder.
     fileprivate func resetConstraint() {
         guard
-            let constantValue = self.constantValue,
+            let constantValue = Int(self.constantValue ?? ""),
             let representation = sizeRepresentationType,
-            let sizeInstance = representation.from(value: constantValue),
-            let newConstant = sizeInstance.value
+            let sizeInstance = representation.from(value: constantValue)
         else {
             if isInDebugMode() {
                 print(self)
@@ -35,7 +34,9 @@ open class BaseLayoutConstraint: NSLayoutConstraint {
             return
         }
         
-        constant = (constant < 0 ? -1 : 1) * newConstant
+        if let newConstant = sizeInstance.value {
+            constant = (constant < 0 ? -1 : 1) * newConstant
+        }
     }
 }
 

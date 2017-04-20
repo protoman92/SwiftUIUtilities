@@ -11,8 +11,8 @@ import UIKit
 open class BaseLabel: UILabel {
     
     /// These value will be set via InterfaceBuilder.
-    @IBInspectable public var fontName: Int?
-    @IBInspectable public var fontSize: Int?
+    @IBInspectable public var fontName: String?
+    @IBInspectable public var fontSize: String?
     
     override open func awakeFromNib() {
         super.awakeFromNib()
@@ -30,8 +30,8 @@ extension BaseLabel: DynamicFontType {
 open class BaseTextField: UITextField {
     
     /// These value will be set via InterfaceBuilder.
-    @IBInspectable public var fontName: Int?
-    @IBInspectable public var fontSize: Int?
+    @IBInspectable public var fontName: String?
+    @IBInspectable public var fontSize: String?
     
     override open func awakeFromNib() {
         super.awakeFromNib()
@@ -49,8 +49,8 @@ extension BaseTextField: DynamicFontType {
 open class BaseTextView: UITextView {
     
     /// These value will be set via InterfaceBuilder.
-    @IBInspectable public var fontName: Int?
-    @IBInspectable public var fontSize: Int?
+    @IBInspectable public var fontName: String?
+    @IBInspectable public var fontSize: String?
     
     override open func awakeFromNib() {
         super.awakeFromNib()
@@ -68,8 +68,8 @@ extension BaseTextView: DynamicFontType {
 open class BaseButton: UIButton {
     
     /// These value will be set via InterfaceBuilder.
-    @IBInspectable public var fontName: Int?
-    @IBInspectable public var fontSize: Int?
+    @IBInspectable public var fontName: String?
+    @IBInspectable public var fontSize: String?
     
     override open func awakeFromNib() {
         super.awakeFromNib()
