@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
     s.homepage = "https://github.com/protoman92/SwiftUIUtilities.git"
     s.source = { :git => "https://github.com/protoman92/SwiftUIUtilities.git", :tag => "#{s.version}"}
     s.framework = "UIKit"
-    s.dependency 'SwiftUtilities/Main', '~> 3.0'
+    s.dependency 'SwiftUtilities/Main'
 
     s.subspec 'Main' do |main|
         main.source_files = "SwiftUIUtilities/**/*.{swift}"
