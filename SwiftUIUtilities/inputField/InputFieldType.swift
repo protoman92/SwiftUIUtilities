@@ -6,12 +6,17 @@
 //  Copyright © 2017 Swiften. All rights reserved.
 //
 
+import RxCocoa
+import RxSwift
 import UIKit
 
 /// UIView subclasses that can accept and display an input should implement
 /// this protocol for user with InputView. This is because we will not
 /// necessarily be using a base UITextField for text input.
 public protocol InputFieldType: class {
+    
+    /// Represent the type that implements this protocol.
+    associatedtype FieldType: ReactiveCompatible
     
     /// Get the currently displayed text.
     var text: String? { get set }
@@ -36,6 +41,9 @@ public protocol InputFieldType: class {
     /// - Returns: A Bool value.
     @discardableResult
     func resignFirstResponder() -> Bool
+    
+    /// Return a Reactive Extension for inner properties.
+    var rx: Reactive<FieldType> { get }
 }
 
 extension UITextField: InputFieldType {}
