@@ -41,6 +41,7 @@
 		D387AE401EA5346E006BCF09 /* BasePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D387AE3F1EA5346E006BCF09 /* BasePresenter.swift */; };
 		D387AE421EA5365D006BCF09 /* UIViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D387AE411EA5365D006BCF09 /* UIViewPresenter.swift */; };
 		D387AE451EA53A43006BCF09 /* UIScrollViewUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D387AE441EA53A43006BCF09 /* UIScrollViewUtil.swift */; };
+		D3F9A83A1EA9331A004EA340 /* ViewBuilderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F9A8391EA9331A004EA340 /* ViewBuilderType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		D387AE3F1EA5346E006BCF09 /* BasePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BasePresenter.swift; path = presenter/BasePresenter.swift; sourceTree = "<group>"; };
 		D387AE411EA5365D006BCF09 /* UIViewPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewPresenter.swift; path = presenter/UIViewPresenter.swift; sourceTree = "<group>"; };
 		D387AE441EA53A43006BCF09 /* UIScrollViewUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIScrollViewUtil.swift; path = scrollView/UIScrollViewUtil.swift; sourceTree = "<group>"; };
+		D3F9A8391EA9331A004EA340 /* ViewBuilderType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewBuilderType.swift; sourceTree = "<group>"; };
 		E2E36E6FC0ED3C7B80B9B13B /* Pods-SwiftUIUtilitiesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftUIUtilitiesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftUIUtilitiesTests/Pods-SwiftUIUtilitiesTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -188,6 +190,7 @@
 		D37C3F0B1EA51CBF00001C24 /* SwiftUIUtilities */ = {
 			isa = PBXGroup;
 			children = (
+				D3F9A8381EA9331A004EA340 /* viewBuilder */,
 				D3107F101EA771F300E43FEE /* textDisplay */,
 				D3107F081EA76B7C00E43FEE /* constraint */,
 				D364FE141EA5CF1E00ED702C /* model */,
@@ -233,6 +236,14 @@
 				D387AE441EA53A43006BCF09 /* UIScrollViewUtil.swift */,
 			);
 			name = scrollView;
+			sourceTree = "<group>";
+		};
+		D3F9A8381EA9331A004EA340 /* viewBuilder */ = {
+			isa = PBXGroup;
+			children = (
+				D3F9A8391EA9331A004EA340 /* ViewBuilderType.swift */,
+			);
+			path = viewBuilder;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -437,6 +448,7 @@
 				D387AE3B1EA51DE7006BCF09 /* UIViewUtil.swift in Sources */,
 				D364FE7B1EA6412900ED702C /* TextSize.swift in Sources */,
 				D3107F0A1EA76B8F00E43FEE /* BaseLayoutConstraint.swift in Sources */,
+				D3F9A83A1EA9331A004EA340 /* ViewBuilderType.swift in Sources */,
 				D387AE421EA5365D006BCF09 /* UIViewPresenter.swift in Sources */,
 				D387AE451EA53A43006BCF09 /* UIScrollViewUtil.swift in Sources */,
 				D364FE0E1EA5CA5200ED702C /* UITextInputUtil.swift in Sources */,
