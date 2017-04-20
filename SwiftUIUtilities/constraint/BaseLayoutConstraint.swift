@@ -42,24 +42,53 @@ open class BaseLayoutConstraint: NSLayoutConstraint {
 
 public extension NSLayoutConstraint {
     
-    /// Check if the current constraint is a height or width constraint. If
-    /// it is, we should use Size enum to dynamically set its constant value.
-    /// Otherwise, we should use Space enum.
-    fileprivate var isHeightOrWidthConstraint: Bool {
+    /// Check if the current constraint is a direct constraint i.e. it can
+    /// be added directly to the UIView in question.
+    public var isDirectConstraint: Bool {
+        return isDimensionConstraint || isAspectRatioConstraint
+    }
+    
+    /// Check if the current constraint is a height or width constraint. 
+    /// If it is, we should use Size enum to dynamically set its constant 
+    /// value. Otherwise, we should use Space enum.
+    fileprivate var isDimensionConstraint: Bool {
         switch true {
             
-        // Height/Width constraints have secondAttribute as .notAnAttribute.
+        // Direct constraints have secondAttribute as .notAnAttribute.
         case secondAttribute != .notAnAttribute:
+            return false
+            
+        case firstAttribute == .width:
             fallthrough
             
-        case firstAttribute != .width && firstAttribute != .height:
-            return false
+        case firstAttribute == .height:
+            return true
             
         default:
             break
         }
         
-        return true
+        return false
+    }
+    
+    /// Check if the current constraint is an aspect ratio constraint. Similar
+    /// to dimension constraints, we use Size enum.
+    fileprivate var isAspectRatioConstraint: Bool {
+        switch true {
+        case firstItem != secondItem:
+            return false
+            
+        case firstAttribute == .width && secondAttribute == .height:
+            fallthrough
+            
+        case firstAttribute == .height && secondAttribute == .width:
+            return true
+            
+        default:
+            break
+        }
+        
+        return false
     }
     
     fileprivate var sizeRepresentationType: SizeRepresentationType.Type? {
