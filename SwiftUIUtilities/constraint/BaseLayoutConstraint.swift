@@ -10,7 +10,7 @@ import SwiftUtilities
 import UIKit
 
 /// This class shall use size representation enums for common sizes/spaces.
-public class BaseLayoutConstraint: NSLayoutConstraint {
+open class BaseLayoutConstraint: NSLayoutConstraint {
     @IBInspectable public var constantValue: Int?
     
     override open func awakeFromNib() {

@@ -11,16 +11,16 @@ import UIKit
 /// We use Presenters to abstract away View interactions. Since Presenters
 /// can be inherited from/subclassed, we have more leeway with regards to
 /// DRY.
-@objc public class BasePresenter: NSObject {
+@objc open class BasePresenter: NSObject {
     fileprivate weak var view: PresenterDelegate?
     
     /// Return view instance.
-    public var viewDelegate: PresenterDelegate? {
+    open var viewDelegate: PresenterDelegate? {
         return view
     }
     
     /// Return the view presented by this presenter.
-    public var presentedView: UIView? {
+    open var presentedView: UIView? {
         fatalError("Must override this variable")
     }
     
@@ -30,11 +30,11 @@ import UIKit
 }
 
 extension BasePresenter: ActionSelectorType {
-    public func actionReceived(sender: AnyObject, event: UIEvent) {
+    open func actionReceived(sender: AnyObject, event: UIEvent) {
         actionExecuted(sender: sender, event: event)
     }
     
-    public func actionExecuted(sender: AnyObject, event: UIEvent) {
+    open func actionExecuted(sender: AnyObject, event: UIEvent) {
         fatalError()
     }
 }
