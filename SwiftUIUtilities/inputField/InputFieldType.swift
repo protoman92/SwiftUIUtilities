@@ -16,7 +16,7 @@ import UIKit
 public protocol InputFieldType: class {
     
     /// Represent the type that implements this protocol.
-    associatedtype FieldType: ReactiveCompatible
+    associatedtype InputField: ReactiveCompatible
     
     /// Get the currently displayed text.
     var text: String? { get set }
@@ -43,7 +43,7 @@ public protocol InputFieldType: class {
     func resignFirstResponder() -> Bool
     
     /// Return a Reactive Extension for inner properties.
-    var rx: Reactive<FieldType> { get }
+    var rx: Reactive<InputField> { get }
 }
 
 extension UITextField: InputFieldType {}
