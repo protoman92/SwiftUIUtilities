@@ -33,6 +33,11 @@ public protocol InputFieldType: class {
     /// The input field's active tint color.
     var tintColor: UIColor! { get set }
     
+    /// Since we cannot ask Reactive with constraint on type to implement
+    /// another protocol, we need to directly get the rx.text ControlProperty.
+    /// For e.g. for UITextField it should be rx.text.
+    var rxText: ControlProperty<String?> { get }
+    
     /// This method will be called when the current input field loses focus.
     ///
     /// - Returns: A Bool value.
@@ -40,13 +45,8 @@ public protocol InputFieldType: class {
     func resignFirstResponder() -> Bool
 }
 
-/// Implement this protocol to access rx extensions.
-public protocol ReactiveInputFieldType: InputFieldType {
-    /// Represent the type that implements this protocol.
-    associatedtype InputField: ReactiveCompatible
-    
-    /// Return a Reactive Extension for inner properties.
-    var rx: Reactive<InputField> { get }
+extension UITextField: InputFieldType {
+    public var rxText: ControlProperty<String?> {
+        return rx.text
+    }
 }
-
-extension UITextField: ReactiveInputFieldType {}
