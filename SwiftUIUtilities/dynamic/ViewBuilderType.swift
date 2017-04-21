@@ -28,10 +28,8 @@ public protocol ViewBuilderType {
     ///
     /// - Parameters:
     ///   - view: The parent UIView to attach.
-    ///   - input: An InputDetailType instance.
     /// - Returns: An Array of ViewBuilderComponentType.
-    func components(for view: UIView, using input: InputDetailType)
-        -> [ViewBuilderComponentType]
+    func builderComponents(for view: UIView) -> [ViewBuilderComponentType]
 }
 
 /// Basic component block for ViewBuilderType.
@@ -110,13 +108,20 @@ extension ViewBuilderComponent: ViewBuilderComponentType {
 
 public extension UIView {
     
-    /// Populate subviews and constraints from a Sequence of 
+    /// Create a UIView instance using a ViewBuilderType.
+    ///
+    /// - Parameters:
+    ///   - builder: A ViewBuilderType instance.
+    public convenience init(with builder: ViewBuilderType) {
+        self.init()
+        populateSubviews(with: builder)
+    }
+    
+    /// Populate subviews and constraints from a Array of
     /// ViewBuilderComponentType
     ///
-    /// - Parameter components: A Sequence of ViewBuilderComponentType
-    public func populateSubviews<S: Sequence>(from components: S)
-        where S.Iterator.Element: ViewBuilderComponentType
-    {
+    /// - Parameter components: A Array of ViewBuilderComponentType
+    public func populateSubviews(from components: [ViewBuilderComponentType]) {
         let subviews = components.flatMap({$0.viewToBeAdded})
         let constraints = components.flatMap({$0.layoutConstraints})
         
@@ -132,5 +137,12 @@ public extension UIView {
                 addConstraint(cs)
             }
         }
+    }
+    
+    /// Populate subviews with a ViewBuilderType.
+    ///
+    /// - Parameter builder: A ViewBuilderType instance.
+    public func populateSubviews(with builder: ViewBuilderType) {
+        populateSubviews(from: builder.builderComponents(for: self))
     }
 }
