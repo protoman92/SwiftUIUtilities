@@ -36,7 +36,7 @@ public protocol InputFieldType: class {
     /// Since we cannot ask Reactive with constraint on type to implement
     /// another protocol, we need to directly get the rx.text ControlProperty.
     /// For e.g. for UITextField it should be rx.text.
-    var rxText: ControlProperty<String?> { get }
+    var rxText: ControlProperty<String?>? { get }
     
     /// This method will be called when the current input field loses focus.
     ///
@@ -46,7 +46,7 @@ public protocol InputFieldType: class {
 }
 
 extension UITextField: InputFieldType {
-    public var rxText: ControlProperty<String?> {
+    public var rxText: ControlProperty<String?>? {
         return rx.text
     }
 }
