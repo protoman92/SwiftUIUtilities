@@ -127,9 +127,7 @@ public extension UIView {
     ///
     /// - Parameters:
     ///   - builder: A ViewBuilderType instance.
-    public convenience init<Builder>(with builder: Builder)
-        where Builder: ViewBuilderType
-    {
+    public convenience init(with builder: ViewBuilderType) {
         self.init()
         populateSubviews(with: builder)
     }
@@ -140,9 +138,9 @@ public extension UIView {
     /// - Parameters:
     ///   - builder: A ViewBuilderType instance.
     ///   - config: A ViewBuilderConfigType instance.
-    public convenience init<Builder,Config>(with builder: Builder,
-                            thenConfigureWith config: Config)
-        where Builder: ViewBuilderType, Config: ViewBuilderConfigType
+    public convenience init(
+        with builder: ViewBuilderType,
+        thenConfigureWith config: ViewBuilderConfigType)
     {
         self.init(with: builder)
         config.configure(for: self)
