@@ -128,6 +128,10 @@ public extension UIView {
     public func populateSubviews(from components: [ViewBuilderComponentType]) {
         let subviews = components.flatMap({$0.viewToBeAdded})
         let constraints = components.flatMap({$0.layoutConstraints})
+
+        // Set translatesAutoresizingMaskIntoConstraints to false to avoid
+        // unwanted constraints.
+        subviews.forEach({$0.translatesAutoresizingMaskIntoConstraints = false})
         
         // We first add all subviews.
         subviews.forEach(addSubview)

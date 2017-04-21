@@ -14,8 +14,19 @@ open class BaseLabel: UILabel {
     @IBInspectable public var fontName: String?
     @IBInspectable public var fontSize: String?
     
-    override open func awakeFromNib() {
-        super.awakeFromNib()
+    /// Use this variable to set font only once. We should not use
+    /// awakeFromNib() since it will not be called if we construct an instance
+    /// dynamically.
+    fileprivate var initialized = false
+    
+    override open func layoutSubviews() {
+        super.layoutSubviews()
+        
+        guard !initialized else {
+            return
+        }
+        
+        defer { initialized = true }
         setFontDynamically()
     }
 }
@@ -33,8 +44,19 @@ open class BaseTextField: UITextField {
     @IBInspectable public var fontName: String?
     @IBInspectable public var fontSize: String?
     
-    override open func awakeFromNib() {
-        super.awakeFromNib()
+    /// Use this variable to set font only once. We should not use
+    /// awakeFromNib() since it will not be called if we construct an instance
+    /// dynamically.
+    fileprivate var initialized = false
+    
+    override open func layoutSubviews() {
+        super.layoutSubviews()
+        
+        guard !initialized else {
+            return
+        }
+        
+        defer { initialized = true }
         setFontDynamically()
     }
 }
@@ -52,8 +74,19 @@ open class BaseTextView: UITextView {
     @IBInspectable public var fontName: String?
     @IBInspectable public var fontSize: String?
     
-    override open func awakeFromNib() {
-        super.awakeFromNib()
+    /// Use this variable to set font only once. We should not use
+    /// awakeFromNib() since it will not be called if we construct an instance
+    /// dynamically.
+    fileprivate var initialized = false
+    
+    override open func layoutSubviews() {
+        super.layoutSubviews()
+        
+        guard !initialized else {
+            return
+        }
+        
+        defer { initialized = true }
         setFontDynamically()
     }
 }
@@ -71,8 +104,19 @@ open class BaseButton: UIButton {
     @IBInspectable public var fontName: String?
     @IBInspectable public var fontSize: String?
     
-    override open func awakeFromNib() {
-        super.awakeFromNib()
+    /// Use this variable to set font only once. We should not use
+    /// awakeFromNib() since it will not be called if we construct an instance
+    /// dynamically.
+    fileprivate var initialized = false
+    
+    override open func layoutSubviews() {
+        super.layoutSubviews()
+        
+        guard !initialized else {
+            return
+        }
+        
+        defer { initialized = true }
         setFontDynamically()
     }
 }

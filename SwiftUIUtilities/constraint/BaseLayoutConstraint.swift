@@ -11,11 +11,12 @@ import UIKit
 
 /// This class shall use size representation enums for common sizes/spaces.
 open class BaseLayoutConstraint: NSLayoutConstraint {
-    @IBInspectable public var constantValue: String?
     
-    override open func awakeFromNib() {
-        super.awakeFromNib()
-        resetConstraint()
+    /// By the time this variable is set, constant should have been set.
+    @IBInspectable public var constantValue: String? {
+        didSet {
+            resetConstraint()
+        }
     }
     
     /// Reset constant value based on the dynamic constantValue property,
@@ -26,11 +27,8 @@ open class BaseLayoutConstraint: NSLayoutConstraint {
             let representation = sizeRepresentationType,
             let sizeInstance = representation.from(value: constantValue)
         else {
-            if isInDebugMode() {
-                print(self)
-                fatalError()
-            }
-            
+            debugPrint(self)
+            debugException()
             return
         }
         
