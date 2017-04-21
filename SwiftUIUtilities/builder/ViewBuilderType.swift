@@ -32,6 +32,17 @@ public protocol ViewBuilderType {
     func builderComponents(for view: UIView) -> [ViewBuilderComponentType]
 }
 
+/// Implement this protocol to configure views added dynamically by
+/// ViewBuilderType.
+public protocol ViewBuilderConfigType {
+    
+    /// Configure the current UIView, after populating it with a
+    /// ViewBuilderType.
+    ///
+    /// - Parameter view: The UIView to be configured.
+    func configure(for view: UIView)
+}
+
 /// Basic component block for ViewBuilderType.
 public struct ViewBuilderComponent {
     
@@ -116,9 +127,25 @@ public extension UIView {
     ///
     /// - Parameters:
     ///   - builder: A ViewBuilderType instance.
-    public convenience init(with builder: ViewBuilderType) {
+    public convenience init<Builder>(with builder: Builder)
+        where Builder: ViewBuilderType
+    {
         self.init()
         populateSubviews(with: builder)
+    }
+    
+    /// Create a UIView instance using a ViewBuilderType, and then configure
+    /// it with a ViewBuilderConfigType.
+    ///
+    /// - Parameters:
+    ///   - builder: A ViewBuilderType instance.
+    ///   - config: A ViewBuilderConfigType instance.
+    public convenience init<Builder,Config>(with builder: Builder,
+                            thenConfigureWith config: Config)
+        where Builder: ViewBuilderType, Config: ViewBuilderConfigType
+    {
+        self.init(with: builder)
+        config.configure(for: self)
     }
     
     /// Populate subviews and constraints from a Array of
