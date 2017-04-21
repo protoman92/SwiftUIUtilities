@@ -91,6 +91,10 @@ public struct ViewBuilderComponent {
 }
 
 public extension ViewBuilderComponent {
+    
+    /// Use this static variable when we do want to inflate any subview.
+    public static let empty = ViewBuilderComponent()
+    
     public static func builder() -> Builder {
         return Builder()
     }
