@@ -16,16 +16,6 @@ public protocol ConstraintSetType {
 
 extension UIView: ConstraintSetType {}
 
-public extension UIView {
-    
-    /// Add all constraints from a ConstraintSetType.
-    ///
-    /// - Parameter set: A ConstraintSetType instance.
-    public func addConstraints(from set: ConstraintSetType) {
-        addConstraints(set.constraints)
-    }
-}
-
 /// Provide a set of fit constraints i.e. left/top/bottom/right relative to
 /// a parent view.
 public struct FitConstraintSet {
@@ -138,6 +128,24 @@ public extension FitConstraintSet {
     public static func builder() -> Builder {
         return Builder()
     }
+    
+    /// Get a FitConstraintSet instance that fits a child UIView to a parent
+    /// UIView (no margins).
+    ///
+    /// - Parameters:
+    ///   - parent: The parent UIView.
+    ///   - child: The child UIView.
+    /// - Returns: A FitConstraintSet instance.
+    public static func fit(forParent parent: UIView, andChild child: UIView)
+        -> FitConstraintSet
+    {
+        return FitConstraintSet.builder()
+            .add(top: true)
+            .add(left: true)
+            .add(right: true)
+            .add(bottom: true)
+            .build()
+    }
 }
 
 extension FitConstraintSet: ConstraintSetType {
@@ -198,5 +206,23 @@ extension FitConstraintSet: ConstraintSetType {
         }
         
         return constraints
+    }
+}
+
+public extension UIView {
+    
+    /// Add all constraints from a ConstraintSetType.
+    ///
+    /// - Parameter set: A ConstraintSetType instance.
+    public func addConstraints(from set: ConstraintSetType) {
+        addConstraints(set.constraints)
+    }
+    
+    /// Add constraints to fit.
+    ///
+    /// - Parameter child: A UIView instance being added to this UIView.
+    public func addFitConstraints(for child: UIView) {
+        let set = FitConstraintSet.fit(forParent: self, andChild: child)
+        addConstraints(from: set)
     }
 }

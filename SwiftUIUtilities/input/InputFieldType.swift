@@ -27,6 +27,9 @@ public protocol InputFieldType: class {
     /// A placeholder text for when there is no input.
     var placeholder: String? { get set }
     
+    /// Text color for placeholder.
+    var placeholderTextColor: UIColor? { get set }
+    
     /// The input field's active text color.
     var textColor: UIColor? { get set }
     
@@ -48,5 +51,23 @@ public protocol InputFieldType: class {
 extension UITextField: InputFieldType {
     public var rxText: ControlProperty<String?>? {
         return rx.text
+    }
+    
+    /// Set attributed text.
+    public var placeholderTextColor: UIColor? {
+        // Nothing of interest here.
+        get { return nil }
+        
+        // We need to set attributedPlaceholder. This is the best way to
+        // change text color for this property.
+        set {
+            guard let color = newValue, let text = self.placeholder else {
+                return
+            }
+            
+            let attributes = [NSForegroundColorAttributeName: color]
+            let str = NSAttributedString(string: text, attributes: attributes)
+            attributedPlaceholder = str
+        }
     }
 }

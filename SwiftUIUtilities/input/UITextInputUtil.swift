@@ -62,7 +62,6 @@ public extension UITextInputWithAccessory {
 }
 
 extension UITextField: UITextInputWithAccessory {}
-
 extension UITextView: UITextInputWithAccessory {}
 
 public struct CompletionAccessory {
