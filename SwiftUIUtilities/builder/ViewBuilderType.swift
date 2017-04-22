@@ -1,6 +1,6 @@
 //
 //  ViewBuilderType.swift
-//  SwiftInputView
+//  SwiftUIUtilities
 //
 //  Created by Hai Pham on 4/21/17.
 //  Copyright © 2017 Swiften. All rights reserved.
@@ -74,12 +74,24 @@ import UIKit
             return self
         }
         
+        /// Add a layout constraint.
+        ///
+        /// - Parameter constraint: An optional NSLayoutConstraint instance.
+        /// - Returns: The current Builder instance.
+        public func add(constraint: NSLayoutConstraint?) -> Builder {
+            if let constraint = constraint {
+                component.constraints.append(constraint)
+            }
+            
+            return self
+        }
+        
         /// Add vararg layout constraints.
         ///
         /// - Parameter constraint: A vararg of NSLayoutConstraint instances.
         /// - Returns: The current Builder instance.
-        public func add(constraint: NSLayoutConstraint...) -> Builder {
-            component.constraints.append(contentsOf: constraint)
+        public func add(constraints: NSLayoutConstraint...) -> Builder {
+            component.constraints.append(contentsOf: constraints)
             return self
         }
         
