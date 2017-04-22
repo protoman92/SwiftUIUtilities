@@ -11,7 +11,7 @@ import UIKit
 
 /// Implement this protocol to provide a UIView subview and a set of
 /// NSLayoutConstraints for dynamic view building.
-public protocol ViewBuilderComponentType {
+@objc public protocol ViewBuilderComponentType {
     
     /// The child UIView to be added.
     var viewToBeAdded: UIView? { get }
@@ -22,7 +22,7 @@ public protocol ViewBuilderComponentType {
 }
 
 /// Implement this protocol for convenient dynamic view building.
-public protocol ViewBuilderType {
+@objc public protocol ViewBuilderType {
     
     /// Get an Array of ViewBuilderComponentType for dynamic view building.
     ///
@@ -34,7 +34,7 @@ public protocol ViewBuilderType {
 
 /// Implement this protocol to configure views added dynamically by
 /// ViewBuilderType.
-public protocol ViewBuilderConfigType {
+@objc public protocol ViewBuilderConfigType {
     
     /// Configure the current UIView, after populating it with a
     /// ViewBuilderType.
@@ -44,7 +44,7 @@ public protocol ViewBuilderConfigType {
 }
 
 /// Basic component block for ViewBuilderType.
-public struct ViewBuilderComponent {
+@objc public class ViewBuilderComponent: NSObject {
     
     /// The subview to be added.
     fileprivate var subview: UIView?
@@ -53,13 +53,13 @@ public struct ViewBuilderComponent {
     /// subview itself.
     fileprivate var constraints: [NSLayoutConstraint]
     
-    fileprivate init() {
+    fileprivate override init() {
         constraints = []
     }
     
     /// Builder class for ViewBuilderComponent.
     public class Builder {
-        fileprivate var component: ViewBuilderComponent
+        fileprivate let component: ViewBuilderComponent
         
         fileprivate init() {
             component = ViewBuilderComponent()
