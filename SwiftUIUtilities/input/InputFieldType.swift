@@ -30,6 +30,12 @@ public protocol InputFieldType: class {
     /// Text color for placeholder.
     var placeholderTextColor: UIColor? { get set }
     
+    /// Get the placeholder view for this current inputField. For views that
+    /// do not have a separate view for placeholder, return those views. This
+    /// view can be used for dynamically adding constraints (e.g. when another
+    /// view wants to align itself to this view).
+    var placeholderView: UIView? { get }
+    
     /// The input field's active text color.
     var textColor: UIColor? { get set }
     
@@ -51,6 +57,10 @@ public protocol InputFieldType: class {
 extension UITextField: InputFieldType {
     public var rxText: ControlProperty<String?>? {
         return rx.text
+    }
+    
+    public var placeholderView: UIView? {
+        return self
     }
     
     /// Set attributed text.
