@@ -42,6 +42,9 @@ public protocol InputFieldType: class {
     /// The input field's active tint color.
     var tintColor: UIColor! { get set }
     
+    /// The input field's text alignment.
+    var textAlignment: NSTextAlignment { get set }
+    
     /// Since we cannot ask Reactive with constraint on type to implement
     /// another protocol, we need to directly get the rx.text ControlProperty.
     /// For e.g. for UITextField it should be rx.text.
@@ -59,6 +62,8 @@ extension UITextField: InputFieldType {
         return rx.text
     }
     
+    /// There is no separate placeholderView, we return the current 
+    /// UITextField.
     public var placeholderView: UIView? {
         return self
     }
