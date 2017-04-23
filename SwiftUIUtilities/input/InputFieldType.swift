@@ -45,6 +45,9 @@ public protocol InputFieldType: class {
     /// The input field's text alignment.
     var textAlignment: NSTextAlignment { get set }
     
+    /// Autocorrect type for this inputField.
+    var autocorrectionType: UITextAutocorrectionType { get set }
+    
     /// Since we cannot ask Reactive with constraint on type to implement
     /// another protocol, we need to directly get the rx.text ControlProperty.
     /// For e.g. for UITextField it should be rx.text.
