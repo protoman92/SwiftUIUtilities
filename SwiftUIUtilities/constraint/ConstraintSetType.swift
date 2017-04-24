@@ -140,6 +140,8 @@ public extension FitConstraintSet {
         -> FitConstraintSet
     {
         return FitConstraintSet.builder()
+            .with(parent: parent)
+            .with(child: child)
             .add(top: true)
             .add(left: true)
             .add(right: true)
