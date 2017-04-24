@@ -152,7 +152,7 @@ public extension UIView {
     ///   - config: A ViewBuilderConfigType instance.
     public convenience init(
         with builder: ViewBuilderType,
-        thenConfigureWith config: ViewBuilderConfigType)
+        and config: ViewBuilderConfigType)
     {
         self.init(with: builder)
         config.configure(for: self)
