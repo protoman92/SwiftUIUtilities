@@ -56,6 +56,14 @@ public extension UIView {
     public func allSubviews<T: UIView>(ofType type: T.Type) -> [T] {
         return allSubviews.flatMap({$0 as? T})
     }
+    
+    /// Get a subview that has a certain accessibilityIdentifier.
+    ///
+    /// - Parameter id: A String value.
+    /// - Returns: An optional UIView instance.
+    public func subview(withAccessibilityIdentifier id: String) -> UIView? {
+        return subviews.filter({$0.accessibilityIdentifier == id}).first
+    }
 }
 
 public extension UIView {
@@ -167,27 +175,6 @@ public extension UIView {
             complete?($0)
         }
     }
-    
-    /// Toggle visibility reactively.
-    ///
-    /// - Parameters:
-    ///   - visible: A Bool value.
-    ///   - duration: An optional TimeInstance value.
-    /// - Returns: An Observable instance.
-    public func rxToggleVisible(
-        toBe visible: Bool,
-        withDuration duration: TimeInterval? = nil
-    ) -> Observable<Bool> {
-        return Observable
-            .create({observer in
-                self.toggleVisible(toBe: visible, withDuration: duration) {
-                    observer.onNext($0)
-                    observer.onCompleted()
-                }
-                
-                return Disposables.create()
-            })
-    }
 }
 
 public extension UIView {
@@ -201,27 +188,6 @@ public extension UIView {
                                   with another: NSLayoutConstraint) {
         removeConstraint(constraint)
         addConstraint(another)
-    }
-    
-    /// Reactively replace one NSLayoutConstraint with another.
-    ///
-    /// - Parameters:
-    ///   - constraint: The constraint to be replaced.
-    ///   - another: The constraint that will be inserted.
-    /// - Returns: An Observable instance.
-    public func rxReplaceConstraint(_ constraint: NSLayoutConstraint,
-                                    with another: NSLayoutConstraint)
-        -> Observable<Bool>
-    {
-        return Completable
-            .create(subscribe: {
-                self.replaceConstraint(constraint, with: another)
-                $0(.completed)
-                return Disposables.create()
-            })
-            .asObservable()
-            .map({_ in true})
-            .ifEmpty(default: true)
     }
 }
 
@@ -246,19 +212,15 @@ public extension UIView {
         self.layer.render(in: context)
         return UIGraphicsGetImageFromCurrentImageContext()
     }
+}
+
+public extension Sequence where Iterator.Element: UIView {
     
-    /// Take a snapshot reactively, and return an empty Observable if the
-    /// image is not available.
+    /// Get all subviews that have a certain accessibility identifier.
     ///
-    /// - Parameter frame: The CGRect within which the image is to be taken.
-    /// - Returns: An Observable instance.
-    public func rxTakeSnapShop(within frame: CGRect? = nil)
-        -> Observable<UIImage>
-    {
-        guard let image = takeSnapshot(within: frame) else {
-            return Observable.empty()
-        }
-        
-        return Observable.just(image)
+    /// - Parameter id: A String value.
+    /// - Returns: An Array of UIView.
+    public func subviews(withAccessibilityIdentifier id: String) -> [UIView] {
+        return flatMap({$0.subview(withAccessibilityIdentifier: id)})
     }
 }

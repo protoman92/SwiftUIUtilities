@@ -24,16 +24,10 @@ public protocol FontRepresentationType {
 
 /// Default font representation. We need to use a class instead of an enum
 /// due to NSClassFromString()
-public class DefaultFont {
-    static let normal = DefaultFont(name: "HelveticaNeue")
-    static let bold = DefaultFont(name: "HelveticaNeue-Bold")
-    static let italic = DefaultFont(name: "HelveticaNeue-Italic")
-    
-    fileprivate let fontName: String
-    
-    fileprivate init(name: String) {
-        fontName = name
-    }
+public enum DefaultFont: Int {
+    case normal = 1
+    case bold
+    case italic
 }
 
 extension DefaultFont: FontRepresentationType {
@@ -54,7 +48,16 @@ extension DefaultFont: FontRepresentationType {
     }
     
     public var value: String {
-        return fontName
+        switch self {
+        case .normal:
+            return "HelveticaNeue"
+            
+        case .bold:
+            return "HelveticaNeue-Bold"
+            
+        case .italic:
+            return "HelveticaNeue-Italic"
+        }
     }
 }
 
@@ -75,16 +78,22 @@ public protocol DynamicFontType: class {
 public extension DynamicFontType {
     
     /// Get the correct SizeRepresentationType type to parse fontSize.
-    fileprivate static var sizePresentationType: SizeRepresentationType.Type? {
+    var sizePresentationType: SizeRepresentationType.Type? {
         return TextSize.self
+    }
+    
+    /// Get the name for the class that holds font names. This name should
+    /// be defined in Info.plist.
+    var fontRepresentationClassName: String? {
+        return readPropertyList(key: "FontNameClass") as? String
     }
     
     /// Dynamically locale a FontRepresentationType as defined in Info.plist,
     /// or use DefaultFont.
-    fileprivate static var fontRepresentationType: FontRepresentationType.Type? {
+    var fontRepresentationType: FontRepresentationType.Type? {
         guard
-            let clsName = readPropertyList(key: "FontNameClass") as? String,
-            let infoDictionary = Bundle.main.infoDictionary,
+            let clsName = fontRepresentationClassName,
+            let infoDictionary = Bundle(identifier: clsName)?.infoDictionary,
             let appName = infoDictionary[kCFBundleNameKey as String] as? String,
             
             /// Create the FontRepresentationClass. We need to append the
@@ -107,8 +116,8 @@ public extension DynamicFontType {
         guard
             let fontName = Int(self.fontName ?? ""),
             let fontSize = Int(self.fontSize ?? ""),
-            let fontCls = Self.fontRepresentationType,
-            let sizeCls = Self.sizePresentationType,
+            let fontCls = fontRepresentationType,
+            let sizeCls = sizePresentationType,
             let fontInstance = fontCls.from(value: fontName),
             let sizeInstance = sizeCls.from(value: fontSize),
             let size = sizeInstance.value ?? activeFont?.pointSize,

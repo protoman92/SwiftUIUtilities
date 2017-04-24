@@ -18,24 +18,6 @@ public extension UIScrollView {
         let topRect = CGRect(x: 1, y: frame.minY, width: 1, height: 1)
         scrollRectToVisible(topRect, animated: animated)
     }
-    
-    /// Reactively scroll to top.
-    ///
-    /// - Parameter animated: A Bool value.
-    /// - Returns: An Observable instance.
-    public func rxScrollToTop(shouldAnimate animated: Bool)
-        -> Observable<Bool>
-    {
-        return Completable
-            .create(subscribe: {
-                self.scrollToTop(shouldAnimate: animated)
-                $0(.completed)
-                return Disposables.create()
-            })
-            .asObservable()
-            .map({_ in true})
-            .ifEmpty(default: true)
-    }
 }
 
 public extension UIScrollView {
@@ -48,23 +30,5 @@ public extension UIScrollView {
         let bottomSize = CGSize(width: 1, height: 1)
         let bottomRect = CGRect(origin: bottomOrigin, size: bottomSize)
         scrollRectToVisible(bottomRect, animated: animated)
-    }
-    
-    /// Reactively scroll to bottom.
-    ///
-    /// - Parameter animated: A Bool value.
-    /// - Returns: An Observable instance.
-    public func rxScrollToBottom(shouldAnimate animated: Bool)
-        -> Observable<Bool>
-    {
-        return Completable
-            .create(subscribe: {
-                self.scrollToBottom(shouldAnimate: animated)
-                $0(.completed)
-                return Disposables.create()
-            })
-            .asObservable()
-            .map({_ in true})
-            .ifEmpty(default: true)
     }
 }
