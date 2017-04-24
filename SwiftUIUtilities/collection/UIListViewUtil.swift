@@ -25,7 +25,6 @@ extension UICollectionViewCell: CellIdentifierType {}
 extension UITableViewCell: CellIdentifierType {}
 
 public protocol CellRegisterType {
-    associatedtype CellType: UIView, CellIdentifierType
     
     /// This method is common to both UICollectionView and UITableView.
     ///
@@ -40,22 +39,18 @@ public extension CellRegisterType {
     /// Register a cell type.
     ///
     /// - Parameter type: A CellType type.
-    func register(with type: CellType.Type) {
+    func register<C>(with type: C.Type) where C: UIView, C: CellIdentifierType {
         register(type.self, with: type.identifier)
     }
 }
 
 extension UICollectionView: CellRegisterType {
-    public typealias CellType = UICollectionViewCell
-    
     public func register(_ cellClass: AnyClass?, with identifier: String) {
         register(cellClass, forCellWithReuseIdentifier: identifier)
     }
 }
 
 extension UITableView: CellRegisterType {
-    public typealias CellType = UITableViewCell
-    
     public func register(_ cellClass: AnyClass?, with identifier: String) {
         register(cellClass, forCellReuseIdentifier: identifier)
     }
