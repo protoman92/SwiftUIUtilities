@@ -53,7 +53,7 @@ public extension CellRegisterType {
     /// Register a cell type.
     ///
     /// - Parameter type: A CellType type.
-    func register<C>(with type: C.Type) where C: UIView, C: CellIdentifierType {
+    public func register<C>(with type: C.Type) where C: UIView, C: CellIdentifierType {
         register(type.self, with: type.identifier)
     }
 }
@@ -66,8 +66,9 @@ public extension CellDequeType {
     ///   - type: A CellIdentifierType subclass type.
     ///   - indexPath: An IndexPath instance.
     /// - Returns: An optional CellIdentifierType instance.
-    func dequeReusableCell<C: CellIdentifierType>(with type: C.Type,
-                           for indexPath: IndexPath) -> C? {
+    public func deque<C>(with type: C.Type, for indexPath: IndexPath) -> C?
+        where C: CellIdentifierType
+    {
         return dequeReusableCell(with: type.identifier, for: indexPath) as? C
     }
 }

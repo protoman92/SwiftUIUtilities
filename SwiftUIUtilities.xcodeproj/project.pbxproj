@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2C14B69943811235ABE18D65 /* Pods_SwiftUIUtilitiesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53EC4B0FC6360AAD1430C333 /* Pods_SwiftUIUtilitiesTests.framework */; };
 		9F4CBF39041AF97103234429 /* Pods_SwiftUIUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A75235F6889EF58C2B1A72B6 /* Pods_SwiftUIUtilities.framework */; };
+		D31658B31EAF12810021AA61 /* UICollectionViewUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31658B21EAF12810021AA61 /* UICollectionViewUtil.swift */; };
 		D31714981EA8463F00DED309 /* pod-publish in Resources */ = {isa = PBXBuildFile; fileRef = D31714961EA8463F00DED309 /* pod-publish */; };
 		D31714991EA8463F00DED309 /* SwiftUIUtilities.podspec in Resources */ = {isa = PBXBuildFile; fileRef = D31714971EA8463F00DED309 /* SwiftUIUtilities.podspec */; };
 		D319B32A1EA9AC5A00861C4B /* ViewBuilderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D319B3131EA9AC5A00861C4B /* ViewBuilderType.swift */; };
@@ -68,6 +69,7 @@
 		53EC4B0FC6360AAD1430C333 /* Pods_SwiftUIUtilitiesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftUIUtilitiesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F76BC6B2B138C223464B66A /* Pods-SwiftUIUtilities.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftUIUtilities.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftUIUtilities/Pods-SwiftUIUtilities.debug.xcconfig"; sourceTree = "<group>"; };
 		A75235F6889EF58C2B1A72B6 /* Pods_SwiftUIUtilities.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftUIUtilities.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D31658B21EAF12810021AA61 /* UICollectionViewUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UICollectionViewUtil.swift; path = collection/UICollectionViewUtil.swift; sourceTree = "<group>"; };
 		D31714961EA8463F00DED309 /* pod-publish */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "pod-publish"; sourceTree = "<group>"; };
 		D31714971EA8463F00DED309 /* SwiftUIUtilities.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SwiftUIUtilities.podspec; sourceTree = "<group>"; };
 		D319B3131EA9AC5A00861C4B /* ViewBuilderType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewBuilderType.swift; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				D329CB5C1EADCBF9005D512E /* UIListViewUtil.swift */,
+				D31658B21EAF12810021AA61 /* UICollectionViewUtil.swift */,
 			);
 			name = collection;
 			sourceTree = "<group>";
@@ -478,6 +481,7 @@
 				D319B32E1EA9AC5A00861C4B /* Duration.swift in Sources */,
 				D36B832E1EA9E676001CF633 /* ConstraintSetType.swift in Sources */,
 				D319B3391EA9AC5A00861C4B /* UIViewUtil.swift in Sources */,
+				D31658B31EAF12810021AA61 /* UICollectionViewUtil.swift in Sources */,
 				D319B32C1EA9AC5A00861C4B /* InputFieldType.swift in Sources */,
 				D319B3321EA9AC5A00861C4B /* TextSize.swift in Sources */,
 				D319B3371EA9AC5A00861C4B /* DynamicFontType.swift in Sources */,
