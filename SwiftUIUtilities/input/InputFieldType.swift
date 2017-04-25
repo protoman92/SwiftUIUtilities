@@ -51,41 +51,11 @@ public protocol InputFieldType: class {
     /// Since we cannot ask Reactive with constraint on type to implement
     /// another protocol, we need to directly get the rx.text ControlProperty.
     /// For e.g. for UITextField it should be rx.text.
-    var rxText: Observable<String?>? { get }
+    var rxText: Observable<String?> { get }
     
     /// This method will be called when the current input field loses focus.
     ///
     /// - Returns: A Bool value.
     @discardableResult
     func resignFirstResponder() -> Bool
-}
-
-extension UITextField: InputFieldType {
-    open var rxText: Observable<String?>? {
-        return rx.text.asObservable()
-    }
-    
-    /// There is no separate placeholderView, we return the current 
-    /// UITextField.
-    open var placeholderView: UIView? {
-        return self
-    }
-    
-    /// Set attributed text.
-    open var placeholderTextColor: UIColor? {
-        // Nothing of interest here.
-        get { return nil }
-        
-        // We need to set attributedPlaceholder. This is the best way to
-        // change text color for this property.
-        set {
-            guard let color = newValue, let text = self.placeholder else {
-                return
-            }
-            
-            let attributes = [NSForegroundColorAttributeName: color]
-            let str = NSAttributedString(string: text, attributes: attributes)
-            attributedPlaceholder = str
-        }
-    }
 }
