@@ -51,6 +51,8 @@
 		D36B832E1EA9E676001CF633 /* ConstraintSetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36B832D1EA9E676001CF633 /* ConstraintSetType.swift */; };
 		D37C3F131EA51CBF00001C24 /* SwiftUIUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D37C3F091EA51CBF00001C24 /* SwiftUIUtilities.framework */; };
 		D37C3F1A1EA51CBF00001C24 /* SwiftUIUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = D37C3F0C1EA51CBF00001C24 /* SwiftUIUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D3B781211EAF41DD008D544D /* UICollectionViewUtilTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B781201EAF41DD008D544D /* UICollectionViewUtilTests.swift */; };
+		D3B781221EAF4224008D544D /* UICollectionViewUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31658B21EAF12810021AA61 /* UICollectionViewUtil.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +98,7 @@
 		D37C3F0D1EA51CBF00001C24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D37C3F121EA51CBF00001C24 /* SwiftUIUtilitiesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftUIUtilitiesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D37C3F191EA51CBF00001C24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D3B781201EAF41DD008D544D /* UICollectionViewUtilTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UICollectionViewUtilTests.swift; path = collection/UICollectionViewUtilTests.swift; sourceTree = "<group>"; };
 		E2E36E6FC0ED3C7B80B9B13B /* Pods-SwiftUIUtilitiesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftUIUtilitiesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftUIUtilitiesTests/Pods-SwiftUIUtilitiesTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -226,6 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				D329CB5F1EADCCA0005D512E /* UIListViewUtilTests.swift */,
+				D3B781201EAF41DD008D544D /* UICollectionViewUtilTests.swift */,
 			);
 			name = collection;
 			sourceTree = "<group>";
@@ -503,6 +507,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3B781221EAF4224008D544D /* UICollectionViewUtil.swift in Sources */,
 				D329CB611EADCCF0005D512E /* UIListViewUtil.swift in Sources */,
 				D31ED73B1EACD90700632FF4 /* ViewBuilderType.swift in Sources */,
 				D31ED73C1EACD90700632FF4 /* BaseLayoutConstraint.swift in Sources */,
@@ -519,6 +524,7 @@
 				D31ED7461EACD90700632FF4 /* BasePresenter.swift in Sources */,
 				D31ED7471EACD90700632FF4 /* UIViewPresenter.swift in Sources */,
 				D31ED7481EACD90700632FF4 /* UIScrollViewUtil.swift in Sources */,
+				D3B781211EAF41DD008D544D /* UICollectionViewUtilTests.swift in Sources */,
 				D31ED7491EACD90700632FF4 /* DynamicFontType.swift in Sources */,
 				D31ED74A1EACD90700632FF4 /* UITextDisplayUtil.swift in Sources */,
 				D31ED74B1EACD90700632FF4 /* UIViewUtil.swift in Sources */,

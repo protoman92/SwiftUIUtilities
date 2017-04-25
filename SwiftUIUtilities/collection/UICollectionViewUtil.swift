@@ -14,6 +14,19 @@ public enum ReusableViewKind {
     case header
     case footer
     
+    public init?(from value: String) {
+        switch value {
+        case ReusableViewKind.header.value:
+            self = .header
+            
+        case ReusableViewKind.footer.value:
+            self = .footer
+            
+        default:
+            return nil
+        }
+    }
+    
     /// Get the associated reusable element kind.
     public var value: String {
         switch self {
