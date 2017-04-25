@@ -53,7 +53,7 @@ public extension UIView {
     ///
     /// - Parameter type: The type to be checked.
     /// - Returns: An Array of UIView instances that satisfy the condition.
-    public func allSubviews<T: UIView>(ofType type: T.Type) -> [T] {
+    public func allSubviews<T>(ofType type: T.Type) -> [T] {
         return allSubviews.flatMap({$0 as? T})
     }
     
