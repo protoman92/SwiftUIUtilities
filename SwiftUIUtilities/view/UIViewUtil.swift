@@ -220,7 +220,7 @@ public extension Sequence where Iterator.Element: UIView {
     ///
     /// - Parameter id: A String value.
     /// - Returns: An Array of UIView.
-    public func subviews(withAccessibilityIdentifier id: String) -> [UIView] {
-        return flatMap({$0.subview(withAccessibilityIdentifier: id)})
+    public func subviews(withAccessibilityId id: String) -> [UIView] {
+        return flatMap({$0.subview(withAccessibilityId: id)})
     }
 }
