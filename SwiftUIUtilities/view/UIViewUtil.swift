@@ -61,7 +61,7 @@ public extension UIView {
     ///
     /// - Parameter id: A String value.
     /// - Returns: An optional UIView instance.
-    public func subview(withAccessibilityIdentifier id: String) -> UIView? {
+    public func subview(withAccessibilityId id: String) -> UIView? {
         return subviews.filter({$0.accessibilityIdentifier == id}).first
     }
 }
