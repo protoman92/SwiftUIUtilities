@@ -8,7 +8,7 @@
 
 import UIKit
 
-open class BaseLabel: UILabel {
+open class UIBaseLabel: UILabel {
     
     /// These value will be set via InterfaceBuilder.
     @IBInspectable public var fontName: String?
@@ -31,14 +31,14 @@ open class BaseLabel: UILabel {
     }
 }
 
-extension BaseLabel: DynamicFontType {
+extension UIBaseLabel: DynamicFontType {
     public var activeFont: UIFont? {
         get { return font }
         set { font = newValue }
     }
 }
 
-open class BaseTextField: UITextField {
+open class UIBaseTextField: UITextField {
     
     /// These value will be set via InterfaceBuilder.
     @IBInspectable public var fontName: String?
@@ -61,14 +61,14 @@ open class BaseTextField: UITextField {
     }
 }
 
-extension BaseTextField: DynamicFontType {
+extension UIBaseTextField: DynamicFontType {
     public var activeFont: UIFont? {
         get { return font }
         set { font = newValue }
     }
 }
 
-open class BaseTextView: UITextView {
+open class UIBaseTextView: UITextView {
     
     /// These value will be set via InterfaceBuilder.
     @IBInspectable public var fontName: String?
@@ -91,14 +91,14 @@ open class BaseTextView: UITextView {
     }
 }
 
-extension BaseTextView: DynamicFontType {
+extension UIBaseTextView: DynamicFontType {
     public var activeFont: UIFont? {
         get { return font }
         set { font = newValue }
     }
 }
 
-open class BaseButton: UIButton {
+open class UIBaseButton: UIButton {
     
     /// These value will be set via InterfaceBuilder.
     @IBInspectable public var fontName: String?
@@ -121,7 +121,7 @@ open class BaseButton: UIButton {
     }
 }
 
-extension BaseButton: DynamicFontType {
+extension UIBaseButton: DynamicFontType {
     public var activeFont: UIFont? {
         get { return titleLabel?.font }
         set { titleLabel?.font = newValue }
