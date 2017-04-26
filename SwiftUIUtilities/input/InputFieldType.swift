@@ -18,6 +18,9 @@ public protocol InputFieldType: class {
     /// Get the currently displayed text.
     var text: String? { get set }
     
+    /// Get the currently active font instance.
+    var font: UIFont? { get set }
+    
     /// Get the currently active keyboard type.
     var keyboardType: UIKeyboardType { get set }
     
