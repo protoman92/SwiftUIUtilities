@@ -95,6 +95,27 @@ import UIKit
             return self
         }
         
+        /// Add a Sequence of constraints.
+        ///
+        /// - Parameter constraints: A Sequence of NSLayoutConstraint instances.
+        /// - Returns: The current Builder instance.
+        public func add<S: Sequence>(constraints: S) -> Builder
+            where S.Iterator.Element == NSLayoutConstraint
+        {
+            component.constraints.append(contentsOf: constraints)
+            return self
+        }
+        
+        /// Add a Sequence of NSLayoutConstraint subclass instances.
+        ///
+        /// - Parameter constraints: A Sequence of NSLayoutConstraint instances.
+        /// - Returns: The current Builder instance.
+        public func add<S: Sequence>(constraints: S) -> Builder
+            where S.Iterator.Element: NSLayoutConstraint
+        {
+            return add(constraints: constraints.map({$0 as NSLayoutConstraint}))
+        }
+        
         /// Set constraints Array.
         ///
         /// - Parameter constraints: An Array of NSLayoutConstraint.
