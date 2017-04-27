@@ -51,6 +51,8 @@
 		D3696CD81EB1EA25007B7496 /* UIViewControllerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3696CD71EB1EA25007B7496 /* UIViewControllerPresenter.swift */; };
 		D3696CDB1EB1EECE007B7496 /* UIBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3696CDA1EB1EECE007B7496 /* UIBaseViewController.swift */; };
 		D3696CE21EB1FEAE007B7496 /* OrientationDetectorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3696CE11EB1FEAE007B7496 /* OrientationDetectorType.swift */; };
+		D3696D251EB2762F007B7496 /* UIControlTestUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3696D241EB2762F007B7496 /* UIControlTestUtil.swift */; };
+		D3696D271EB276D3007B7496 /* SwiftUIUtilitiesTests.podspec in Resources */ = {isa = PBXBuildFile; fileRef = D3696D261EB276D3007B7496 /* SwiftUIUtilitiesTests.podspec */; };
 		D36B832E1EA9E676001CF633 /* ConstraintSetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36B832D1EA9E676001CF633 /* ConstraintSetType.swift */; };
 		D37C3F131EA51CBF00001C24 /* SwiftUIUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D37C3F091EA51CBF00001C24 /* SwiftUIUtilities.framework */; };
 		D37C3F1A1EA51CBF00001C24 /* SwiftUIUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = D37C3F0C1EA51CBF00001C24 /* SwiftUIUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -98,6 +100,8 @@
 		D3696CD71EB1EA25007B7496 /* UIViewControllerPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerPresenter.swift; sourceTree = "<group>"; };
 		D3696CDA1EB1EECE007B7496 /* UIBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIBaseViewController.swift; path = controller/UIBaseViewController.swift; sourceTree = "<group>"; };
 		D3696CE11EB1FEAE007B7496 /* OrientationDetectorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrientationDetectorType.swift; path = orientation/OrientationDetectorType.swift; sourceTree = "<group>"; };
+		D3696D241EB2762F007B7496 /* UIControlTestUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIControlTestUtil.swift; path = util/UIControlTestUtil.swift; sourceTree = "<group>"; };
+		D3696D261EB276D3007B7496 /* SwiftUIUtilitiesTests.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SwiftUIUtilitiesTests.podspec; sourceTree = "<group>"; };
 		D36B832D1EA9E676001CF633 /* ConstraintSetType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintSetType.swift; sourceTree = "<group>"; };
 		D37C3F091EA51CBF00001C24 /* SwiftUIUtilities.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftUIUtilities.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D37C3F0C1EA51CBF00001C24 /* SwiftUIUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftUIUtilities.h; sourceTree = "<group>"; };
@@ -257,9 +261,18 @@
 			name = orientation;
 			sourceTree = "<group>";
 		};
+		D3696D231EB275FB007B7496 /* util */ = {
+			isa = PBXGroup;
+			children = (
+				D3696D241EB2762F007B7496 /* UIControlTestUtil.swift */,
+			);
+			name = util;
+			sourceTree = "<group>";
+		};
 		D37C3EFF1EA51CBF00001C24 = {
 			isa = PBXGroup;
 			children = (
+				D3696D261EB276D3007B7496 /* SwiftUIUtilitiesTests.podspec */,
 				D31714961EA8463F00DED309 /* pod-publish */,
 				D31714971EA8463F00DED309 /* SwiftUIUtilities.podspec */,
 				D37C3F0B1EA51CBF00001C24 /* SwiftUIUtilities */,
@@ -302,6 +315,7 @@
 		D37C3F161EA51CBF00001C24 /* SwiftUIUtilitiesTests */ = {
 			isa = PBXGroup;
 			children = (
+				D3696D231EB275FB007B7496 /* util */,
 				D329CB5E1EADCC8C005D512E /* collection */,
 				D37C3F191EA51CBF00001C24 /* Info.plist */,
 			);
@@ -418,6 +432,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3696D271EB276D3007B7496 /* SwiftUIUtilitiesTests.podspec in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -542,6 +557,7 @@
 				D31ED73D1EACD90700632FF4 /* ConstraintSetType.swift in Sources */,
 				D31ED73E1EACD90700632FF4 /* InputFieldType.swift in Sources */,
 				D31ED73F1EACD90700632FF4 /* UITextInputUtil.swift in Sources */,
+				D3696D251EB2762F007B7496 /* UIControlTestUtil.swift in Sources */,
 				D31ED7401EACD90700632FF4 /* Duration.swift in Sources */,
 				D31ED7411EACD90700632FF4 /* Size.swift in Sources */,
 				D31ED7421EACD90700632FF4 /* SizeRepresentationType.swift in Sources */,
