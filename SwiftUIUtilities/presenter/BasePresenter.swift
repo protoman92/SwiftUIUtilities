@@ -12,8 +12,6 @@ import UIKit
 /// with views and view controllers.
 @objc public protocol PresenterType: class {
     var viewDelegate: PresenterDelegate? { get }
-    
-    init(view: PresenterDelegate)
 }
 
 /// We use Presenters to abstract away View interactions. Since Presenters

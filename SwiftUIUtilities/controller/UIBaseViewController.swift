@@ -12,42 +12,34 @@ import UIKit
 /// instance for controller-specific methods.
 open class UIBaseViewController: UIViewController {
     
-    /// Override this variable to provide custom presenter types.
-    open var presenterType: ViewControllerPresenterType.Type {
-        return BaseViewControllerPresenter.self
+    /// Override this variable to provide custom presenters.
+    open var presenterInstance: ViewControllerPresenterType? {
+        fatalError("Must override this")
     }
-    
-    /// Get a new ViewControllerPresenterType instance.
-    fileprivate var newPresenter: ViewControllerPresenterType {
-        return presenterType.init(view: self)
-    }
-    
-    /// Use this presenter to call view controller-specific methods.
-    public lazy var presenter: ViewControllerPresenterType = self.newPresenter
     
     override open func viewDidLoad() {
         super.viewDidLoad()
-        presenter.viewDidLoad(for: self)
+        presenterInstance?.viewDidLoad(for: self)
     }
     
     override open func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        presenter.viewWillAppear(for: self, animated: animated)
+        presenterInstance?.viewWillAppear(for: self, animated: animated)
     }
     
     override open func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        presenter.viewDidAppear(for: self, animated: animated)
+        presenterInstance?.viewDidAppear(for: self, animated: animated)
     }
     
     override open func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        presenter.viewWillDisappear(for: self, animated: animated)
+        presenterInstance?.viewWillDisappear(for: self, animated: animated)
     }
     
     override open func viewDidDisappear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        presenter.viewDidDisappear(for: self, animated: animated)
+        presenterInstance?.viewDidDisappear(for: self, animated: animated)
     }
     
     /// This method is called when app orientation changes.
@@ -60,6 +52,6 @@ open class UIBaseViewController: UIViewController {
         with coordinator: UIViewControllerTransitionCoordinator
     ) {
         super.viewWillTransition(to: size, with: coordinator)
-        presenter.viewWillTransition(to: size, with: coordinator, for: self)
+        presenterInstance?.viewWillTransition(to: size, with: coordinator, for: self)
     }
 }
