@@ -8,6 +8,14 @@
 
 import UIKit
 
+/// Implement this protocol to provide a presenter-like interface to interact
+/// with views and view controllers.
+@objc public protocol PresenterType: class {
+    var viewDelegate: PresenterDelegate? { get }
+    
+    init(view: PresenterDelegate)
+}
+
 /// We use Presenters to abstract away View interactions. Since Presenters
 /// can be inherited from/subclassed, we have more leeway with regards to
 /// DRY.
@@ -24,7 +32,7 @@ import UIKit
         fatalError("Must override this variable")
     }
     
-    public init<E: PresenterDelegate>(view: E) {
+    public required init(view: PresenterDelegate) {
         self.view = view
     }
 }
@@ -39,6 +47,8 @@ extension BasePresenter: ActionSelectorType {
     }
 }
 
+extension BasePresenter: PresenterType {}
+
 /// UIViewController/UIView instances should implement this protocol to have
 /// their views handled by the respective presenters.
-public protocol PresenterDelegate: class {}
+@objc public protocol PresenterDelegate: class {}
