@@ -49,4 +49,17 @@ open class UIBaseViewController: UIViewController {
         super.viewDidAppear(animated)
         presenter.viewDidDisappear(for: self, animated: animated)
     }
+    
+    /// This method is called when app orientation changes.
+    ///
+    /// - Parameters:
+    ///   - size: The new size in CGSize.
+    ///   - coordinator: A UIViewControllerTransitionCoordinator instance.
+    override open func viewWillTransition(
+        to size: CGSize,
+        with coordinator: UIViewControllerTransitionCoordinator
+    ) {
+        super.viewWillTransition(to: size, with: coordinator)
+        presenter.viewWillTransition(to: size, with: coordinator, for: self)
+    }
 }
