@@ -49,6 +49,6 @@ import UIKit
 
 public extension OrientationDetectorType {
     public var orientation: BasicOrientation {
-        return .portrait
+        return BasicOrientation(size: currentScreenSize)
     }
 }
