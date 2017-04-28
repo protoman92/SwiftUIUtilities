@@ -83,6 +83,10 @@ import UIKit
     /// When orientation size changes, this value will be updated.
     fileprivate var screenSize = Variable<CGSize>(CGSize.zero)
     
+    public override init<P: UIViewController>(view: P) {
+        super.init(view: view)
+    }
+    
     open func viewDidLoad(for controller: UIViewController) {
         screenSize.value = UIScreen.main.bounds.size
         

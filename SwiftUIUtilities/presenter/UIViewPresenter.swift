@@ -43,6 +43,10 @@ import UIKit
         return viewDelegate as? UIView
     }
     
+    public override init<P: UIView>(view: P) {
+        super.init(view: view)
+    }
+    
     open func onViewInit(for view: UIView) {}
     
     open func awakeFromNib(for view: UIView) {}

@@ -30,7 +30,7 @@ import UIKit
         fatalError("Must override this variable")
     }
     
-    public required init(view: PresenterDelegate) {
+    public init<P: PresenterDelegate>(view: P) {
         self.view = view
     }
 }

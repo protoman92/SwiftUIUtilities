@@ -1,0 +1,5 @@
+osx_image: xcode8.3
+language: objective-c
+xcode_workspace: SwiftUIUtilities.xcworkspace
+xcode_scheme: SwiftUIUtilities
+xcode_sdk: iphonesimulator10.1
