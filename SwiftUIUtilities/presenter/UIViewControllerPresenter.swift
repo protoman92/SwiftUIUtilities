@@ -91,7 +91,9 @@ import UIKit
         screenSize.value = UIScreen.main.bounds.size
         
         screenSize.asObservable().skip(1)
-            .doOnNext({[weak self] in self?.onScreenSizeChanged(to: $0)})
+            .doOnNext({[weak self] in
+                self?.screenSizeDidChange(to: $0, with: self)
+            })
             .subscribe()
             .addDisposableTo(disposeBag)
     }
@@ -115,8 +117,13 @@ import UIKit
     /// This method is called when the screen size changes i.e. when the
     /// app changes orientation.
     ///
-    /// - Parameter size: The new screen size. A CGSize instance.
-    open func onScreenSizeChanged(to size: CGSize) {}
+    /// - Parameters:
+    ///   - size: The new screen size. A CGSize instance.
+    ///   - current: The current BaseViewControllerPresenter instance.
+    open func screenSizeDidChange(
+        to size: CGSize,
+        with current: BaseViewControllerPresenter?
+    ) {}
 }
 
 public extension BaseViewControllerPresenter {
