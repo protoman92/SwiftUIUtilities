@@ -132,6 +132,11 @@ public extension BaseViewControllerPresenter {
     public var currentScreenSize: CGSize {
         return screenSize.value
     }
+    
+    /// Subscribe to this Observable to receive screen size notifications.
+    public var screenSizeObservable: Observable<CGSize> {
+        return screenSize.asObservable()
+    }
 }
 
 extension BaseViewControllerPresenter: ViewControllerPresenterType {}
