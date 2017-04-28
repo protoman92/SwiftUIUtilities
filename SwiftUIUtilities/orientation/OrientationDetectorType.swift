@@ -6,6 +6,7 @@
 //  Copyright © 2017 Swiften. All rights reserved.
 //
 
+import RxSwift
 import UIKit
 
 /// Basic orientation types for simple orientations.

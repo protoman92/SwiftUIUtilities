@@ -134,8 +134,13 @@ public extension BaseViewControllerPresenter {
     }
     
     /// Subscribe to this Observable to receive screen size notifications.
-    public var screenSizeObservable: Observable<CGSize> {
+    public var rxScreenSize: Observable<CGSize> {
         return screenSize.asObservable()
+    }
+    
+    /// Subscribe to this Observable to receive orientation notifications.
+    public var rxScreenOrientation: Observable<BasicOrientation> {
+        return rxScreenSize.map(BasicOrientation.init)
     }
 }
 
