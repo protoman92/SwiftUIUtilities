@@ -6,12 +6,12 @@ target 'SwiftUIUtilities' do
   use_frameworks!
 
   # Pods for SwiftUIUtilities
-  pod 'SwiftUtilities'
+  pod 'SwiftUtilities/Main’
 
   target 'SwiftUIUtilitiesTests' do
     inherit! :search_paths
     # Pods for testing
-    pod 'SwiftUtilitiesTests'
+    pod 'SwiftUtilitiesTests/Main’
     
   end
 
