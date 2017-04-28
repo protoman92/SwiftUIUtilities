@@ -96,7 +96,7 @@
 		D319B3271EA9AC5A00861C4B /* UITextDisplayUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextDisplayUtil.swift; sourceTree = "<group>"; };
 		D319B3291EA9AC5A00861C4B /* UIViewUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewUtil.swift; sourceTree = "<group>"; };
 		D329CB5C1EADCBF9005D512E /* UIListViewUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIListViewUtil.swift; path = collection/UIListViewUtil.swift; sourceTree = "<group>"; };
-		D329CB5F1EADCCA0005D512E /* UIListViewUtilTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIListViewUtilTests.swift; path = collection/UIListViewUtilTests.swift; sourceTree = "<group>"; };
+		D329CB5F1EADCCA0005D512E /* UIListViewUtilTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIListViewUtilTests.swift; path = test/UIListViewUtilTests.swift; sourceTree = "<group>"; };
 		D3696CD71EB1EA25007B7496 /* UIViewControllerPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerPresenter.swift; sourceTree = "<group>"; };
 		D3696CDA1EB1EECE007B7496 /* UIBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIBaseViewController.swift; path = controller/UIBaseViewController.swift; sourceTree = "<group>"; };
 		D3696CE11EB1FEAE007B7496 /* OrientationDetectorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrientationDetectorType.swift; path = orientation/OrientationDetectorType.swift; sourceTree = "<group>"; };
@@ -108,7 +108,7 @@
 		D37C3F0D1EA51CBF00001C24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D37C3F121EA51CBF00001C24 /* SwiftUIUtilitiesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftUIUtilitiesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D37C3F191EA51CBF00001C24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D3B781201EAF41DD008D544D /* UICollectionViewUtilTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UICollectionViewUtilTests.swift; path = collection/UICollectionViewUtilTests.swift; sourceTree = "<group>"; };
+		D3B781201EAF41DD008D544D /* UICollectionViewUtilTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UICollectionViewUtilTests.swift; path = test/UICollectionViewUtilTests.swift; sourceTree = "<group>"; };
 		E2E36E6FC0ED3C7B80B9B13B /* Pods-SwiftUIUtilitiesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftUIUtilitiesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftUIUtilitiesTests/Pods-SwiftUIUtilitiesTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -236,13 +236,13 @@
 			name = collection;
 			sourceTree = "<group>";
 		};
-		D329CB5E1EADCC8C005D512E /* collection */ = {
+		D329CB5E1EADCC8C005D512E /* test */ = {
 			isa = PBXGroup;
 			children = (
 				D329CB5F1EADCCA0005D512E /* UIListViewUtilTests.swift */,
 				D3B781201EAF41DD008D544D /* UICollectionViewUtilTests.swift */,
 			);
-			name = collection;
+			name = test;
 			sourceTree = "<group>";
 		};
 		D3696CD91EB1EEA1007B7496 /* controller */ = {
@@ -316,7 +316,7 @@
 			isa = PBXGroup;
 			children = (
 				D3696D231EB275FB007B7496 /* util */,
-				D329CB5E1EADCC8C005D512E /* collection */,
+				D329CB5E1EADCC8C005D512E /* test */,
 				D37C3F191EA51CBF00001C24 /* Info.plist */,
 			);
 			path = SwiftUIUtilitiesTests;

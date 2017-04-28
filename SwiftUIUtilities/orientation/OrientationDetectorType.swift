@@ -16,7 +16,7 @@ import UIKit
     case portrait = 1
     case landscape
     
-    fileprivate init(size: CGSize) {
+    public init(size: CGSize) {
         let orientation: BasicOrientation
 
         if size.width > size.height {

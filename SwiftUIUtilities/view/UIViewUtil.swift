@@ -23,7 +23,6 @@ public extension UIView {
         return subviewSet.map({$0})
     }
     
-    
     /// Get the rootView of the current view hierarchy. For example, in a
     /// UIViewController, the rootView is the controller's master UIView.
     public var rootView: UIView {
