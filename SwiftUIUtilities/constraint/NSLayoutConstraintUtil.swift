@@ -1,42 +1,12 @@
 //
-//  BaseLayoutConstraint.swift
+//  NSLayoutConstraintUtil.swift
 //  SwiftUIUtilities
 //
-//  Created by Hai Pham on 4/19/17.
+//  Created by Hai Pham on 4/29/17.
 //  Copyright © 2017 Swiften. All rights reserved.
 //
 
-import SwiftUtilities
 import UIKit
-
-/// This class shall use size representation enums for common sizes/spaces.
-open class BaseLayoutConstraint: NSLayoutConstraint {
-    
-    /// By the time this variable is set, constant should have been set.
-    @IBInspectable public var constantValue: String? {
-        didSet {
-            resetConstraint()
-        }
-    }
-    
-    /// Reset constant value based on the dynamic constantValue property,
-    /// as set in InterfaceBuilder.
-    fileprivate func resetConstraint() {
-        guard
-            let constantValue = Int(self.constantValue ?? ""),
-            let representation = sizeRepresentationType,
-            let sizeInstance = representation.from(value: constantValue)
-        else {
-            debugPrint(self)
-            debugException()
-            return
-        }
-        
-        if let newConstant = sizeInstance.value {
-            constant = (constant < 0 ? -1 : 1) * newConstant
-        }
-    }
-}
 
 public extension NSLayoutConstraint {
     
@@ -46,10 +16,10 @@ public extension NSLayoutConstraint {
         return isDimensionConstraint || isAspectRatioConstraint
     }
     
-    /// Check if the current constraint is a height or width constraint. 
-    /// If it is, we should use Size enum to dynamically set its constant 
+    /// Check if the current constraint is a height or width constraint.
+    /// If it is, we should use Size enum to dynamically set its constant
     /// value. Otherwise, we should use Space enum.
-    fileprivate var isDimensionConstraint: Bool {
+    public var isDimensionConstraint: Bool {
         switch true {
             
         // Direct constraints have secondAttribute as .notAnAttribute.
@@ -71,7 +41,7 @@ public extension NSLayoutConstraint {
     
     /// Check if the current constraint is an aspect ratio constraint. Similar
     /// to dimension constraints, we use Size enum.
-    fileprivate var isAspectRatioConstraint: Bool {
+    public var isAspectRatioConstraint: Bool {
         switch true {
         case secondItem == nil:
             fallthrough
@@ -92,7 +62,7 @@ public extension NSLayoutConstraint {
         return false
     }
     
-    fileprivate var sizeRepresentationType: SizeRepresentationType.Type? {
+    public var sizeRepresentationType: SizeRepresentationType.Type? {
         if isDirectConstraint {
             return Size.self
         } else {
@@ -140,7 +110,7 @@ public extension NSLayoutConstraint {
         return newConstraint
     }
     
-    // Clone the current constraint and optionally set properties on the 
+    // Clone the current constraint and optionally set properties on the
     /// clone to mimic those of the original.
     ///
     /// - Parameters:
