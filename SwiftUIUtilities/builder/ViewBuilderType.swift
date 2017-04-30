@@ -21,17 +21,6 @@ import UIKit
     var layoutConstraints: [NSLayoutConstraint] { get }
 }
 
-/// Implement this protocol for convenient dynamic view building.
-@objc public protocol ViewBuilderType {
-    
-    /// Get an Array of ViewBuilderComponentType for dynamic view building.
-    ///
-    /// - Parameters:
-    ///   - view: The parent UIView to attach.
-    /// - Returns: An Array of ViewBuilderComponentType.
-    func builderComponents(for view: UIView) -> [ViewBuilderComponentType]
-}
-
 /// Implement this protocol to configure views added dynamically by
 /// ViewBuilderType.
 @objc public protocol ViewBuilderConfigType {
@@ -41,6 +30,17 @@ import UIKit
     ///
     /// - Parameter view: The UIView to be configured.
     func configure(for view: UIView)
+}
+
+/// Implement this protocol for convenient dynamic view building.
+@objc public protocol ViewBuilderType: ViewBuilderConfigType {
+    
+    /// Get an Array of ViewBuilderComponentType for dynamic view building.
+    ///
+    /// - Parameters:
+    ///   - view: The parent UIView to attach.
+    /// - Returns: An Array of ViewBuilderComponentType.
+    func builderComponents(for view: UIView) -> [ViewBuilderComponentType]
 }
 
 /// Basic component block for ViewBuilderType.
@@ -163,20 +163,7 @@ public extension UIView {
     public convenience init(with builder: ViewBuilderType) {
         self.init()
         populateSubviews(with: builder)
-    }
-    
-    /// Create a UIView instance using a ViewBuilderType, and then configure
-    /// it with a ViewBuilderConfigType.
-    ///
-    /// - Parameters:
-    ///   - builder: A ViewBuilderType instance.
-    ///   - config: A ViewBuilderConfigType instance.
-    public convenience init(
-        with builder: ViewBuilderType,
-        and config: ViewBuilderConfigType)
-    {
-        self.init(with: builder)
-        config.configure(for: self)
+        builder.configure(for: self)
     }
     
     /// Populate subviews and constraints from a Array of
