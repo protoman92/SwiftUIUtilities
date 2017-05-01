@@ -16,9 +16,14 @@ import UIKit
     /// The child UIView to be added.
     var viewToBeAdded: UIView? { get }
     
-    /// The set of constraints to add to the parent view, or the subview
-    /// itself.
-    var layoutConstraints: [NSLayoutConstraint] { get }
+    /// Create a set of constraints to add to the parent view, or the subview
+    /// itself. This is a closure function instead of a concrete 
+    /// NSLayoutConstraint Array because there are cases whereby one subview
+    /// may be dependent on another, so with this we can find the latter via
+    /// accessibilityIdentifier after all child views have been added. The
+    /// closure accepts one argument, which is the current UIView instance
+    /// to which subviews are added.
+    var layoutConstraints: (UIView) -> [NSLayoutConstraint] { get }
 }
 
 /// Implement this protocol to configure views added dynamically by
@@ -26,7 +31,10 @@ import UIKit
 @objc public protocol ViewBuilderConfigType {
     
     /// Configure the current UIView, after populating it with a
-    /// ViewBuilderType.
+    /// ViewBuilderType. This does not need to be a closure (as is the case
+    /// with ViewBuilderComponentType) because by this time all subviews
+    /// will have been added, and we can simply search for them using their
+    /// accessibilityIdentifier values.
     ///
     /// - Parameter view: The UIView to be configured.
     func configure(for view: UIView)
@@ -37,10 +45,8 @@ import UIKit
     
     /// Get an Array of ViewBuilderComponentType for dynamic view building.
     ///
-    /// - Parameters:
-    ///   - view: The parent UIView to attach.
     /// - Returns: An Array of ViewBuilderComponentType.
-    func builderComponents(for view: UIView) -> [ViewBuilderComponentType]
+    func builderComponents() -> [ViewBuilderComponentType]
 }
 
 /// Basic component block for ViewBuilderType.
@@ -49,12 +55,12 @@ import UIKit
     /// The subview to be added.
     fileprivate var subview: UIView?
     
-    /// An Array of NSLayoutConstraints to be added to the parent view or the
-    /// subview itself.
-    fileprivate var constraints: [NSLayoutConstraint]
+    /// Create an Array of NSLayoutConstraints to be added to the parent view 
+    /// or the subview itself.
+    fileprivate var constraints: (UIView) -> [NSLayoutConstraint]
     
     fileprivate override init() {
-        constraints = []
+        constraints = {_ in []}
     }
     
     /// Builder class for ViewBuilderComponent.
@@ -74,54 +80,15 @@ import UIKit
             return self
         }
         
-        /// Add a layout constraint.
-        ///
-        /// - Parameter constraint: An optional NSLayoutConstraint instance.
-        /// - Returns: The current Builder instance.
-        public func add(constraint: NSLayoutConstraint?) -> Builder {
-            if let constraint = constraint {
-                component.constraints.append(constraint)
-            }
-            
-            return self
-        }
         
-        /// Add vararg layout constraints.
+        /// Set the constraints creation closure.
         ///
-        /// - Parameter constraint: A vararg of NSLayoutConstraint instances.
-        /// - Returns: The current Builder instance.
-        public func add(constraints: NSLayoutConstraint...) -> Builder {
-            component.constraints.append(contentsOf: constraints)
-            return self
-        }
-        
-        /// Add a Sequence of constraints.
-        ///
-        /// - Parameter constraints: A Sequence of NSLayoutConstraint instances.
-        /// - Returns: The current Builder instance.
-        public func add<S: Sequence>(constraints: S) -> Builder
-            where S.Iterator.Element == NSLayoutConstraint
+        /// - Parameter closure: Closure that creates layout constraints.
+        /// - Returns: The current builder instance.
+        public func with(closure: @escaping (UIView) -> [NSLayoutConstraint])
+            -> Builder
         {
-            component.constraints.append(contentsOf: constraints)
-            return self
-        }
-        
-        /// Add a Sequence of NSLayoutConstraint subclass instances.
-        ///
-        /// - Parameter constraints: A Sequence of NSLayoutConstraint instances.
-        /// - Returns: The current Builder instance.
-        public func add<S: Sequence>(constraints: S) -> Builder
-            where S.Iterator.Element: NSLayoutConstraint
-        {
-            return add(constraints: constraints.map({$0 as NSLayoutConstraint}))
-        }
-        
-        /// Set constraints Array.
-        ///
-        /// - Parameter constraints: An Array of NSLayoutConstraint.
-        /// - Returns: The current Builder instance.
-        public func with(constraints: [NSLayoutConstraint]) -> Builder {
-            component.constraints = constraints
+            component.constraints = closure
             return self
         }
         
@@ -149,14 +116,14 @@ extension ViewBuilderComponent: ViewBuilderComponentType {
         return subview
     }
     
-    public var layoutConstraints: [NSLayoutConstraint] {
+    public var layoutConstraints: (UIView) -> [NSLayoutConstraint] {
         return constraints
     }
 }
 
 public extension UIView {
     
-    /// Create a UIView instance using a ViewBuilderType.
+    /// Create a UIView instance and configure it using a ViewBuilderType.
     ///
     /// - Parameters:
     ///   - builder: A ViewBuilderType instance.
@@ -172,7 +139,6 @@ public extension UIView {
     /// - Parameter components: A Array of ViewBuilderComponentType
     public func populateSubviews(from components: [ViewBuilderComponentType]) {
         let subviews = components.flatMap({$0.viewToBeAdded})
-        let constraints = components.flatMap({$0.layoutConstraints})
 
         // Set translatesAutoresizingMaskIntoConstraints to false to avoid
         // unwanted constraints.
@@ -180,6 +146,10 @@ public extension UIView {
         
         // We first add all subviews.
         subviews.forEach(addSubview)
+        
+        /// We create the constraints after adding all subviews in order to
+        /// access all available subviews.
+        let constraints = components.flatMap({$0.layoutConstraints(self)})
         
         // Then we add the layout constraints. Direct constraints will be
         // added to the constraint's firstItem (provided it is a UIView).
@@ -192,10 +162,13 @@ public extension UIView {
         }
     }
     
-    /// Populate subviews with a ViewBuilderType.
+    /// Populate subviews with a ViewBuilderType. This method does not
+    /// configure the view with builder.configure(view:) in order to keep
+    /// it consistent with populateSubviews(from:). The configure(view:) method
+    /// should be called separately.
     ///
     /// - Parameter builder: A ViewBuilderType instance.
     public func populateSubviews(with builder: ViewBuilderType) {
-        populateSubviews(from: builder.builderComponents(for: self))
+        populateSubviews(from: builder.builderComponents())
     }
 }
