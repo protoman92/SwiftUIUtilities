@@ -30,10 +30,10 @@ public struct FitConstraintSet {
     fileprivate var leftMargin, topMargin, rightMargin, bottomMargin: CGFloat
     
     fileprivate init() {
-        addLeft = true
-        addTop = true
-        addRight = true
-        addBottom = true
+        addLeft = false
+        addTop = false
+        addRight = false
+        addBottom = false
         leftMargin = 0
         topMargin = 0
         rightMargin = 0
