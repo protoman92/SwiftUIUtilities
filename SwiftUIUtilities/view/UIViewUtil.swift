@@ -35,6 +35,19 @@ public extension UIView {
         return rootView
     }
     
+    /// Traverse up the view hierarchy to find the superview that satisfies
+    /// a certain condition. Returns nil if none is found.
+    ///
+    /// - Parameter condition: Closure predicate.
+    /// - Returns: An optional UIView instance.
+    public func superview(satisfying condition: (UIView) -> Bool) -> UIView? {
+        if condition(self) {
+            return self
+        } else {
+            return superview?.superview(satisfying: condition)
+        }
+    }
+    
     /// Call a method on all of the current UIView's subviews. This method
     /// will be recursively called until the UIViews at the bottom of the
     /// hierarchy are reached.

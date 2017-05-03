@@ -48,6 +48,7 @@
 		D36B832E1EA9E676001CF633 /* ConstraintSetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36B832D1EA9E676001CF633 /* ConstraintSetType.swift */; };
 		D37C3F131EA51CBF00001C24 /* SwiftUIUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D37C3F091EA51CBF00001C24 /* SwiftUIUtilities.framework */; };
 		D37C3F1A1EA51CBF00001C24 /* SwiftUIUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = D37C3F0C1EA51CBF00001C24 /* SwiftUIUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D38D8F5C1EB9CB370045AF9E /* UIViewUtilTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38D8F5B1EB9CB370045AF9E /* UIViewUtilTests.swift */; };
 		D3B781211EAF41DD008D544D /* UICollectionViewUtilTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B781201EAF41DD008D544D /* UICollectionViewUtilTests.swift */; };
 		D3B781221EAF4224008D544D /* UICollectionViewUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31658B21EAF12810021AA61 /* UICollectionViewUtil.swift */; };
 		D3FBC1A11EB9A2460042B944 /* ControllerPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FBC1A01EB9A2460042B944 /* ControllerPresentable.swift */; };
@@ -95,6 +96,7 @@
 		D37C3F0D1EA51CBF00001C24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D37C3F121EA51CBF00001C24 /* SwiftUIUtilitiesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftUIUtilitiesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D37C3F191EA51CBF00001C24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D38D8F5B1EB9CB370045AF9E /* UIViewUtilTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewUtilTests.swift; path = test/UIViewUtilTests.swift; sourceTree = "<group>"; };
 		D3B781201EAF41DD008D544D /* UICollectionViewUtilTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UICollectionViewUtilTests.swift; path = test/UICollectionViewUtilTests.swift; sourceTree = "<group>"; };
 		D3FBC1A01EB9A2460042B944 /* ControllerPresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ControllerPresentable.swift; path = controller/ControllerPresentable.swift; sourceTree = "<group>"; };
 		E2E36E6FC0ED3C7B80B9B13B /* Pods-SwiftUIUtilitiesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftUIUtilitiesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftUIUtilitiesTests/Pods-SwiftUIUtilitiesTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 			children = (
 				D329CB5F1EADCCA0005D512E /* UIListViewUtilTests.swift */,
 				D3B781201EAF41DD008D544D /* UICollectionViewUtilTests.swift */,
+				D38D8F5B1EB9CB370045AF9E /* UIViewUtilTests.swift */,
 			);
 			name = test;
 			sourceTree = "<group>";
@@ -547,6 +550,7 @@
 				D31ED7481EACD90700632FF4 /* UIScrollViewUtil.swift in Sources */,
 				D3B781211EAF41DD008D544D /* UICollectionViewUtilTests.swift in Sources */,
 				D31ED7491EACD90700632FF4 /* DynamicFontType.swift in Sources */,
+				D38D8F5C1EB9CB370045AF9E /* UIViewUtilTests.swift in Sources */,
 				D31ED74B1EACD90700632FF4 /* UIViewUtil.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
