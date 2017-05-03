@@ -123,7 +123,6 @@ public extension DynamicFontType {
             let size = sizeInstance.value ?? activeFont?.pointSize,
             let newFont = UIFont(name: fontInstance.value, size: size)
         else {
-            activeFont = UIFont.systemFont(ofSize: 14)
             return
         }
         
