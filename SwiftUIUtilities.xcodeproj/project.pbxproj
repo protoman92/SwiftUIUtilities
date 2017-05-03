@@ -50,6 +50,7 @@
 		D37C3F1A1EA51CBF00001C24 /* SwiftUIUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = D37C3F0C1EA51CBF00001C24 /* SwiftUIUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D3B781211EAF41DD008D544D /* UICollectionViewUtilTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B781201EAF41DD008D544D /* UICollectionViewUtilTests.swift */; };
 		D3B781221EAF4224008D544D /* UICollectionViewUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31658B21EAF12810021AA61 /* UICollectionViewUtil.swift */; };
+		D3FBC1A11EB9A2460042B944 /* ControllerPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FBC1A01EB9A2460042B944 /* ControllerPresentable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +96,7 @@
 		D37C3F121EA51CBF00001C24 /* SwiftUIUtilitiesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftUIUtilitiesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D37C3F191EA51CBF00001C24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D3B781201EAF41DD008D544D /* UICollectionViewUtilTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UICollectionViewUtilTests.swift; path = test/UICollectionViewUtilTests.swift; sourceTree = "<group>"; };
+		D3FBC1A01EB9A2460042B944 /* ControllerPresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ControllerPresentable.swift; path = controller/ControllerPresentable.swift; sourceTree = "<group>"; };
 		E2E36E6FC0ED3C7B80B9B13B /* Pods-SwiftUIUtilitiesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftUIUtilitiesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftUIUtilitiesTests/Pods-SwiftUIUtilitiesTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -268,6 +270,7 @@
 		D37C3F0B1EA51CBF00001C24 /* SwiftUIUtilities */ = {
 			isa = PBXGroup;
 			children = (
+				D3FBC19F1EB9A2270042B944 /* controller */,
 				D3696CE01EB1FE8E007B7496 /* orientation */,
 				D319B3121EA9AC5A00861C4B /* builder */,
 				D329CB5B1EADCBE0005D512E /* collection */,
@@ -292,6 +295,14 @@
 				D37C3F191EA51CBF00001C24 /* Info.plist */,
 			);
 			path = SwiftUIUtilitiesTests;
+			sourceTree = "<group>";
+		};
+		D3FBC19F1EB9A2270042B944 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				D3FBC1A01EB9A2460042B944 /* ControllerPresentable.swift */,
+			);
+			name = controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -509,6 +520,7 @@
 				D319B3301EA9AC5A00861C4B /* SizeRepresentationType.swift in Sources */,
 				D3696CE21EB1FEAE007B7496 /* OrientationDetectorType.swift in Sources */,
 				D31906D31EB4464200BCE271 /* NSLayoutConstraintUtil.swift in Sources */,
+				D3FBC1A11EB9A2460042B944 /* ControllerPresentable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

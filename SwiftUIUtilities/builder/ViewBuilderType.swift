@@ -14,10 +14,7 @@ import UIKit
 @objc public protocol ViewBuilderConfigType {
     
     /// Configure the current UIView, after populating it with a
-    /// ViewBuilderType. This does not need to be a closure (as is the case
-    /// with ViewBuilderComponentType) because by this time all subviews
-    /// will have been added, and we can simply search for them using their
-    /// accessibilityIdentifier values.
+    /// ViewBuilderType.
     ///
     /// - Parameter view: The UIView to be configured.
     func configure(for view: UIView)
