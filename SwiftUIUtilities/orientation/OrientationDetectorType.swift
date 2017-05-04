@@ -49,7 +49,26 @@ import UIKit
 }
 
 public extension OrientationDetectorType {
+
+    /// Convert the current screen size into a BasicOrientation instance.
     public var orientation: BasicOrientation {
         return BasicOrientation(size: currentScreenSize)
+    }
+}
+
+/// Implement this protocol to provide reactive screen size/orientation
+/// data sources.
+public protocol ReactiveOrientationDetectorType: OrientationDetectorType {
+    
+    /// Subscribe to this Observable to receive screen size notifications.
+    var rxScreenSize: Observable<CGSize> { get }
+}
+
+public extension ReactiveOrientationDetectorType {
+    
+    /// Subscribe to this Observable to receive screen orientation 
+    /// notifications.
+    var rxScreenOrientation: Observable<BasicOrientation> {
+        return rxScreenSize.map(BasicOrientation.init)
     }
 }
