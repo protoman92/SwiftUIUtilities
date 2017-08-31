@@ -8,6 +8,7 @@
 
 import UIKit
 import XCTest
+@testable import SwiftUIUtilities
 
 class UIListViewTests: XCTestCase {
     func test_cellIdentifier_shouldWorkCorrectly() {

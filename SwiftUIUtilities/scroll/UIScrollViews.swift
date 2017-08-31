@@ -38,6 +38,14 @@ public extension Reactive where Base: UIScrollView {
         return offset < 0 || (offset + dimen) >= (contentDimen + threshold)
     }
     
+    /// Subscribe to this Observable to be notified when the content size is
+    /// changes.
+    public var contentSize: Observable<CGSize> {
+        return observe(CGSize.self, "contentSize")
+            .map({$0 ?? CGSize.zero})
+            .distinctUntilChanged()
+    }
+    
     /// Subscribe to this Observable to be notified when the scroll view is
     /// overscrolled.
     ///
@@ -52,7 +60,7 @@ public extension Reactive where Base: UIScrollView {
             .combineLatest(
                 willBeginDecelerating,
                 contentOffset.map(direction.directionContentOffset),
-                contentSize().map(direction.directionContentDimension),
+                contentSize.map(direction.directionContentDimension),
                 bounds.map({$0.size}).map(direction.directionContentDimension),
                 resultSelector: {($0.1, $0.2, $0.3)}
             )
@@ -88,20 +96,10 @@ public extension Reactive where Base: UIScrollView {
     {
         return didOverscroll(threshold: threshold, directions: directions)
     }
-    
-    /// Subscribe to this Observable to be notified when the content size is
-    /// changes.
-    ///
-    /// - Returns: An Observable instance.
-    public func contentSize() -> Observable<CGSize> {
-        return observe(CGSize.self, "contentSize")
-            .map({$0 ?? CGSize.zero})
-            .distinctUntilChanged()
-    }
 }
 
 fileprivate extension Unidirection {
-    
+
     /// Get the content offset value associated with a direction from a CGPoint.
     ///
     /// - Parameter point: A CGPoint instance.
@@ -109,7 +107,7 @@ fileprivate extension Unidirection {
     func directionContentOffset(_ point: CGPoint) -> CGFloat {
         return isHorizontal() ? point.x : point.y
     }
-    
+
     /// Get the content size value associated with a direction from a CGSize.
     ///
     /// - Parameter size: A CGSize instance.

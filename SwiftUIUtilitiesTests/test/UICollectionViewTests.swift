@@ -8,6 +8,7 @@
 
 import XCTest
 import UIKit
+@testable import SwiftUIUtilities
 
 class UICollectionViewTests: XCTestCase {
     func test_reusableViewKind_shouldReturnCorrectRawValue() {

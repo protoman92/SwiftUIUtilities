@@ -12,8 +12,6 @@
 		D31658B31EAF12810021AA61 /* UICollectionViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31658B21EAF12810021AA61 /* UICollectionViews.swift */; };
 		D31714991EA8463F00DED309 /* SwiftUIUtilities.podspec in Resources */ = {isa = PBXBuildFile; fileRef = D31714971EA8463F00DED309 /* SwiftUIUtilities.podspec */; };
 		D31906D31EB4464200BCE271 /* NSLayoutConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31906D21EB4464200BCE271 /* NSLayoutConstraints.swift */; };
-		D31906D41EB446D800BCE271 /* OrientationDetectorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3696CE11EB1FEAE007B7496 /* OrientationDetectorType.swift */; };
-		D31906D51EB446D800BCE271 /* NSLayoutConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31906D21EB4464200BCE271 /* NSLayoutConstraints.swift */; };
 		D319B32A1EA9AC5A00861C4B /* ViewBuilderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D319B3131EA9AC5A00861C4B /* ViewBuilderType.swift */; };
 		D319B32C1EA9AC5A00861C4B /* InputFieldType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D319B3171EA9AC5A00861C4B /* InputFieldType.swift */; };
 		D319B32D1EA9AC5A00861C4B /* UITextInputs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D319B3181EA9AC5A00861C4B /* UITextInputs.swift */; };
@@ -26,32 +24,17 @@
 		D319B3361EA9AC5A00861C4B /* UIScrollViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = D319B3241EA9AC5A00861C4B /* UIScrollViews.swift */; };
 		D319B3371EA9AC5A00861C4B /* DynamicFontType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D319B3261EA9AC5A00861C4B /* DynamicFontType.swift */; };
 		D319B3391EA9AC5A00861C4B /* UIViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = D319B3291EA9AC5A00861C4B /* UIViews.swift */; };
-		D31ED73B1EACD90700632FF4 /* ViewBuilderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D319B3131EA9AC5A00861C4B /* ViewBuilderType.swift */; };
-		D31ED73D1EACD90700632FF4 /* ConstraintSetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36B832D1EA9E676001CF633 /* ConstraintSetType.swift */; };
-		D31ED73E1EACD90700632FF4 /* InputFieldType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D319B3171EA9AC5A00861C4B /* InputFieldType.swift */; };
-		D31ED73F1EACD90700632FF4 /* UITextInputs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D319B3181EA9AC5A00861C4B /* UITextInputs.swift */; };
-		D31ED7401EACD90700632FF4 /* Duration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D319B31A1EA9AC5A00861C4B /* Duration.swift */; };
-		D31ED7411EACD90700632FF4 /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = D319B31B1EA9AC5A00861C4B /* Size.swift */; };
-		D31ED7421EACD90700632FF4 /* SizeRepresentationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D319B31C1EA9AC5A00861C4B /* SizeRepresentationType.swift */; };
-		D31ED7431EACD90700632FF4 /* Space.swift in Sources */ = {isa = PBXBuildFile; fileRef = D319B31D1EA9AC5A00861C4B /* Space.swift */; };
-		D31ED7441EACD90700632FF4 /* TextSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = D319B31E1EA9AC5A00861C4B /* TextSize.swift */; };
-		D31ED7451EACD90700632FF4 /* ActionSelectorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D319B3201EA9AC5A00861C4B /* ActionSelectorType.swift */; };
-		D31ED7481EACD90700632FF4 /* UIScrollViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = D319B3241EA9AC5A00861C4B /* UIScrollViews.swift */; };
-		D31ED7491EACD90700632FF4 /* DynamicFontType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D319B3261EA9AC5A00861C4B /* DynamicFontType.swift */; };
-		D31ED74B1EACD90700632FF4 /* UIViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = D319B3291EA9AC5A00861C4B /* UIViews.swift */; };
 		D329CB5D1EADCBF9005D512E /* UIListViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = D329CB5C1EADCBF9005D512E /* UIListViews.swift */; };
-		D329CB601EADCCA0005D512E /* UIListViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D329CB5F1EADCCA0005D512E /* UIListViewTests.swift */; };
-		D329CB611EADCCF0005D512E /* UIListViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = D329CB5C1EADCBF9005D512E /* UIListViews.swift */; };
 		D344FF1C1F57B37500298C22 /* Unidirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D344FF1B1F57B37500298C22 /* Unidirection.swift */; };
 		D3696CE21EB1FEAE007B7496 /* OrientationDetectorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3696CE11EB1FEAE007B7496 /* OrientationDetectorType.swift */; };
-		D3696D251EB2762F007B7496 /* UIControlTestUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3696D241EB2762F007B7496 /* UIControlTestUtil.swift */; };
 		D3696D271EB276D3007B7496 /* SwiftUIUtilitiesTests.podspec in Resources */ = {isa = PBXBuildFile; fileRef = D3696D261EB276D3007B7496 /* SwiftUIUtilitiesTests.podspec */; };
 		D36B832E1EA9E676001CF633 /* ConstraintSetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36B832D1EA9E676001CF633 /* ConstraintSetType.swift */; };
 		D37C3F131EA51CBF00001C24 /* SwiftUIUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D37C3F091EA51CBF00001C24 /* SwiftUIUtilities.framework */; };
 		D37C3F1A1EA51CBF00001C24 /* SwiftUIUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = D37C3F0C1EA51CBF00001C24 /* SwiftUIUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D38D8F5C1EB9CB370045AF9E /* UIViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38D8F5B1EB9CB370045AF9E /* UIViewTests.swift */; };
-		D3B781211EAF41DD008D544D /* UICollectionViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B781201EAF41DD008D544D /* UICollectionViewTests.swift */; };
-		D3B781221EAF4224008D544D /* UICollectionViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31658B21EAF12810021AA61 /* UICollectionViews.swift */; };
+		D3BF4EED1F57FFB800A3EF1D /* UIControlTestUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3696D241EB2762F007B7496 /* UIControlTestUtil.swift */; };
+		D3BF4EEE1F57FFB800A3EF1D /* UIListViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D329CB5F1EADCCA0005D512E /* UIListViewTests.swift */; };
+		D3BF4EEF1F57FFB800A3EF1D /* UICollectionViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B781201EAF41DD008D544D /* UICollectionViewTests.swift */; };
+		D3BF4EF01F57FFB800A3EF1D /* UIViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38D8F5B1EB9CB370045AF9E /* UIViewTests.swift */; };
 		D3FBC1A11EB9A2460042B944 /* ControllerPresentableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FBC1A01EB9A2460042B944 /* ControllerPresentableType.swift */; };
 /* End PBXBuildFile section */
 
@@ -378,7 +361,7 @@
 				TargetAttributes = {
 					D37C3F081EA51CBF00001C24 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = S3V9CCW695;
+						DevelopmentTeam = 5FF785XRZ6;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
@@ -556,27 +539,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D31906D41EB446D800BCE271 /* OrientationDetectorType.swift in Sources */,
-				D31906D51EB446D800BCE271 /* NSLayoutConstraints.swift in Sources */,
-				D3B781221EAF4224008D544D /* UICollectionViews.swift in Sources */,
-				D329CB611EADCCF0005D512E /* UIListViews.swift in Sources */,
-				D31ED73B1EACD90700632FF4 /* ViewBuilderType.swift in Sources */,
-				D31ED73D1EACD90700632FF4 /* ConstraintSetType.swift in Sources */,
-				D31ED73E1EACD90700632FF4 /* InputFieldType.swift in Sources */,
-				D31ED73F1EACD90700632FF4 /* UITextInputs.swift in Sources */,
-				D3696D251EB2762F007B7496 /* UIControlTestUtil.swift in Sources */,
-				D31ED7401EACD90700632FF4 /* Duration.swift in Sources */,
-				D31ED7411EACD90700632FF4 /* Size.swift in Sources */,
-				D31ED7421EACD90700632FF4 /* SizeRepresentationType.swift in Sources */,
-				D31ED7431EACD90700632FF4 /* Space.swift in Sources */,
-				D31ED7441EACD90700632FF4 /* TextSize.swift in Sources */,
-				D329CB601EADCCA0005D512E /* UIListViewTests.swift in Sources */,
-				D31ED7451EACD90700632FF4 /* ActionSelectorType.swift in Sources */,
-				D31ED7481EACD90700632FF4 /* UIScrollViews.swift in Sources */,
-				D3B781211EAF41DD008D544D /* UICollectionViewTests.swift in Sources */,
-				D31ED7491EACD90700632FF4 /* DynamicFontType.swift in Sources */,
-				D38D8F5C1EB9CB370045AF9E /* UIViewTests.swift in Sources */,
-				D31ED74B1EACD90700632FF4 /* UIViews.swift in Sources */,
+				D3BF4EED1F57FFB800A3EF1D /* UIControlTestUtil.swift in Sources */,
+				D3BF4EEE1F57FFB800A3EF1D /* UIListViewTests.swift in Sources */,
+				D3BF4EEF1F57FFB800A3EF1D /* UICollectionViewTests.swift in Sources */,
+				D3BF4EF01F57FFB800A3EF1D /* UIViewTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -699,7 +665,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = S3V9CCW695;
+				DEVELOPMENT_TEAM = 5FF785XRZ6;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -722,7 +688,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = S3V9CCW695;
+				DEVELOPMENT_TEAM = 5FF785XRZ6;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
