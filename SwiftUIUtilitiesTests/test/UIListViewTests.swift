@@ -1,5 +1,5 @@
 //
-//  UIListViewUtilTests.swift
+//  UIListViewTests.swift
 //  SwiftUIUtilities
 //
 //  Created by Hai Pham on 4/24/17.
@@ -9,7 +9,7 @@
 import UIKit
 import XCTest
 
-class UIListViewUtilTests: XCTestCase {
+class UIListViewTests: XCTestCase {
     func test_cellIdentifier_shouldWorkCorrectly() {
         // Setup
         

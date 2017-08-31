@@ -1,5 +1,5 @@
 //
-//  UIViewUtilTests.swift
+//  UIViewTests.swift
 //  SwiftUIUtilities
 //
 //  Created by Hai Pham on 5/3/17.

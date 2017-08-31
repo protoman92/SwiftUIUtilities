@@ -40,7 +40,7 @@
 		D31ED7491EACD90700632FF4 /* DynamicFontType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D319B3261EA9AC5A00861C4B /* DynamicFontType.swift */; };
 		D31ED74B1EACD90700632FF4 /* UIViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = D319B3291EA9AC5A00861C4B /* UIViews.swift */; };
 		D329CB5D1EADCBF9005D512E /* UIListViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = D329CB5C1EADCBF9005D512E /* UIListViews.swift */; };
-		D329CB601EADCCA0005D512E /* UIListViewUtilTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D329CB5F1EADCCA0005D512E /* UIListViewUtilTests.swift */; };
+		D329CB601EADCCA0005D512E /* UIListViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D329CB5F1EADCCA0005D512E /* UIListViewTests.swift */; };
 		D329CB611EADCCF0005D512E /* UIListViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = D329CB5C1EADCBF9005D512E /* UIListViews.swift */; };
 		D344FF1C1F57B37500298C22 /* Unidirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D344FF1B1F57B37500298C22 /* Unidirection.swift */; };
 		D3696CE21EB1FEAE007B7496 /* OrientationDetectorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3696CE11EB1FEAE007B7496 /* OrientationDetectorType.swift */; };
@@ -49,8 +49,8 @@
 		D36B832E1EA9E676001CF633 /* ConstraintSetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36B832D1EA9E676001CF633 /* ConstraintSetType.swift */; };
 		D37C3F131EA51CBF00001C24 /* SwiftUIUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D37C3F091EA51CBF00001C24 /* SwiftUIUtilities.framework */; };
 		D37C3F1A1EA51CBF00001C24 /* SwiftUIUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = D37C3F0C1EA51CBF00001C24 /* SwiftUIUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D38D8F5C1EB9CB370045AF9E /* UIViewUtilTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38D8F5B1EB9CB370045AF9E /* UIViewUtilTests.swift */; };
-		D3B781211EAF41DD008D544D /* UICollectionViewUtilTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B781201EAF41DD008D544D /* UICollectionViewUtilTests.swift */; };
+		D38D8F5C1EB9CB370045AF9E /* UIViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38D8F5B1EB9CB370045AF9E /* UIViewTests.swift */; };
+		D3B781211EAF41DD008D544D /* UICollectionViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B781201EAF41DD008D544D /* UICollectionViewTests.swift */; };
 		D3B781221EAF4224008D544D /* UICollectionViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31658B21EAF12810021AA61 /* UICollectionViews.swift */; };
 		D3FBC1A11EB9A2460042B944 /* ControllerPresentableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FBC1A01EB9A2460042B944 /* ControllerPresentableType.swift */; };
 /* End PBXBuildFile section */
@@ -87,7 +87,7 @@
 		D319B3261EA9AC5A00861C4B /* DynamicFontType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicFontType.swift; sourceTree = "<group>"; };
 		D319B3291EA9AC5A00861C4B /* UIViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViews.swift; sourceTree = "<group>"; };
 		D329CB5C1EADCBF9005D512E /* UIListViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIListViews.swift; path = collection/UIListViews.swift; sourceTree = "<group>"; };
-		D329CB5F1EADCCA0005D512E /* UIListViewUtilTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIListViewUtilTests.swift; path = test/UIListViewUtilTests.swift; sourceTree = "<group>"; };
+		D329CB5F1EADCCA0005D512E /* UIListViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIListViewTests.swift; path = test/UIListViewTests.swift; sourceTree = "<group>"; };
 		D344FF1B1F57B37500298C22 /* Unidirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unidirection.swift; sourceTree = "<group>"; };
 		D3696CE11EB1FEAE007B7496 /* OrientationDetectorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrientationDetectorType.swift; path = orientation/OrientationDetectorType.swift; sourceTree = "<group>"; };
 		D3696D241EB2762F007B7496 /* UIControlTestUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIControlTestUtil.swift; path = util/UIControlTestUtil.swift; sourceTree = "<group>"; };
@@ -98,8 +98,8 @@
 		D37C3F0D1EA51CBF00001C24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D37C3F121EA51CBF00001C24 /* SwiftUIUtilitiesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftUIUtilitiesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D37C3F191EA51CBF00001C24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D38D8F5B1EB9CB370045AF9E /* UIViewUtilTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewUtilTests.swift; path = test/UIViewUtilTests.swift; sourceTree = "<group>"; };
-		D3B781201EAF41DD008D544D /* UICollectionViewUtilTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UICollectionViewUtilTests.swift; path = test/UICollectionViewUtilTests.swift; sourceTree = "<group>"; };
+		D38D8F5B1EB9CB370045AF9E /* UIViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewTests.swift; path = test/UIViewTests.swift; sourceTree = "<group>"; };
+		D3B781201EAF41DD008D544D /* UICollectionViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UICollectionViewTests.swift; path = test/UICollectionViewTests.swift; sourceTree = "<group>"; };
 		D3FBC1A01EB9A2460042B944 /* ControllerPresentableType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ControllerPresentableType.swift; path = controller/ControllerPresentableType.swift; sourceTree = "<group>"; };
 		E2E36E6FC0ED3C7B80B9B13B /* Pods-SwiftUIUtilitiesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftUIUtilitiesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftUIUtilitiesTests/Pods-SwiftUIUtilitiesTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -228,9 +228,9 @@
 		D329CB5E1EADCC8C005D512E /* test */ = {
 			isa = PBXGroup;
 			children = (
-				D329CB5F1EADCCA0005D512E /* UIListViewUtilTests.swift */,
-				D3B781201EAF41DD008D544D /* UICollectionViewUtilTests.swift */,
-				D38D8F5B1EB9CB370045AF9E /* UIViewUtilTests.swift */,
+				D329CB5F1EADCCA0005D512E /* UIListViewTests.swift */,
+				D3B781201EAF41DD008D544D /* UICollectionViewTests.swift */,
+				D38D8F5B1EB9CB370045AF9E /* UIViewTests.swift */,
 			);
 			name = test;
 			sourceTree = "<group>";
@@ -570,12 +570,12 @@
 				D31ED7421EACD90700632FF4 /* SizeRepresentationType.swift in Sources */,
 				D31ED7431EACD90700632FF4 /* Space.swift in Sources */,
 				D31ED7441EACD90700632FF4 /* TextSize.swift in Sources */,
-				D329CB601EADCCA0005D512E /* UIListViewUtilTests.swift in Sources */,
+				D329CB601EADCCA0005D512E /* UIListViewTests.swift in Sources */,
 				D31ED7451EACD90700632FF4 /* ActionSelectorType.swift in Sources */,
 				D31ED7481EACD90700632FF4 /* UIScrollViews.swift in Sources */,
-				D3B781211EAF41DD008D544D /* UICollectionViewUtilTests.swift in Sources */,
+				D3B781211EAF41DD008D544D /* UICollectionViewTests.swift in Sources */,
 				D31ED7491EACD90700632FF4 /* DynamicFontType.swift in Sources */,
-				D38D8F5C1EB9CB370045AF9E /* UIViewUtilTests.swift in Sources */,
+				D38D8F5C1EB9CB370045AF9E /* UIViewTests.swift in Sources */,
 				D31ED74B1EACD90700632FF4 /* UIViews.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,5 +1,5 @@
 //
-//  UICollectionViewUtilTests.swift
+//  UICollectionViewTests.swift
 //  SwiftUIUtilities
 //
 //  Created by Hai Pham on 4/25/17.
@@ -9,7 +9,7 @@
 import XCTest
 import UIKit
 
-class UICollectionViewUtilTests: XCTestCase {
+class UICollectionViewTests: XCTestCase {
     func test_reusableViewKind_shouldReturnCorrectRawValue() {
         // Setup
         

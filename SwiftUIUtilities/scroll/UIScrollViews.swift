@@ -46,6 +46,7 @@ public extension Reactive where Base: UIScrollView {
             .withLatestFrom(contentOffset)
             .map(direction.directionValue)
             .filter({Swift.abs($0) >= threshold})
+            .filter({$0 * CGFloat(direction.rawValue) > 0})
             .map({_ in direction})
     }
     
