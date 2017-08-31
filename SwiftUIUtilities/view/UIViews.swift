@@ -170,11 +170,9 @@ public extension UIView {
     ///   - visible: A Bool value.
     ///   - duration: An optional TimeInstance value.
     ///   - complete: Completion closure.
-    public func toggleVisible(
-        toBe visible: Bool,
-        withDuration duration: TimeInterval? = nil,
-        then complete: AnimationComplete? = nil
-    ) {
+    public func toggleVisible(toBe visible: Bool,
+                              withDuration duration: TimeInterval?,
+                              then complete: AnimationComplete?) {
         let duration = duration ?? Duration.short.rawValue
         
         if visible { isHidden = false }

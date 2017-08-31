@@ -77,7 +77,7 @@ public extension UICollectionView {
     /// - Returns: An optional UICollectionReusableView instance.
     public func deque<R>(with type: R.Type, at indexPath: IndexPath) -> R?
         where R: UICollectionReusableView, R: ReusableViewIdentifierType
-{
+    {
         return dequeueReusableSupplementaryView(
             ofKind: type.kind.value,
             withReuseIdentifier: type.identifier,
