@@ -1,5 +1,5 @@
 //
-//  ViewUtil.swift
+//  UIViews.swift
 //  SwiftUIUtilities
 //
 //  Created by Hai Pham on 4/17/17.
@@ -234,3 +234,27 @@ public extension Sequence where Iterator.Element: UIView {
         return flatMap({$0.subview(withAccessibilityId: id)})
     }
 }
+
+public extension Reactive where Base: UIView {
+    
+    /// Observer a view frame.
+    public var frame: Observable<CGRect> {
+        return Observable<CGRect>
+            .create({
+                $0.onNext(self.base.frame)
+                return Disposables.create()
+            })
+            .distinctUntilChanged()
+    }
+    
+    /// Observer a view bounds.
+    public var bounds: Observable<CGRect> {
+        return Observable<CGRect>
+            .create({
+                $0.onNext(self.base.bounds)
+                return Disposables.create()
+            })
+            .distinctUntilChanged()
+    }
+}
+

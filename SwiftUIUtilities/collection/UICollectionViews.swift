@@ -1,5 +1,5 @@
 //
-//  UICollectionViewUtil.swift
+//  UICollectionViews.swift
 //  SwiftUIUtilities
 //
 //  Created by Hai Pham on 4/25/17.

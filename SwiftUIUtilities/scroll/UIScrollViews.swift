@@ -1,5 +1,5 @@
 //
-//  UIScrollViewUtil.swift
+//  UIScrollViews.swift
 //  SwiftUIUtilities
 //
 //  Created by Hai Pham on 4/18/17.
@@ -31,6 +31,12 @@ public extension UIScrollView {
 }
 
 public extension Reactive where Base: UIScrollView {
+    private func didOverscroll(_ threshold: CGFloat,
+                               _ offset: CGFloat,
+                               _ contentDimen: CGFloat,
+                               _ dimen: CGFloat) -> Bool {
+        return offset < 0 || (offset + dimen) >= (contentDimen + threshold)
+    }
     
     /// Subscribe to this Observable to be notified when the scroll view is
     /// overscrolled.
@@ -42,11 +48,16 @@ public extension Reactive where Base: UIScrollView {
     public func didOverscroll(threshold: CGFloat, direction: Unidirection)
         -> Observable<Unidirection>
     {
-        return didEndDragging
-            .withLatestFrom(contentOffset)
-            .map(direction.directionValue)
-            .filter({Swift.abs($0) >= threshold})
-            .filter({$0 * CGFloat(direction.rawValue) > 0})
+        return Observable
+            .combineLatest(
+                willBeginDecelerating,
+                contentOffset.map(direction.directionContentOffset),
+                contentSize().map(direction.directionContentDimension),
+                bounds.map({$0.size}).map(direction.directionContentDimension),
+                resultSelector: {($0.1, $0.2, $0.3)}
+            )
+            .filter({$0.0 * CGFloat(direction.rawValue) > 0})
+            .filter({self.didOverscroll(threshold, $0.0, $0.1, $0.2)})
             .map({_ in direction})
     }
     
@@ -91,11 +102,19 @@ public extension Reactive where Base: UIScrollView {
 
 fileprivate extension Unidirection {
     
-    /// Get the value associated with a direction from a point.
+    /// Get the content offset value associated with a direction from a CGPoint.
     ///
     /// - Parameter point: A CGPoint instance.
     /// - Returns: A CGFloat value.
-    func directionValue(_ point: CGPoint) -> CGFloat {
+    func directionContentOffset(_ point: CGPoint) -> CGFloat {
         return isHorizontal() ? point.x : point.y
+    }
+    
+    /// Get the content size value associated with a direction from a CGSize.
+    ///
+    /// - Parameter size: A CGSize instance.
+    /// - Returns: A CGFloat value.
+    func directionContentDimension(_ size: CGSize) -> CGFloat {
+        return isHorizontal() ? size.width : size.height
     }
 }
