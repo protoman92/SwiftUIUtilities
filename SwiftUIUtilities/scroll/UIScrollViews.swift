@@ -56,16 +56,19 @@ public extension Reactive where Base: UIScrollView {
     public func didOverscroll(threshold: CGFloat, direction: Unidirection)
         -> Observable<Unidirection>
     {
-        return Observable
-            .combineLatest(
-                willBeginDecelerating,
-                contentOffset.map(direction.directionContentOffset),
+        return willBeginDecelerating
+            .withLatestFrom(contentOffset)
+            .map(direction.directionContentOffset)
+            .filter({$0 * CGFloat(direction.rawValue) > 0})
+            .withLatestFrom(
                 contentSize.map(direction.directionContentDimension),
-                bounds.map({$0.size}).map(direction.directionContentDimension),
-                resultSelector: {($0.1, $0.2, $0.3)}
+                resultSelector: {
+                    let bounds = self.base.frame
+                    let dimen = direction.directionContentDimension(bounds.size)
+                    return self.didOverscroll(threshold, $0.0, $0.1, dimen)
+                }
             )
-            .filter({$0.0 * CGFloat(direction.rawValue) > 0})
-            .filter({self.didOverscroll(threshold, $0.0, $0.1, $0.2)})
+            .filter({$0})
             .map({_ in direction})
     }
     
