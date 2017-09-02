@@ -99,9 +99,68 @@ public extension Reactive where Base: UIScrollView {
     {
         return didOverscroll(threshold: threshold, directions: directions)
     }
+    
+    /// Detect the scroll direction in which the view is moving.
+    ///
+    /// - Parameter threshold: A CGFloat value over which a scroll is considered
+    ///                        to be in a particular direction. This value can
+    ///                        be used to filter out overscroll bounces, but be
+    ///                        careful not to set it so high that normal scrolls
+    ///                        are not emitted either.
+    /// - Returns: An Observable instance.
+    public func scrollDirections(_ threshold: CGFloat) -> Observable<[Unidirection]> {
+        return didScroll
+            .withLatestFrom(contentOffset)
+            .scan((last: CGPoint.zero, diff: CGPoint.zero), accumulator: {
+                let lastOffset = $0.0.0
+                let currentOffset = $0.1
+                let diff = currentOffset.difference(from: lastOffset)
+                return (last: currentOffset, diff: diff)
+            })
+            .map({Unidirection.directions($0.diff, threshold)})
+            .filter({$0.isNotEmpty})
+    }
+    
+    /// Detect the scroll direction, and filter out duplicates lazily.
+    ///
+    /// - Parameter threshold: A CGFloat value over which a scroll is considered
+    ///                        to be in a particular direction
+    /// - Returns: An Observable instance.
+    public func distinctScrollDirections(_ threshold: CGFloat) -> Observable<[Unidirection]> {
+        return scrollDirections(threshold).distinctUntilChanged({$0.0 == $0.1})
+    }
 }
 
 fileprivate extension Unidirection {
+    
+    /// Get the supposed direction a view is scrolling towards, based on its
+    /// content offset difference and a threshold.
+    ///
+    /// - Parameters:
+    ///   - point: A CGPoint instance.
+    ///   - threshold: A CGFloat value.
+    /// - Returns: An Array of Unidirection.
+    static func directions(_ point: CGPoint, _ threshold: CGFloat)
+        -> [Unidirection]
+    {
+        var directions = [Unidirection]()
+        let x = point.x
+        let y = point.y
+        
+        if x < 0 && Swift.abs(x) > threshold {
+            directions.append(.left)
+        } else if x > threshold {
+            directions.append(.right)
+        }
+        
+        if y < 0 && Swift.abs(y) > threshold {
+            directions.append(.up)
+        } else if y > threshold {
+            directions.append(.down)
+        }
+        
+        return directions
+    }
 
     /// Get the content offset value associated with a direction from a CGPoint.
     ///

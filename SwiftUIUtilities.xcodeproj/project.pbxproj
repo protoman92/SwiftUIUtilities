@@ -26,6 +26,7 @@
 		D319B3391EA9AC5A00861C4B /* UIViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = D319B3291EA9AC5A00861C4B /* UIViews.swift */; };
 		D329CB5D1EADCBF9005D512E /* UIListViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = D329CB5C1EADCBF9005D512E /* UIListViews.swift */; };
 		D344FF1C1F57B37500298C22 /* Unidirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D344FF1B1F57B37500298C22 /* Unidirection.swift */; };
+		D354E34B1F5A4FF4001CC117 /* CoreGraphics.swift in Sources */ = {isa = PBXBuildFile; fileRef = D354E34A1F5A4FF4001CC117 /* CoreGraphics.swift */; };
 		D3696CE21EB1FEAE007B7496 /* OrientationDetectorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3696CE11EB1FEAE007B7496 /* OrientationDetectorType.swift */; };
 		D3696D271EB276D3007B7496 /* SwiftUIUtilitiesTests.podspec in Resources */ = {isa = PBXBuildFile; fileRef = D3696D261EB276D3007B7496 /* SwiftUIUtilitiesTests.podspec */; };
 		D36B832E1EA9E676001CF633 /* ConstraintSetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36B832D1EA9E676001CF633 /* ConstraintSetType.swift */; };
@@ -72,6 +73,7 @@
 		D329CB5C1EADCBF9005D512E /* UIListViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIListViews.swift; path = collection/UIListViews.swift; sourceTree = "<group>"; };
 		D329CB5F1EADCCA0005D512E /* UIListViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIListViewTests.swift; path = test/UIListViewTests.swift; sourceTree = "<group>"; };
 		D344FF1B1F57B37500298C22 /* Unidirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unidirection.swift; sourceTree = "<group>"; };
+		D354E34A1F5A4FF4001CC117 /* CoreGraphics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreGraphics.swift; sourceTree = "<group>"; };
 		D3696CE11EB1FEAE007B7496 /* OrientationDetectorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrientationDetectorType.swift; path = orientation/OrientationDetectorType.swift; sourceTree = "<group>"; };
 		D3696D241EB2762F007B7496 /* UIControlTestUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIControlTestUtil.swift; path = util/UIControlTestUtil.swift; sourceTree = "<group>"; };
 		D3696D261EB276D3007B7496 /* SwiftUIUtilitiesTests.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SwiftUIUtilitiesTests.podspec; sourceTree = "<group>"; };
@@ -218,6 +220,14 @@
 			name = test;
 			sourceTree = "<group>";
 		};
+		D354E3491F5A4FDF001CC117 /* core */ = {
+			isa = PBXGroup;
+			children = (
+				D354E34A1F5A4FF4001CC117 /* CoreGraphics.swift */,
+			);
+			path = core;
+			sourceTree = "<group>";
+		};
 		D3696CE01EB1FE8E007B7496 /* orientation */ = {
 			isa = PBXGroup;
 			children = (
@@ -259,6 +269,7 @@
 		D37C3F0B1EA51CBF00001C24 /* SwiftUIUtilities */ = {
 			isa = PBXGroup;
 			children = (
+				D354E3491F5A4FDF001CC117 /* core */,
 				D3FBC19F1EB9A2270042B944 /* controller */,
 				D3696CE01EB1FE8E007B7496 /* orientation */,
 				D319B3121EA9AC5A00861C4B /* builder */,
@@ -528,6 +539,7 @@
 				D319B32A1EA9AC5A00861C4B /* ViewBuilderType.swift in Sources */,
 				D319B32F1EA9AC5A00861C4B /* Size.swift in Sources */,
 				D344FF1C1F57B37500298C22 /* Unidirection.swift in Sources */,
+				D354E34B1F5A4FF4001CC117 /* CoreGraphics.swift in Sources */,
 				D319B3301EA9AC5A00861C4B /* SizeRepresentationType.swift in Sources */,
 				D3696CE21EB1FEAE007B7496 /* OrientationDetectorType.swift in Sources */,
 				D31906D31EB4464200BCE271 /* NSLayoutConstraints.swift in Sources */,
