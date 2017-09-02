@@ -56,27 +56,25 @@ public extension ReusableViewIdentifierType {
 
 public extension UICollectionView {
     
-    /// Register a reusable view kind with a ReusableViewIdentifierType
-    /// instance.
+    /// Register a reusable view kind with a R instance.
     ///
-    /// - Parameter type: A ReusableViewIdentifierType instance.
-    public func register<R>(with type: R.Type)
-        where R: UICollectionReusableView, R: ReusableViewIdentifierType
+    /// - Parameter type: A R instance.
+    public func register<R>(with type: R.Type) where
+        R: UICollectionReusableView, R: ReusableViewIdentifierType
     {
         register(type.self,
                  forSupplementaryViewOfKind: type.kind.value,
                  withReuseIdentifier: type.identifier)
     }
     
-    /// Deque a UICollectionReusableView with a ReusableViewIdentifierType
-    /// type.
+    /// Deque a UICollectionReusableView with a R type.
     ///
     /// - Parameters:
-    ///   - type: A ReusableViewIdentifierType type.
+    ///   - type: A R type.
     ///   - indexPath: An IndexPath instance.
     /// - Returns: An optional UICollectionReusableView instance.
-    public func deque<R>(with type: R.Type, at indexPath: IndexPath) -> R?
-        where R: UICollectionReusableView, R: ReusableViewIdentifierType
+    public func deque<R>(with type: R.Type, at indexPath: IndexPath) -> R? where
+        R: UICollectionReusableView, R: ReusableViewIdentifierType
     {
         return dequeueReusableSupplementaryView(
             ofKind: type.kind.value,
