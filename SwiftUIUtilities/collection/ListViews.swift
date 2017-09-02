@@ -33,7 +33,14 @@ public protocol CellOwnerType {
     /// - Parameters:
     ///   - cellClass: Any class object.
     ///   - identifier: A String value.
-    func register(_ cellClass: AnyClass?, with identifier: String)
+    func registerClass(_ cellClass: AnyClass?, with identifier: String)
+    
+    /// This method is common to both UICollectionView and UITableView.
+    ///
+    /// - Parameters:
+    ///   - nib: A UINib instance.
+    ///   - identifier: A String value.
+    func registerNib(_ nib: UINib?, with identifier: String)
     
     /// Deque a cell with an identifier.
     ///
@@ -48,9 +55,22 @@ public extension CellOwnerType {
     
     /// Register a cell type.
     ///
-    /// - Parameter type: A CellType type.
-    public func register<C>(with type: C.Type) where C: UIView, C: CellIdentifiableType {
-        register(type.self, with: type.identifier)
+    /// - Parameter type: The C class type.
+    public func registerClass<C>(with type: C.Type) where C: UIView & CellIdentifiableType {
+        registerClass(type.self, with: type.identifier)
+    }
+    
+    /// Register a nib.
+    ///
+    /// - Parameters:
+    ///   - type: The C class type.
+    ///   - bundle: A Bundle instance.
+    public func registerNib<C>(with type: C.Type, bundle: Bundle? = nil) where
+        C: UIView & CellIdentifiableType
+    {
+        let identifier = type.identifier
+        let nib = UINib(nibName: identifier, bundle: bundle)
+        registerNib(nib, with: identifier)
     }
     
     /// Deque a cell with a CellIdentifiableType subclass.
@@ -69,8 +89,12 @@ public extension CellOwnerType {
 extension UICollectionView: CellOwnerType {
     public typealias CellType = UICollectionViewCell
     
-    public func register(_ cellClass: AnyClass?, with identifier: String) {
+    public func registerClass(_ cellClass: AnyClass?, with identifier: String) {
         register(cellClass, forCellWithReuseIdentifier: identifier)
+    }
+    
+    public func registerNib(_ nib: UINib?, with identifier: String) {
+        register(nib, forCellWithReuseIdentifier: identifier)
     }
 
     public func dequeReusableCell(with id: String, for indexPath: IndexPath)
@@ -83,8 +107,12 @@ extension UICollectionView: CellOwnerType {
 extension UITableView: CellOwnerType {
     public typealias CellType = UITableViewCell
     
-    public func register(_ cellClass: AnyClass?, with identifier: String) {
+    public func registerClass(_ cellClass: AnyClass?, with identifier: String) {
         register(cellClass, forCellReuseIdentifier: identifier)
+    }
+    
+    public func registerNib(_ nib: UINib?, with identifier: String) {
+        register(nib, forCellReuseIdentifier: identifier)
     }
     
     public func dequeReusableCell(with id: String, for indexPath: IndexPath)

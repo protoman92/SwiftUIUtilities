@@ -58,13 +58,29 @@ public extension UICollectionView {
     
     /// Register a reusable view kind with a R instance.
     ///
-    /// - Parameter type: A R instance.
-    public func register<R>(with type: R.Type) where
-        R: UICollectionReusableView, R: ReusableViewIdentifierType
+    /// - Parameter type: The R class type.
+    public func registerClass<R>(with type: R.Type) where
+        R: UICollectionReusableView & ReusableViewIdentifierType
     {
         register(type.self,
                  forSupplementaryViewOfKind: type.kind.value,
                  withReuseIdentifier: type.identifier)
+    }
+    
+    /// Register a reusable view nib.
+    ///
+    /// - Parameters:
+    ///   - type: The R class type.
+    ///   - bundle: A Bundle instance.
+    public func registerNib<R>(with type: R.Type, bundle: Bundle? = nil) where
+        R: UICollectionReusableView & ReusableViewIdentifierType
+    {
+        let identifier = type.identifier
+        let nib = UINib(nibName: identifier, bundle: bundle)
+        
+        register(nib,
+                 forSupplementaryViewOfKind: type.kind.value,
+                 withReuseIdentifier: identifier)
     }
     
     /// Deque a UICollectionReusableView with a R type.
@@ -74,7 +90,7 @@ public extension UICollectionView {
     ///   - indexPath: An IndexPath instance.
     /// - Returns: An optional UICollectionReusableView instance.
     public func deque<R>(with type: R.Type, at indexPath: IndexPath) -> R? where
-        R: UICollectionReusableView, R: ReusableViewIdentifierType
+        R: UICollectionReusableView & ReusableViewIdentifierType
     {
         return dequeueReusableSupplementaryView(
             ofKind: type.kind.value,
