@@ -42,12 +42,10 @@ public extension UITableView {
     
     /// Deque a UIView with a HF type.
     ///
-    /// - Parameters:
-    ///   - type: A HF type.
-    ///   - indexPath: An IndexPath instance.
+    /// - Parameters type: The HF class type.
     /// - Returns: An optional HF instance.
-    public func deque<HF>(with type: HF.Type, at indexPath: IndexPath) -> HF?
-        where HF: UIView & HeaderFooterIdentifierType
+    public func deque<HF>(with type: HF.Type) -> HF? where
+        HF: UIView & HeaderFooterIdentifierType
     {
         let identifier = type.identifier
         return dequeueReusableHeaderFooterView(withIdentifier: identifier) as? HF
