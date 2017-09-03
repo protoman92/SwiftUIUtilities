@@ -1,5 +1,5 @@
 //
-//  UIControlTestUtil.swift
+//  ControlTestUtil.swift
 //  SwiftUIUtilities
 //
 //  Created by Hai Pham on 4/28/17.

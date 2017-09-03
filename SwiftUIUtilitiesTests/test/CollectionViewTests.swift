@@ -1,5 +1,5 @@
 //
-//  UICollectionViewTests.swift
+//  CollectionViewTests.swift
 //  SwiftUIUtilities
 //
 //  Created by Hai Pham on 4/25/17.
@@ -10,17 +10,17 @@ import XCTest
 import UIKit
 @testable import SwiftUIUtilities
 
-class UICollectionViewTests: XCTestCase {
-    func test_reusableViewKind_shouldReturnCorrectRawValue() {
-        // Setup
+public final class CollectionViewTests: XCTestCase {
+    public func test_reusableViewKind_shouldReturnCorrectRawValue() {
+        /// Setup
         
-        // When
+        /// When
         let s1 = ReusableViewKind.footer.value
         let s2 = ReusableViewKind.header.value
         let kind1 = ReusableViewKind(from: s1)
         let kind2 = ReusableViewKind(from: s2)
         
-        // Then
+        /// Then
         XCTAssertEqual(kind1?.value, s1)
         XCTAssertEqual(kind2?.value, s2)
     }

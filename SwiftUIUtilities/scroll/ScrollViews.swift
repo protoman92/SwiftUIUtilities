@@ -46,6 +46,18 @@ public extension Reactive where Base: UIScrollView {
             .distinctUntilChanged()
     }
     
+    /// Emits the differences between two consecutive emissions of contentOffset.
+    public var contentOffsetChange: Observable<CGPoint> {
+        return contentOffset
+            .scan((last: CGPoint.zero, diff: CGPoint.zero), accumulator: {
+                let lastOffset = $0.0.last
+                let currentOffset = $0.1
+                let diff = currentOffset.difference(from: lastOffset)
+                return (last: currentOffset, diff: diff)
+            })
+            .map({$0.diff})
+    }
+    
     /// Subscribe to this Observable to be notified when the scroll view is
     /// overscrolled.
     ///
@@ -53,7 +65,7 @@ public extension Reactive where Base: UIScrollView {
     ///   - threshold: Overscroll threshold beyond which an event is emitted.
     ///   - direction: A Unidirection instance.
     /// - Returns: An Observable instance.
-    public func didOverscroll(threshold: CGFloat, direction: Unidirection)
+    public func didOverscroll(_ threshold: CGFloat, _ direction: Unidirection)
         -> Observable<Unidirection>
     {
         return willBeginDecelerating
@@ -63,7 +75,7 @@ public extension Reactive where Base: UIScrollView {
             .withLatestFrom(
                 contentSize.map(direction.directionContentDimension),
                 resultSelector: {
-                    let bounds = self.base.frame
+                    let bounds = self.base.bounds
                     let dimen = direction.directionContentDimension(bounds.size)
                     return self.didOverscroll(threshold, $0.0, $0.1, dimen)
                 }
@@ -79,12 +91,11 @@ public extension Reactive where Base: UIScrollView {
     ///   - threshold: Overscroll threshold beyond which an event is emitted.
     ///   - directions: A Sequence of Unidirection.
     /// - Returns: An Observable instance.
-    public func didOverscroll<S>(threshold: CGFloat, directions: S)
+    public func didOverscroll<S>(_ threshold: CGFloat, _ directions: S)
         -> Observable<Unidirection> where
         S: Sequence, S.Iterator.Element == Unidirection
     {
-        let obs = directions.map({didOverscroll(threshold: threshold, direction: $0)})
-        return Observable.merge(obs)
+        return Observable.merge(directions.map({didOverscroll(threshold, $0)}))
     }
     
     /// Subscribe to this Observable to be notified when the scroll view is
@@ -94,10 +105,10 @@ public extension Reactive where Base: UIScrollView {
     ///   - threshold: Overscroll threshold beyond which an event is emitted.
     ///   - directions: A varargs of Unidirection.
     /// - Returns: An Observable instance.
-    public func didOverscroll(threshold: CGFloat, directions: Unidirection...)
+    public func didOverscroll(_ threshold: CGFloat, _ directions: Unidirection...)
         -> Observable<Unidirection>
     {
-        return didOverscroll(threshold: threshold, directions: directions)
+        return didOverscroll(threshold, directions)
     }
     
     /// Detect the scroll direction in which the view is moving.
@@ -110,24 +121,9 @@ public extension Reactive where Base: UIScrollView {
     /// - Returns: An Observable instance.
     public func scrollDirections(_ threshold: CGFloat) -> Observable<[Unidirection]> {
         return didScroll
-            .withLatestFrom(contentOffset)
-            .scan((last: CGPoint.zero, diff: CGPoint.zero), accumulator: {
-                let lastOffset = $0.0.0
-                let currentOffset = $0.1
-                let diff = currentOffset.difference(from: lastOffset)
-                return (last: currentOffset, diff: diff)
-            })
-            .map({Unidirection.directions($0.diff, threshold)})
+            .withLatestFrom(contentOffsetChange)
+            .map({Unidirection.directions($0, threshold)})
             .filter({$0.isNotEmpty})
-    }
-    
-    /// Detect the scroll direction, and filter out duplicates lazily.
-    ///
-    /// - Parameter threshold: A CGFloat value over which a scroll is considered
-    ///                        to be in a particular direction
-    /// - Returns: An Observable instance.
-    public func distinctScrollDirections(_ threshold: CGFloat) -> Observable<[Unidirection]> {
-        return scrollDirections(threshold).distinctUntilChanged({$0.0 == $0.1})
     }
 }
 

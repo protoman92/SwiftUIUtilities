@@ -9,18 +9,18 @@
 import SwiftUtilities
 import XCTest
 
-class UIViewUtilTests: XCTestCase {
-    override func setUp() {
+public final class ViewUtilTests: XCTestCase {
+    override public func setUp() {
         super.setUp()
         continueAfterFailure = false
     }
     
-    func test_superviewWithCondition_shouldWork() {
+    public func test_superviewWithCondition_shouldWork() {
         let tries = 1000
         let viewCount = 100
         
         for _ in 0..<tries {
-            // Setup
+            /// Setup
             let views = Array(repeating: {(index) -> UIView in
                 let view = UIView()
                 view.tag = index + 1
@@ -36,10 +36,10 @@ class UIViewUtilTests: XCTestCase {
             let tag = Int.randomBetween(1, viewCount)
             let last = views.last!
         
-            // When
+            /// When
             let superview = last.superview(satisfying: {$0.tag == tag})
         
-            // Then
+            /// Then
             XCTAssertNotNil(superview)
             XCTAssertEqual(superview!.tag, tag)
         }

@@ -13,3 +13,9 @@ extension CGPoint {
         return CGPoint(x: x - point.x, y: y - point.y)
     }
 }
+
+extension CGSize {
+    public func difference(from size: CGSize) -> CGSize {
+        return CGSize(width: width - size.width, height: height - size.height)
+    }
+}
