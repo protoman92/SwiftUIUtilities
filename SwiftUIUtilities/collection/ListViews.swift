@@ -48,7 +48,7 @@ public protocol CellOwnerType {
     ///   - id: A String value.
     ///   - at: An IndexPath instance.
     /// - Returns: A CellType istance.
-    func dequeReusableCell(with id: String, for indexPath: IndexPath) -> CellType
+    func dequeReusableCell(_ id: String, at indexPath: IndexPath) -> CellType
 }
 
 public extension CellOwnerType {
@@ -56,7 +56,7 @@ public extension CellOwnerType {
     /// Register a cell type.
     ///
     /// - Parameter type: The C class type.
-    public func registerClass<C>(with type: C.Type) where C: UIView & CellIdentifiableType {
+    public func registerClass<C>(_ type: C.Type) where C: UIView & CellIdentifiableType {
         registerClass(type.self, with: type.identifier)
     }
     
@@ -65,7 +65,7 @@ public extension CellOwnerType {
     /// - Parameters:
     ///   - type: The C class type.
     ///   - bundle: A Bundle instance.
-    public func registerNib<C>(with type: C.Type, bundle: Bundle? = nil) where
+    public func registerNib<C>(_ type: C.Type, bundle: Bundle? = nil) where
         C: UIView & CellIdentifiableType
     {
         let identifier = type.identifier
@@ -79,10 +79,10 @@ public extension CellOwnerType {
     ///   - type: A CellIdentifierType subclass type.
     ///   - indexPath: An IndexPath instance.
     /// - Returns: An optional CellIdentifierType instance.
-    public func deque<C>(with type: C.Type, for indexPath: IndexPath) -> C?
+    public func deque<C>(_ type: C.Type, at indexPath: IndexPath) -> C?
         where C: CellIdentifiableType
     {
-        return dequeReusableCell(with: type.identifier, for: indexPath) as? C
+        return dequeReusableCell(type.identifier, at: indexPath) as? C
     }
 }
 
@@ -97,7 +97,7 @@ extension UICollectionView: CellOwnerType {
         register(nib, forCellWithReuseIdentifier: identifier)
     }
 
-    public func dequeReusableCell(with id: String, for indexPath: IndexPath)
+    public func dequeReusableCell(_ id: String, at indexPath: IndexPath)
         -> UICollectionViewCell
     {
         return dequeueReusableCell(withReuseIdentifier: id, for: indexPath)
@@ -115,7 +115,7 @@ extension UITableView: CellOwnerType {
         register(nib, forCellReuseIdentifier: identifier)
     }
     
-    public func dequeReusableCell(with id: String, for indexPath: IndexPath)
+    public func dequeReusableCell(_ id: String, at indexPath: IndexPath)
         -> UITableViewCell
     {
         return dequeueReusableCell(withIdentifier: id, for: indexPath)
