@@ -31,12 +31,6 @@ public extension UIScrollView {
 }
 
 public extension Reactive where Base: UIScrollView {
-    private func didOverscroll(_ threshold: CGFloat,
-                               _ offset: CGFloat,
-                               _ contentDimen: CGFloat,
-                               _ dimen: CGFloat) -> Bool {
-        return offset < 0 || (offset + dimen) >= (contentDimen + threshold)
-    }
     
     /// Subscribe to this Observable to be notified when the content size is
     /// changes.
@@ -58,59 +52,6 @@ public extension Reactive where Base: UIScrollView {
             .map({$0.diff})
     }
     
-    /// Subscribe to this Observable to be notified when the scroll view is
-    /// overscrolled.
-    ///
-    /// - Parameters:
-    ///   - threshold: Overscroll threshold beyond which an event is emitted.
-    ///   - direction: A Unidirection instance.
-    /// - Returns: An Observable instance.
-    public func didOverscroll(_ threshold: CGFloat, _ direction: Unidirection)
-        -> Observable<Unidirection>
-    {
-        return willBeginDecelerating
-            .withLatestFrom(contentOffset)
-            .map(direction.directionContentOffset)
-            .filter({$0 * CGFloat(direction.rawValue) > 0})
-            .withLatestFrom(
-                contentSize.map(direction.directionContentDimension),
-                resultSelector: {
-                    let bounds = self.base.bounds
-                    let dimen = direction.directionContentDimension(bounds.size)
-                    return self.didOverscroll(threshold, $0.0, $0.1, dimen)
-                }
-            )
-            .filter({$0})
-            .map({_ in direction})
-    }
-    
-    /// Subscribe to this Observable to be notified when the scroll view is
-    /// overscrolled in certain directions.
-    ///
-    /// - Parameters:
-    ///   - threshold: Overscroll threshold beyond which an event is emitted.
-    ///   - directions: A Sequence of Unidirection.
-    /// - Returns: An Observable instance.
-    public func didOverscroll<S>(_ threshold: CGFloat, _ directions: S)
-        -> Observable<Unidirection> where
-        S: Sequence, S.Iterator.Element == Unidirection
-    {
-        return Observable.merge(directions.map({didOverscroll(threshold, $0)}))
-    }
-    
-    /// Subscribe to this Observable to be notified when the scroll view is
-    /// overscrolled in certain directions.
-    ///
-    /// - Parameters:
-    ///   - threshold: Overscroll threshold beyond which an event is emitted.
-    ///   - directions: A varargs of Unidirection.
-    /// - Returns: An Observable instance.
-    public func didOverscroll(_ threshold: CGFloat, _ directions: Unidirection...)
-        -> Observable<Unidirection>
-    {
-        return didOverscroll(threshold, directions)
-    }
-    
     /// Detect the scroll direction in which the view is moving.
     ///
     /// - Parameter threshold: A CGFloat value over which a scroll is considered
@@ -127,7 +68,130 @@ public extension Reactive where Base: UIScrollView {
     }
 }
 
-fileprivate extension Unidirection {
+public extension Reactive where Base: UIScrollView {
+    func didOverscroll(_ threshold: CGFloat,
+                       _ offset: CGFloat,
+                       _ contentDimen: CGFloat,
+                       _ dimen: CGFloat) -> Bool {
+        return offset < -threshold || (offset + dimen) >= (contentDimen + threshold)
+    }
+    
+    /// Subscribe to this Observable to be notified when the scroll view is
+    /// overscrolled.
+    ///
+    /// - Parameters:
+    ///   - triggerObs: Trigger Observable.
+    ///   - threshold: Overscroll threshold beyond which an event is emitted.
+    ///   - direction: A Unidirection instance.
+    /// - Returns: An Observable instance.
+    public func didOverscroll<O,E>(_ triggerObs: O,
+                                   _ threshold: CGFloat,
+                                   _ direction: Unidirection)
+        -> Observable<Unidirection> where
+        O: ObservableConvertibleType, O.E == E
+    {
+        let threshold = Swift.abs(threshold)
+        
+        return triggerObs.asObservable()
+            .withLatestFrom(contentOffset)
+            .map(direction.directionContentOffset)
+            .filter({$0 * CGFloat(direction.rawValue) > 0})
+            .withLatestFrom(
+                contentSize.map(direction.directionContentDimension),
+                resultSelector: {
+                    let bounds = self.base.bounds
+                    let dimen = direction.directionContentDimension(bounds.size)
+                    return self.didOverscroll(threshold, $0.0, $0.1, dimen)
+            }
+            )
+            .filter({$0})
+            .map({_ in direction})
+    }
+    
+    /// Subscribe to this Observable to be notified when the scroll view is
+    /// overscrolled in certain directions.
+    ///
+    /// - Parameters:
+    ///   - triggerObs: Trigger Observable.
+    ///   - threshold: Overscroll threshold beyond which an event is emitted.
+    ///   - directions: A Sequence of Unidirection.
+    /// - Returns: An Observable instance.
+    public func didOverscroll<S,O,E>(_ triggerObs: O,
+                                     _ threshold: CGFloat,
+                                     _ directions: S)
+        -> Observable<Unidirection> where
+        O: ObservableConvertibleType,
+        O.E == E,
+        S: Sequence,
+        S.Iterator.Element == Unidirection
+    {
+        return Observable.merge(directions.map({
+            self.didOverscroll(triggerObs, threshold, $0)
+        }))
+    }
+    
+    /// Subscribe to this Observable to be notified when the scroll view is
+    /// overscrolled in certain directions.
+    ///
+    /// - Parameters:
+    ///   - triggerObs: Trigger Observable.
+    ///   - threshold: Overscroll threshold beyond which an event is emitted.
+    ///   - directions: A varargs of Unidirection.
+    /// - Returns: An Observable instance.
+    public func didOverscroll<O,E>(_ triggerObs: O,
+                                   _ threshold: CGFloat,
+                                   _ directions: Unidirection...)
+        -> Observable<Unidirection> where
+        O: ObservableConvertibleType, O.E == E
+    {
+        return didOverscroll(triggerObs, threshold, directions)
+    }
+}
+
+public extension Reactive where Base: UIScrollView {
+    
+    /// Subscribe to this Observable to be notified when the scroll view is
+    /// overscrolled.
+    ///
+    /// - Parameters:
+    ///   - threshold: Overscroll threshold beyond which an event is emitted.
+    ///   - direction: A Unidirection instance.
+    /// - Returns: An Observable instance.
+    public func didOverscroll(_ threshold: CGFloat, _ direction: Unidirection)
+        -> Observable<Unidirection>
+    {
+        return didOverscroll(willBeginDecelerating, threshold, direction)
+    }
+    
+    /// Subscribe to this Observable to be notified when the scroll view is
+    /// overscrolled in certain directions.
+    ///
+    /// - Parameters:
+    ///   - threshold: Overscroll threshold beyond which an event is emitted.
+    ///   - directions: A Sequence of Unidirection.
+    /// - Returns: An Observable instance.
+    public func didOverscroll<S>(_ threshold: CGFloat, _ directions: S)
+        -> Observable<Unidirection> where
+        S: Sequence, S.Iterator.Element == Unidirection
+    {
+        return didOverscroll(willBeginDecelerating, threshold, directions)
+    }
+    
+    /// Subscribe to this Observable to be notified when the scroll view is
+    /// overscrolled in certain directions.
+    ///
+    /// - Parameters:
+    ///   - threshold: Overscroll threshold beyond which an event is emitted.
+    ///   - directions: A varargs of Unidirection.
+    /// - Returns: An Observable instance.
+    public func didOverscroll(_ threshold: CGFloat, _ directions: Unidirection...)
+        -> Observable<Unidirection>
+    {
+        return didOverscroll(willBeginDecelerating, threshold, directions)
+    }
+}
+
+extension Unidirection {
     
     /// Get the supposed direction a view is scrolling towards, based on its
     /// content offset difference and a threshold.
@@ -136,9 +200,7 @@ fileprivate extension Unidirection {
     ///   - point: A CGPoint instance.
     ///   - threshold: A CGFloat value.
     /// - Returns: An Array of Unidirection.
-    static func directions(_ point: CGPoint, _ threshold: CGFloat)
-        -> [Unidirection]
-    {
+    static func directions(_ point: CGPoint, _ threshold: CGFloat) -> [Unidirection] {
         var directions = [Unidirection]()
         let x = point.x
         let y = point.y
@@ -157,7 +219,7 @@ fileprivate extension Unidirection {
         
         return directions
     }
-
+    
     /// Get the content offset value associated with a direction from a CGPoint.
     ///
     /// - Parameter point: A CGPoint instance.
@@ -165,7 +227,7 @@ fileprivate extension Unidirection {
     func directionContentOffset(_ point: CGPoint) -> CGFloat {
         return isHorizontal() ? point.x : point.y
     }
-
+    
     /// Get the content size value associated with a direction from a CGSize.
     ///
     /// - Parameter size: A CGSize instance.
@@ -174,3 +236,4 @@ fileprivate extension Unidirection {
         return isHorizontal() ? size.width : size.height
     }
 }
+

@@ -63,4 +63,47 @@ public final class ScrollViewTests: RootTest {
         XCTAssertEqual(nextElements.count, testChanges.count)
         XCTAssertTrue(nextElements.all(testChanges.contains))
     }
+    
+    public func test_didOverscroll_shouldWork() {
+        /// Setup
+        let observer = scheduler.createObserver(Unidirection.self)
+        let scrollView = self.scrollView!
+        let threshold: CGFloat = 150
+        let directions = Unidirection.allValues()
+        let triggerObs = PublishSubject<Void>()
+        let didOverscrollObs = scrollView.rx.didOverscroll(triggerObs, threshold, directions)
+        let count = iterationCount!
+        let bounds = CGRect(x: 0, y: 0, width: 100, height: 100)
+        let contentSize = CGSize(width: 200, height: 200)
+        scrollView.bounds = bounds
+        scrollView.contentSize = contentSize
+        
+        var didOverscrolls: [Unidirection] = []
+        
+        /// When
+        didOverscrollObs.subscribe(observer).disposed(by: disposeBag)
+        
+        for _ in (0..<count) {
+            let offset = CGPoint.random.multiply(with: CGFloat(Bool.random() ? 1 : -1))
+            scrollView.contentOffset = offset
+            
+            for direction in directions {
+                let dco = direction.directionContentOffset(offset)
+                let dcb = direction.directionContentDimension(bounds.size)
+                let dccd = direction.directionContentDimension(contentSize)
+                let didOverscroll = scrollView.rx.didOverscroll(threshold, dco, dccd, dcb)
+                
+                if didOverscroll && dco * CGFloat(direction.rawValue) > 0 {
+                    didOverscrolls.append(direction)
+                }
+            }
+            
+            triggerObs.onNext(())
+        }
+        
+        /// Then
+        let nextElements = observer.nextElements()
+        XCTAssertEqual(nextElements.count, didOverscrolls.count)
+        XCTAssertTrue(didOverscrolls.all(nextElements.contains))
+    }
 }
