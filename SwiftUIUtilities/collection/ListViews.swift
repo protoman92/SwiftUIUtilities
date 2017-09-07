@@ -56,7 +56,9 @@ public extension CellOwnerType {
     /// Register a cell type.
     ///
     /// - Parameter type: The C class type.
-    public func registerClass<C>(_ type: C.Type) where C: UIView & CellIdentifiableType {
+    public func registerClass<C>(_ type: C.Type) where
+        C: UIView, C: CellIdentifiableType
+    {
         registerClass(type.self, with: type.identifier)
     }
     
@@ -66,7 +68,7 @@ public extension CellOwnerType {
     ///   - type: The C class type.
     ///   - bundle: A Bundle instance.
     public func registerNib<C>(_ type: C.Type, bundle: Bundle? = nil) where
-        C: UIView & CellIdentifiableType
+        C: UIView, C: CellIdentifiableType
     {
         let identifier = type.identifier
         let nib = UINib(nibName: identifier, bundle: bundle)

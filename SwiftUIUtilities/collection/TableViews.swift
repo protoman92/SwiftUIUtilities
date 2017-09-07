@@ -22,7 +22,7 @@ public extension UITableView {
     ///
     /// - Parameter type: The HF class type.
     public func registerClass<HF>(_ type: HF.Type) where
-        HF: UIView & HeaderFooterIdentifierType
+        HF: UIView, HF: HeaderFooterIdentifierType
     {
         register(type, forHeaderFooterViewReuseIdentifier: type.identifier)
     }
@@ -33,7 +33,7 @@ public extension UITableView {
     ///   - type: The HF class type.
     ///   - bundle: A Bundle instance.
     public func registerNib<HF>(_ type: HF.Type, bundle: Bundle? = nil) where
-        HF: UIView & HeaderFooterIdentifierType
+        HF: UIView, HF: HeaderFooterIdentifierType
     {
         let identifier = type.identifier
         let nib = UINib(nibName: identifier, bundle: bundle)
@@ -45,7 +45,7 @@ public extension UITableView {
     /// - Parameters type: The HF class type.
     /// - Returns: An optional HF instance.
     public func deque<HF>(_ type: HF.Type) -> HF? where
-        HF: UIView & HeaderFooterIdentifierType
+        HF: UIView, HF: HeaderFooterIdentifierType
     {
         let identifier = type.identifier
         return dequeueReusableHeaderFooterView(withIdentifier: identifier) as? HF
