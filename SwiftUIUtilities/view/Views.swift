@@ -142,14 +142,19 @@ public extension UIView {
     /// name, or leave it as default, after which the class name will be
     /// used to look for the file.
     ///
-    /// - Parameter named: An optional String value.
-    func initializeWithNib(_ named: String? = nil) {
+    /// - Parameters:
+    ///   - named: The Nib name String.
+    ///   - index: An Int value.
+    public func initializeWithNib(_ named: String? = nil, _ index: Int = 0) {
         let cls: AnyClass = classForCoder
+        let nibName = named ?? String(describing: cls)
         
-        guard subviews.count == 0,
-            let view = UINib(nibName: named ?? String(describing: cls),
-                             bundle: Bundle(for: cls))
-                .instantiate(withOwner: self, options: nil).first as? UIView
+        guard
+            subviews.count == 0,
+            let view = UINib
+                .init(nibName: nibName, bundle: Bundle(for: cls))
+                .instantiate(withOwner: self, options: nil).element(at: index)
+                as? UIView
         else {
             return
         }
