@@ -41,7 +41,7 @@
 		D3BF4EEF1F57FFB800A3EF1D /* CollectionViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B781201EAF41DD008D544D /* CollectionViewTests.swift */; };
 		D3BF4EF01F57FFB800A3EF1D /* ViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38D8F5B1EB9CB370045AF9E /* ViewTests.swift */; };
 		D3FBC1A11EB9A2460042B944 /* ControllerPresentableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FBC1A01EB9A2460042B944 /* ControllerPresentableType.swift */; };
-		D3FDD4A01FE282A70024691A /* SwiftUIUtilities_Localizables.strings in Resources */ = {isa = PBXBuildFile; fileRef = D3FDD49F1FE282A70024691A /* SwiftUIUtilities_Localizables.strings */; };
+		D3FDD4A11FE288F80024691A /* SwiftUIUtilities_Localizables.strings in Resources */ = {isa = PBXBuildFile; fileRef = D3FDD4A31FE288F80024691A /* SwiftUIUtilities_Localizables.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,7 +95,7 @@
 		D38D8F5B1EB9CB370045AF9E /* ViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewTests.swift; path = test/ViewTests.swift; sourceTree = "<group>"; };
 		D3B781201EAF41DD008D544D /* CollectionViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionViewTests.swift; path = test/CollectionViewTests.swift; sourceTree = "<group>"; };
 		D3FBC1A01EB9A2460042B944 /* ControllerPresentableType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ControllerPresentableType.swift; path = controller/ControllerPresentableType.swift; sourceTree = "<group>"; };
-		D3FDD49F1FE282A70024691A /* SwiftUIUtilities_Localizables.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = SwiftUIUtilities_Localizables.strings; sourceTree = "<group>"; };
+		D3FDD4A21FE288F80024691A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SwiftUIUtilities_Localizables.strings; sourceTree = "<group>"; };
 		E2E36E6FC0ED3C7B80B9B13B /* Pods-SwiftUIUtilitiesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftUIUtilitiesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftUIUtilitiesTests/Pods-SwiftUIUtilitiesTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -323,7 +323,7 @@
 		D3FDD49E1FE282840024691A /* localization */ = {
 			isa = PBXGroup;
 			children = (
-				D3FDD49F1FE282A70024691A /* SwiftUIUtilities_Localizables.strings */,
+				D3FDD4A31FE288F80024691A /* SwiftUIUtilities_Localizables.strings */,
 			);
 			path = localization;
 			sourceTree = "<group>";
@@ -429,7 +429,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D3FDD4A01FE282A70024691A /* SwiftUIUtilities_Localizables.strings in Resources */,
+				D3FDD4A11FE288F80024691A /* SwiftUIUtilities_Localizables.strings in Resources */,
 				D31714991EA8463F00DED309 /* SwiftUIUtilities.podspec in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -595,6 +595,17 @@
 			targetProxy = D37C3F141EA51CBF00001C24 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D3FDD4A31FE288F80024691A /* SwiftUIUtilities_Localizables.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D3FDD4A21FE288F80024691A /* en */,
+			);
+			name = SwiftUIUtilities_Localizables.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		D37C3F1B1EA51CBF00001C24 /* Debug */ = {

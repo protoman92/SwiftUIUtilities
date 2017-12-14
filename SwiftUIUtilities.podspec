@@ -10,6 +10,14 @@ Pod::Spec.new do |s|
     s.author = { "Hai Pham" => "swiften.svc@gmail.com" }
     s.homepage = "https://github.com/protoman92/SwiftUIUtilities.git"
     s.source = { :git => "https://github.com/protoman92/SwiftUIUtilities.git", :tag => "#{s.version}"}
+    s.resources = "SwiftUIUtilities/**/*.{strings,xib}"
+
+    s.resource_bundles = {
+        "SwiftUIUtilities" => [
+            "SwiftUIUtilities/**/*.{strings,xib}"
+        ]
+    }
+
     s.framework = "UIKit"
     s.dependency 'SwiftUtilities/Main'
 
