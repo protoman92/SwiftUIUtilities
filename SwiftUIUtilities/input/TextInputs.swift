@@ -73,8 +73,9 @@ public struct CompletionAccessory {
     fileprivate var cancelId: String
     
     fileprivate init() {
-        confirmString = ""
-        cancelString = ""
+        let lcTable = "SwiftUIUtilities_Localizables"
+        confirmString = "input.confirm".localize(lcTable)
+        cancelString = "input.cancel".localize(lcTable)
         confirmId = ""
         cancelId = ""
     }

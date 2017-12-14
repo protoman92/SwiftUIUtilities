@@ -1,0 +1,10 @@
+/* 
+  SwiftUIUtilities_Localizables.strings
+  SwiftUIUtilities
+
+  Created by Hai Pham on 14/12/17.
+  Copyright © 2017 Swiften. All rights reserved.
+*/
+
+input.cancel = "Cancel";
+input.confirm = "Confirm";
