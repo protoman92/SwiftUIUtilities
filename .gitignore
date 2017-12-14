@@ -34,6 +34,6 @@ pod-publish
 /*.gcno
 
 Pods
-docs
+.DS_Store
 
 # End of https://www.gitignore.io/api/xcode

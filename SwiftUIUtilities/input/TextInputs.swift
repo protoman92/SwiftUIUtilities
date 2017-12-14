@@ -73,8 +73,8 @@ public struct CompletionAccessory {
     fileprivate var cancelId: String
     
     fileprivate init() {
-        confirmString = "input.accept".localized
-        cancelString = "input.cancel".localized
+        confirmString = ""
+        cancelString = ""
         confirmId = ""
         cancelId = ""
     }
