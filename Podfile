@@ -2,8 +2,8 @@
 # platform :ios, '9.0'
 
 def allPods
-    pod 'SwiftUtilities/Main', git: 'https://github.com/protoman92/SwiftUtilities.git'
-    pod 'RxDataSources', '~> 1.0'
+    pod 'SwiftUtilities/Main+Rx', git: 'https://github.com/protoman92/SwiftUtilities.git'
+    pod 'RxDataSources'
 end
 
 target 'SwiftUIUtilities' do
@@ -17,7 +17,7 @@ target 'SwiftUIUtilities' do
     inherit! :search_paths
     # Pods for testing
     allPods
-    pod 'SwiftUtilitiesTests/Main’
+    pod 'SwiftUtilitiesTests/Main+Rx’, git: 'https://github.com/protoman92/SwiftUtilities.git'
     
   end
 

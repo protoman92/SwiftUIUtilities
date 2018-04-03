@@ -11,17 +11,17 @@ import XCTest
 @testable import SwiftUIUtilities
 
 public final class ListViewTests: XCTestCase {
-    public func test_cellIdentifier_shouldWorkCorrectly() {
-        /// Setup
-        
-        /// When
-        let identifier1 = Cell1.identifier
-        let identifier2 = Cell2.identifier
-        
-        /// Then
-        XCTAssertEqual(identifier1, "Cell1")
-        XCTAssertEqual(identifier2, "Cell2")
-    }
+  public func test_cellIdentifier_shouldWorkCorrectly() {
+    /// Setup
+
+    /// When
+    let identifier1 = Cell1.identifier
+    let identifier2 = Cell2.identifier
+
+    /// Then
+    XCTAssertEqual(identifier1, "Cell1")
+    XCTAssertEqual(identifier2, "Cell2")
+  }
 }
 
 class Cell1: UICollectionViewCell {}

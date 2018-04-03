@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
     s.platform = :ios
-    s.ios.deployment_target = '9.0'
+    s.ios.deployment_target = '8.0'
     s.name = "SwiftUIUtilitiesTests"
     s.summary = "Common Swift UIKit test utilities."
     s.requires_arc = true

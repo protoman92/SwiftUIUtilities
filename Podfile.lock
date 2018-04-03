@@ -1,47 +1,60 @@
 PODS:
-  - RxBlocking (3.6.1):
-    - RxSwift (~> 3.6)
-  - RxCocoa (3.6.1):
-    - RxSwift (~> 3.6)
-  - RxDataSources (1.0.4):
-    - RxCocoa (~> 3.0)
-    - RxSwift (~> 3.0)
-  - RxSwift (3.6.1)
-  - RxTest (3.6.1):
-    - RxSwift (~> 3.6)
-  - SwiftUtilities/Main (1.4.5):
-    - RxBlocking (~> 3.0)
-    - RxCocoa (~> 3.0)
-    - RxSwift (~> 3.0)
-  - SwiftUtilitiesTests/Main (1.4.5):
-    - RxBlocking (~> 3.0)
-    - RxCocoa (~> 3.0)
-    - RxSwift (~> 3.0)
-    - RxTest (~> 3.0)
+  - Differentiator (3.0.2)
+  - RxBlocking (4.1.2):
+    - RxSwift (~> 4.0)
+  - RxCocoa (4.1.2):
+    - RxSwift (~> 4.0)
+  - RxDataSources (3.0.2):
+    - Differentiator (~> 3.0)
+    - RxCocoa (~> 4.0)
+    - RxSwift (~> 4.0)
+  - RxSwift (4.1.2)
+  - RxTest (4.1.2):
+    - RxSwift (~> 4.0)
+  - SwiftFP (1.0.1):
+    - SwiftFP/Main (= 1.0.1)
+  - SwiftFP/Main (1.0.1)
+  - SwiftUtilities/Main+Rx (1.4.6):
+    - RxBlocking (~> 4.0)
+    - RxCocoa (~> 4.0)
+    - RxSwift (~> 4.0)
+    - SwiftFP (~> 1.0.1)
+  - SwiftUtilitiesTests/Main+Rx (1.4.6):
+    - RxBlocking (~> 4.0)
+    - RxCocoa (~> 4.0)
+    - RxSwift (~> 4.0)
+    - RxTest (~> 4.0)
 
 DEPENDENCIES:
-  - RxDataSources (~> 1.0)
-  - SwiftUtilities/Main (from `https://github.com/protoman92/SwiftUtilities.git`)
-  - SwiftUtilitiesTests/Main
+  - RxDataSources
+  - SwiftUtilities/Main+Rx (from `https://github.com/protoman92/SwiftUtilities.git`)
+  - SwiftUtilitiesTests/Main+Rx (from `https://github.com/protoman92/SwiftUtilities.git`)
 
 EXTERNAL SOURCES:
   SwiftUtilities:
     :git: https://github.com/protoman92/SwiftUtilities.git
+  SwiftUtilitiesTests:
+    :git: https://github.com/protoman92/SwiftUtilities.git
 
 CHECKOUT OPTIONS:
   SwiftUtilities:
-    :commit: 36ee13f58c4a23a18b51298cdfb0e5730495e8e7
+    :commit: 7a3e200e71ec3048177eced1e5eb1d201c9e2502
+    :git: https://github.com/protoman92/SwiftUtilities.git
+  SwiftUtilitiesTests:
+    :commit: 7a3e200e71ec3048177eced1e5eb1d201c9e2502
     :git: https://github.com/protoman92/SwiftUtilities.git
 
 SPEC CHECKSUMS:
-  RxBlocking: 4f4bd5732e8b952e54ae8a57739bcfb645de12bc
-  RxCocoa: 84a08739ab186248c7f31ce4ee92d6f8a947d690
-  RxDataSources: b3389acc5fe2eefb8fcd81a2b76a876ad08bc82a
-  RxSwift: f9de85ea20cd2f7716ee5409fc13523dc638e4e4
-  RxTest: 1d00348a7848c91ab5bf5d197d2378aa6b2bb356
-  SwiftUtilities: ef0087625fe58fb8909af372111e23461d10af55
-  SwiftUtilitiesTests: cc224ef1ef1b455dc89bc43358d999e56ffbec00
+  Differentiator: a87be69eba49ec4ab460c7671143ee3a9eececfd
+  RxBlocking: f6054985901412fc8c02daa84e92d4ba68c61389
+  RxCocoa: d88ba0f1f6abf040011a9eb4b539324fc426843a
+  RxDataSources: cb7c31e652a87ebb919da45f716bbb87b3765f6b
+  RxSwift: e49536837d9901277638493ea537394d4b55f570
+  RxTest: e634f15fd2c2cd0e0120132ef7a4f7be69ad0393
+  SwiftFP: 25277c3c13de8b45771702a77443cd1d3c2761b2
+  SwiftUtilities: f7e2e01683284be61a2e5f2b2e5cfa9096cc6b5d
+  SwiftUtilitiesTests: 51ad0d8703fbfa924ade7609453a2b4783f23f29
 
-PODFILE CHECKSUM: 26adbb382f5baec0843bb5c4e92daf1dcd27dc88
+PODFILE CHECKSUM: a9a1f860cf60dd84ca102a4819a0866362093592
 
-COCOAPODS: 1.4.0.beta.2
+COCOAPODS: 1.4.0

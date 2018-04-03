@@ -11,17 +11,17 @@ import UIKit
 @testable import SwiftUIUtilities
 
 public final class CollectionViewTests: XCTestCase {
-    public func test_reusableViewKind_shouldReturnCorrectRawValue() {
-        /// Setup
-        
-        /// When
-        let s1 = ReusableViewKind.footer.value
-        let s2 = ReusableViewKind.header.value
-        let kind1 = ReusableViewKind(from: s1)
-        let kind2 = ReusableViewKind(from: s2)
-        
-        /// Then
-        XCTAssertEqual(kind1?.value, s1)
-        XCTAssertEqual(kind2?.value, s2)
-    }
+  public func test_reusableViewKind_shouldReturnCorrectRawValue() {
+    /// Setup
+
+    /// When
+    let s1 = ReusableViewKind.footer.value
+    let s2 = ReusableViewKind.header.value
+    let kind1 = ReusableViewKind(from: s1)
+    let kind2 = ReusableViewKind(from: s2)
+
+    /// Then
+    XCTAssertEqual(kind1?.value, s1)
+    XCTAssertEqual(kind2?.value, s2)
+  }
 }

@@ -14,15 +14,15 @@ import XCTest
 @testable import SwiftUIUtilities
 
 public class RootTest: XCTestCase {
-    var disposeBag: DisposeBag!
-    var scheduler: TestScheduler!
-    var iterationCount: Int!
-    
-    override public func setUp() {
-        super.setUp()
-        continueAfterFailure = false
-        disposeBag = DisposeBag()
-        scheduler = TestScheduler(initialClock: 0)
-        iterationCount = 1000
-    }
+  var disposeBag: DisposeBag!
+  var scheduler: TestScheduler!
+  var iterationCount: Int!
+
+  override public func setUp() {
+    super.setUp()
+    continueAfterFailure = false
+    disposeBag = DisposeBag()
+    scheduler = TestScheduler(initialClock: 0)
+    iterationCount = 1000
+  }
 }
