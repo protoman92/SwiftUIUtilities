@@ -37,7 +37,6 @@
 		D36B832E1EA9E676001CF633 /* ConstraintSetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36B832D1EA9E676001CF633 /* ConstraintSetType.swift */; };
 		D37C3F131EA51CBF00001C24 /* SwiftUIUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D37C3F091EA51CBF00001C24 /* SwiftUIUtilities.framework */; };
 		D37C3F1A1EA51CBF00001C24 /* SwiftUIUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = D37C3F0C1EA51CBF00001C24 /* SwiftUIUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D3BF4EED1F57FFB800A3EF1D /* ControlTestUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3696D241EB2762F007B7496 /* ControlTestUtil.swift */; };
 		D3BF4EEE1F57FFB800A3EF1D /* ListViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D329CB5F1EADCCA0005D512E /* ListViewTests.swift */; };
 		D3BF4EEF1F57FFB800A3EF1D /* CollectionViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B781201EAF41DD008D544D /* CollectionViewTests.swift */; };
 		D3BF4EF01F57FFB800A3EF1D /* ViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38D8F5B1EB9CB370045AF9E /* ViewTests.swift */; };
@@ -86,7 +85,6 @@
 		D34978151F5C577300D74FF6 /* CGTestUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CGTestUtil.swift; path = util/CGTestUtil.swift; sourceTree = "<group>"; };
 		D354E34A1F5A4FF4001CC117 /* CoreGraphics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreGraphics.swift; sourceTree = "<group>"; };
 		D3696CE11EB1FEAE007B7496 /* OrientationDetectorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrientationDetectorType.swift; path = orientation/OrientationDetectorType.swift; sourceTree = "<group>"; };
-		D3696D241EB2762F007B7496 /* ControlTestUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ControlTestUtil.swift; path = util/ControlTestUtil.swift; sourceTree = "<group>"; };
 		D3696D261EB276D3007B7496 /* SwiftUIUtilitiesTests.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SwiftUIUtilitiesTests.podspec; sourceTree = "<group>"; };
 		D36B832D1EA9E676001CF633 /* ConstraintSetType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintSetType.swift; sourceTree = "<group>"; };
 		D37C3F091EA51CBF00001C24 /* SwiftUIUtilities.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftUIUtilities.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -254,7 +252,6 @@
 		D3696D231EB275FB007B7496 /* util */ = {
 			isa = PBXGroup;
 			children = (
-				D3696D241EB2762F007B7496 /* ControlTestUtil.swift */,
 				D34978151F5C577300D74FF6 /* CGTestUtil.swift */,
 			);
 			name = util;
@@ -584,7 +581,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D3BF4EED1F57FFB800A3EF1D /* ControlTestUtil.swift in Sources */,
 				D3BF4EEE1F57FFB800A3EF1D /* ListViewTests.swift in Sources */,
 				D34978161F5C577300D74FF6 /* CGTestUtil.swift in Sources */,
 				D3BF4EEF1F57FFB800A3EF1D /* CollectionViewTests.swift in Sources */,
@@ -736,7 +732,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -758,7 +754,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.swiften.SwiftUIUtilities;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -772,7 +768,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.swiften.SwiftUIUtilitiesTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -786,7 +782,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.swiften.SwiftUIUtilitiesTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};

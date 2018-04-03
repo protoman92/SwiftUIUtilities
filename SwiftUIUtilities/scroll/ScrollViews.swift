@@ -44,8 +44,8 @@ public extension Reactive where Base: UIScrollView {
   public var contentOffsetChange: Observable<CGPoint> {
     return contentOffset
       .scan((last: CGPoint.zero, diff: CGPoint.zero), accumulator: {
-        let lastOffset = $0.0.last
-        let currentOffset = $0.1
+        let lastOffset = $0.last
+        let currentOffset = $1
         let diff = currentOffset.difference(from: lastOffset)
         return (last: currentOffset, diff: diff)
       })
@@ -101,7 +101,7 @@ public extension Reactive where Base: UIScrollView {
         resultSelector: {
           let bounds = self.base.bounds
           let dimen = direction.directionContentDimension(bounds.size)
-          return self.didOverscroll(threshold, $0.0, $0.1, dimen)
+          return self.didOverscroll(threshold, $0, $1, dimen)
       }
       )
       .filter({$0})
