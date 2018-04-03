@@ -1,6 +1,6 @@
 ci_service: travis_ci
 coverage_service: coveralls
-xcodeproj: SwiftFP.xcodeproj
-scheme: SwiftFP
-source_directory: SwiftFP
-workspace: SwiftFP.xcworkspace
+xcodeproj: SwiftUIUtilities.xcodeproj
+scheme: SwiftUIUtilities
+source_directory: SwiftUIUtilities
+workspace: SwiftUIUtilities.xcworkspace
