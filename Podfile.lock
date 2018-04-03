@@ -1,11 +1,13 @@
 PODS:
+  - Differentiator (2.0.2)
   - RxBlocking (3.6.1):
     - RxSwift (~> 3.6)
   - RxCocoa (3.6.1):
     - RxSwift (~> 3.6)
-  - RxDataSources (1.0.4):
-    - RxCocoa (~> 3.0)
-    - RxSwift (~> 3.0)
+  - RxDataSources (2.0.2):
+    - Differentiator (~> 2.0)
+    - RxCocoa (>= 3.6.1)
+    - RxSwift (>= 3.6.1)
   - RxSwift (3.6.1)
   - RxTest (3.6.1):
     - RxSwift (~> 3.6)
@@ -20,28 +22,36 @@ PODS:
     - RxTest (~> 3.0)
 
 DEPENDENCIES:
-  - RxDataSources (~> 1.0)
-  - SwiftUtilities/Main (from `https://github.com/protoman92/SwiftUtilities.git`)
-  - SwiftUtilitiesTests/Main
+  - RxDataSources
+  - SwiftUtilities/Main (from `https://github.com/protoman92/SwiftUtilities.git`, branch `legacy`)
+  - SwiftUtilitiesTests/Main (from `https://github.com/protoman92/SwiftUtilities.git`, branch `legacy`)
 
 EXTERNAL SOURCES:
   SwiftUtilities:
+    :branch: legacy
+    :git: https://github.com/protoman92/SwiftUtilities.git
+  SwiftUtilitiesTests:
+    :branch: legacy
     :git: https://github.com/protoman92/SwiftUtilities.git
 
 CHECKOUT OPTIONS:
   SwiftUtilities:
-    :commit: 36ee13f58c4a23a18b51298cdfb0e5730495e8e7
+    :commit: 18d4bbe1368555569822681f18dd167e5d3c32e4
+    :git: https://github.com/protoman92/SwiftUtilities.git
+  SwiftUtilitiesTests:
+    :commit: 18d4bbe1368555569822681f18dd167e5d3c32e4
     :git: https://github.com/protoman92/SwiftUtilities.git
 
 SPEC CHECKSUMS:
+  Differentiator: caa9b3957981a2ac8e6b2eac8a676af461caa604
   RxBlocking: 4f4bd5732e8b952e54ae8a57739bcfb645de12bc
   RxCocoa: 84a08739ab186248c7f31ce4ee92d6f8a947d690
-  RxDataSources: b3389acc5fe2eefb8fcd81a2b76a876ad08bc82a
+  RxDataSources: 7f190474a93a206c082c2d74c4cc9c8f7bea4feb
   RxSwift: f9de85ea20cd2f7716ee5409fc13523dc638e4e4
   RxTest: 1d00348a7848c91ab5bf5d197d2378aa6b2bb356
   SwiftUtilities: ef0087625fe58fb8909af372111e23461d10af55
-  SwiftUtilitiesTests: cc224ef1ef1b455dc89bc43358d999e56ffbec00
+  SwiftUtilitiesTests: ed0f926a2abd328fdee7cbe2d6f6550b62a9ff86
 
-PODFILE CHECKSUM: 26adbb382f5baec0843bb5c4e92daf1dcd27dc88
+PODFILE CHECKSUM: 9a5ca4b9b001a8036a0201c58eafb86ed2e9642d
 
-COCOAPODS: 1.4.0.beta.2
+COCOAPODS: 1.4.0
